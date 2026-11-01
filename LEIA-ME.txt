@@ -1,10 +1,19 @@
-ONZE IDEAL 1.1
+ONZE IDEAL 1.2 — BRASIL / SÉRIE A 2026
 
-Como publicar no GitHub Pages:
-1. Extraia este arquivo ZIP.
-2. Abra o repositório onze-ideal no GitHub.
-3. Envie/substitua o arquivo index.html na raiz do repositório.
-4. Confirme em Commit changes.
-5. Aguarde alguns minutos e atualize o site.
+COMO PUBLICAR
+1. Extraia este ZIP no celular.
+2. Abra seu repositório GitHub: kauagabrieloliveiracosta1-png/onze-ideal.
+3. Entre na pasta raiz e substitua o arquivo index.html pelo deste pacote.
+4. Faça Commit changes.
+5. Aguarde o GitHub Pages atualizar e recarregue o site.
 
-O jogo funciona no navegador. O progresso é salvo localmente no navegador/dispositivo.
+RECURSOS
+- Início de carreira escolhendo clube ou criando treinador desempregado.
+- Mercado de trabalho para treinador desempregado.
+- Brasileirão Série A com 20 clubes e calendário de 38 rodadas em turno e returno.
+- Avanço de 1 dia e 1 semana.
+- Simulação de partidas, classificação, notícias, objetivos da diretoria e finanças.
+- Elenco demonstrativo editável.
+
+IMPORTANTE
+Os elencos nesta versão ainda são demonstrativos, não uma base oficial completa de jogadores reais. A interface e a estrutura estão preparadas para receber uma base de dados de elencos atualizável. O regulamento implementado é uma versão simplificada do Brasileirão Série A 2026. Vagas continentais e desempates podem depender de critérios oficiais complementares e resultados da Copa do Brasil.
