@@ -4,151 +4,115 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#101827">
-<title>Onze Ideal — Protótipo 1.0</title>
+<title>Onze Ideal — Carreira 1.1</title>
 <style>
 :root{--bg:#0b1220;--panel:#131e30;--panel2:#1a2940;--line:#2b3b55;--txt:#f3f6fb;--muted:#aab7ca;--green:#38c879;--gold:#f2c35e;--red:#f07171}
 *{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at top right,#1b3650 0,#0b1220 42%);color:var(--txt);font:15px system-ui,-apple-system,Segoe UI,Roboto,sans-serif}
-header{padding:20px 16px 14px;max-width:1100px;margin:auto;display:flex;align-items:center;justify-content:space-between;gap:12px}
+header{padding:18px 16px 12px;max-width:1100px;margin:auto;display:flex;align-items:center;justify-content:space-between;gap:12px}
 .brand{display:flex;align-items:center;gap:12px}.crest{width:46px;height:52px;background:linear-gradient(145deg,#38c879,#087b53);clip-path:polygon(8% 0,92% 0,88% 72%,50% 100%,12% 72%);display:grid;place-items:center;font-weight:900;color:#062c20;font-size:19px}
 h1{font-size:23px;margin:0;letter-spacing:.5px}.sub{color:var(--muted);font-size:12px;margin-top:2px}
 main{max-width:1100px;margin:auto;padding:0 16px 40px}.hero{background:linear-gradient(120deg,#163d36,#16243a 70%);border:1px solid #2d5b4c;border-radius:20px;padding:22px;margin:8px 0 18px;position:relative;overflow:hidden}
 .hero:after{content:"⚽";position:absolute;right:20px;top:15px;font-size:76px;opacity:.12}.eyebrow{color:#9fe8bd;font-size:11px;font-weight:800;letter-spacing:1.5px}.hero h2{font-size:27px;margin:8px 0}.hero p{color:#c8d6e5;max-width:650px;line-height:1.5;margin:0}
-.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.card{background:linear-gradient(160deg,var(--panel),#101a2a);border:1px solid var(--line);border-radius:16px;padding:16px;min-width:0}.card h3{margin:0 0 8px;font-size:17px}.card p{color:var(--muted);margin:0 0 12px;line-height:1.45;font-size:13px}
-.actions{display:flex;flex-wrap:wrap;gap:8px}.btn{border:1px solid #45607f;background:#22334b;color:white;padding:10px 13px;border-radius:10px;font-weight:700;cursor:pointer}.btn.primary{background:var(--green);border-color:var(--green);color:#062819}.btn.ghost{background:transparent}.btn:active{transform:scale(.98)}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.card{background:linear-gradient(160deg,var(--panel),#101a2a);border:1px solid var(--line);border-radius:16px;padding:16px;min-width:0;margin-bottom:12px}.card h3{margin:0 0 8px;font-size:17px}.card p{color:var(--muted);margin:0 0 12px;line-height:1.45;font-size:13px}
+.actions{display:flex;flex-wrap:wrap;gap:8px}.btn{border:1px solid #45607f;background:#22334b;color:white;padding:10px 13px;border-radius:10px;font-weight:700;cursor:pointer}.btn.primary{background:var(--green);border-color:var(--green);color:#062819}.btn.ghost{background:transparent}.btn.danger{border-color:#8b4545;color:#ffd0d0}.btn:active{transform:scale(.98)}
 nav{display:flex;gap:8px;overflow:auto;padding:5px 0 14px}.tab{white-space:nowrap;border:1px solid var(--line);background:#111c2c;color:var(--muted);padding:9px 13px;border-radius:999px;cursor:pointer}.tab.active{background:#234b3d;border-color:#38c879;color:#c9ffdf}
 section.view{display:none}section.view.active{display:block}.field{display:grid;gap:6px;margin:10px 0}.field label{font-size:12px;color:var(--muted);font-weight:700}.field input,.field select,.field textarea{width:100%;background:#0c1625;color:var(--txt);border:1px solid #344861;border-radius:9px;padding:11px;font:inherit}.field textarea{min-height:80px;resize:vertical}
-.row{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.notice{padding:12px;border:1px dashed #536b87;border-radius:12px;color:#c5d2e3;background:#101b2b;font-size:13px;line-height:1.5}
+.row{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.notice{padding:12px;border:1px dashed #536b87;border-radius:12px;color:#c5d2e3;background:#101b2b;font-size:13px;line-height:1.5;margin:10px 0}
 .pill{display:inline-block;background:#203b32;color:#9cf0bc;border:1px solid #31694f;padding:4px 8px;border-radius:99px;font-size:11px;font-weight:800}
-.scoreboard{background:#101827;border:1px solid #435a78;border-radius:14px;padding:14px;max-width:500px;margin:10px auto;text-align:center}
+.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;margin:12px 0}.stat{background:#0e1929;border:1px solid #293d57;border-radius:12px;padding:12px}.stat b{display:block;font-size:21px}.stat span{color:var(--muted);font-size:11px}
+.list{display:grid;gap:8px}.item{padding:11px;border-radius:10px;background:#0e1929;border:1px solid #293d57;display:flex;justify-content:space-between;gap:10px;align-items:center}.small{font-size:11px;color:var(--muted)}.muted{color:var(--muted)}
+table{width:100%;border-collapse:collapse;font-size:13px}th,td{text-align:left;padding:9px 7px;border-bottom:1px solid #293d57}th{color:var(--muted);font-size:11px}td.num,th.num{text-align:center}.highlight{color:#9cf0bc;font-weight:800}.scoreboard{background:#101827;border:1px solid #435a78;border-radius:14px;padding:14px;max-width:500px;margin:10px auto;text-align:center}
 .scoretop{font-size:11px;letter-spacing:1.2px;color:var(--gold);font-weight:800}.scoreline{display:flex;justify-content:space-around;align-items:center;gap:10px;margin:12px 0}.team{font-weight:800;min-width:70px}.score{font-size:34px;font-weight:900;letter-spacing:4px}.clock{color:#ff7777;font-weight:800}
-.small{font-size:11px;color:var(--muted)}.list{display:grid;gap:8px}.item{padding:11px;border-radius:10px;background:#0e1929;border:1px solid #293d57;display:flex;justify-content:space-between;gap:10px;align-items:center}
 footer{color:#72839b;text-align:center;font-size:11px;padding:22px 0}
-@media(max-width:650px){.grid{grid-template-columns:1fr}.row{grid-template-columns:1fr}.hero h2{font-size:23px}header{padding-top:14px}}
+@media(max-width:650px){.grid{grid-template-columns:1fr}.row{grid-template-columns:1fr}.hero h2{font-size:23px}header{padding-top:14px}.stats{grid-template-columns:repeat(2,minmax(0,1fr))}}
 </style>
 </head>
 <body>
-<header>
- <div class="brand"><div class="crest">OI</div><div><h1>ONZE IDEAL</h1><div class="sub">Simulador de gestão de futebol • Protótipo 1.0</div></div></div>
- <span class="pill">DEMO JOGÁVEL</span>
-</header>
+<header><div class="brand"><div class="crest">OI</div><div><h1>ONZE IDEAL</h1><div class="sub">Simulador de gestão de futebol • Versão 1.1</div></div></div><span class="pill">CARREIRA JOGÁVEL</span></header>
 <main>
- <div class="hero">
-  <div class="eyebrow">SEU CLUBE. SUAS DECISÕES. SUA HISTÓRIA.</div>
-  <h2>Assuma o comando do futebol.</h2>
-  <p>Monte seu projeto, construa um elenco e transforme suas decisões em resultados. Este protótipo apresenta a navegação inicial, o editor e a personalização de placares planejados para o Onze Ideal.</p>
- </div>
- <nav>
-  <button class="tab active" data-view="inicio">Início</button>
-  <button class="tab" data-view="carreira">Nova carreira</button>
-  <button class="tab" data-view="editor">Modo Editor</button>
-  <button class="tab" data-view="placares">Placares</button>
-  <button class="tab" data-view="sobre">Projeto</button>
- </nav>
-
- <section id="inicio" class="view active">
-  <div class="grid">
-   <article class="card"><h3>⚽ Começar carreira</h3><p>Escolha um clube diretamente ou crie seu treinador iniciante e procure uma oportunidade.</p><button class="btn primary" onclick="show('carreira')">Escolher início</button></article>
-   <article class="card"><h3>🛠️ Modo Editor</h3><p>Planejado para editar clubes, jogadores, treinadores, competições, países, estádios e o universo.</p><button class="btn" onclick="show('editor')">Abrir editor</button></article>
-   <article class="card"><h3>📺 Identidade dos placares</h3><p>Crie modelos, personalize elementos e associe um placar a cada competição.</p><button class="btn" onclick="show('placares')">Personalizar placares</button></article>
-   <article class="card"><h3>💾 Salvamento</h3><p>As informações preenchidas neste protótipo ficam salvas neste navegador/dispositivo.</p><button class="btn ghost" onclick="saveDemo()">Salvar agora</button></article>
-  </div>
-  <div class="notice" style="margin-top:12px">Atenção: esta é uma demonstração inicial de interface. A simulação completa, banco de dados mundial, mercado funcional e partidas ainda serão desenvolvidos e testados nas próximas etapas.</div>
- </section>
-
- <section id="carreira" class="view">
-  <div class="grid">
-   <article class="card">
-    <h3>🏟️ Assumir um clube</h3><p>Comece escolhendo diretamente uma equipe.</p>
-    <div class="field"><label>País</label><select id="country"><option>Brasil</option><option>Argentina</option><option>Inglaterra</option><option>Espanha</option><option>Alemanha</option><option>Itália</option></select></div>
-    <div class="field"><label>Clube escolhido</label><input id="club" placeholder="Ex.: Inter de Limeira"></div>
-    <button class="btn primary" onclick="startClub()">Criar carreira com este clube</button>
-   </article>
-   <article class="card">
-    <h3>🧑‍💼 Criar treinador</h3><p>Comece desempregado, com reputação iniciante, e procure seu primeiro trabalho.</p>
-    <div class="field"><label>Nome do treinador</label><input id="manager" placeholder="Nome e sobrenome"></div>
-    <div class="row">
-     <div class="field"><label>Nacionalidade</label><input id="nationality" value="Brasileira"></div>
-     <div class="field"><label>Idade</label><input id="age" type="number" min="18" max="90" value="35"></div>
-    </div>
-    <div class="field"><label>Reputação inicial</label><input value="Iniciante" disabled></div>
-    <button class="btn primary" onclick="startManager()">Criar treinador</button>
-   </article>
-  </div>
-  <div id="careerResult" class="notice" style="margin-top:12px">Sua carreira ainda não foi iniciada.</div>
- </section>
-
- <section id="editor" class="view">
-  <div class="notice" style="margin-bottom:12px"><b>Modo Editor — conceito da versão 1.0.</b> O editor definitivo terá todas as categorias abaixo. Neste protótipo, você já pode registrar itens demonstrativos e salvá-los no dispositivo.</div>
-  <div class="grid">
-   <article class="card">
-    <h3>🏆 Criar / editar item</h3>
-    <div class="field"><label>Categoria</label><select id="editType"><option>Clube</option><option>Jogador</option><option>Treinador</option><option>Competição</option><option>País</option><option>Estádio</option><option>Transferência</option></select></div>
-    <div class="field"><label>Nome</label><input id="editName" placeholder="Nome do item"></div>
-    <div class="field"><label>Detalhes</label><textarea id="editDetails" placeholder="Ex.: cidade, posição, capacidade, atributos, regras..."></textarea></div>
-    <button class="btn primary" onclick="addEdit()">Adicionar ao meu universo</button>
-   </article>
-   <article class="card"><h3>📚 Itens cadastrados</h3><div id="editList" class="list"><div class="small">Nenhum item criado ainda.</div></div></article>
-  </div>
- </section>
-
- <section id="placares" class="view">
-  <div class="grid">
-   <article class="card">
-    <h3>🎨 Criador de placar</h3><p>Os modelos poderão ser independentes por competição ou compartilhados entre várias competições.</p>
-    <div class="field"><label>Nome do modelo</label><input id="scoreName" value="Meu placar"></div>
-    <div class="field"><label>Competição associada</label><input id="competition" placeholder="Ex.: Campeonato Brasileiro"></div>
-    <div class="row">
-     <div class="field"><label>Cor principal</label><input id="scoreColor" type="color" value="#1e6848"></div>
-     <div class="field"><label>Cor do texto</label><input id="textColor" type="color" value="#ffffff"></div>
-    </div>
-    <div class="field"><label>Formato</label><select id="scoreFormat"><option>Clássico horizontal</option><option>Compacto</option><option>Centralizado</option></select></div>
-    <button class="btn primary" onclick="addScore()">Salvar modelo</button>
-   </article>
-   <article class="card">
-    <h3>👁️ Prévia do placar</h3>
-    <div class="scoreboard" id="preview">
-     <div class="scoretop" id="prevComp">COMPETIÇÃO</div>
-     <div class="scoreline"><div class="team">MANDANTE</div><div class="score">1 — 0</div><div class="team">VISITANTE</div></div>
-     <div class="clock">45:00</div>
-    </div>
-    <div class="small">Prévia ilustrativa. A partida real e a troca automática por competição serão implementadas no motor de jogo.</div>
-   </article>
-  </div>
-  <div class="card" style="margin-top:12px"><h3>Modelos salvos</h3><div id="scoreList" class="list"><div class="small">Nenhum modelo salvo ainda.</div></div></div>
- </section>
-
- <section id="sobre" class="view">
-  <div class="card">
-   <h3>📌 Escopo aprovado para o Onze Ideal 1.0</h3>
-   <div class="list">
-    <div class="item"><span>Modo Editor integrado ao menu, com universo editável</span><span class="pill">Definido</span></div>
-    <div class="item"><span>Placares por competição, independentes e compartilháveis</span><span class="pill">Definido</span></div>
-    <div class="item"><span>Modelos prontos e criação de placar do zero</span><span class="pill">Definido</span></div>
-    <div class="item"><span>Início por escolha de clube ou criação de treinador</span><span class="pill">Definido</span></div>
-    <div class="item"><span>Treinador começa com reputação iniciante</span><span class="pill">Definido</span></div>
-    <div class="item"><span>Simulação automática e minuto a minuto</span><span class="pill">Planejado</span></div>
-    <div class="item"><span>Mercado, finanças, táticas, imprensa e base</span><span class="pill">Planejado</span></div>
-   </div>
-  </div>
- </section>
- <footer>Onze Ideal • Protótipo de interface 1.0 • Projeto em desenvolvimento</footer>
+<div class="hero"><div class="eyebrow">SEU CLUBE. SUAS DECISÕES. SUA HISTÓRIA.</div><h2>Assuma o comando do futebol.</h2><p>Crie sua carreira, monte seu projeto e acompanhe resultados, elenco, calendário, classificação e finanças. Esta versão já permite iniciar e avançar uma temporada demonstrativa.</p></div>
+<nav id="mainNav">
+<button class="tab active" data-view="inicio">Início</button><button class="tab" data-view="carreira">Nova carreira</button><button class="tab" data-view="editor">Modo Editor</button><button class="tab" data-view="placares">Placares</button><button class="tab" data-view="sobre">Projeto</button>
+</nav>
+<section id="inicio" class="view active">
+<div id="continueCard"></div>
+<div class="grid">
+<article class="card"><h3>⚽ Começar carreira</h3><p>Escolha um clube diretamente ou crie seu treinador iniciante e procure uma oportunidade.</p><button class="btn primary" onclick="show('carreira')">Escolher início</button></article>
+<article class="card"><h3>🛠️ Modo Editor</h3><p>Registre clubes, jogadores, treinadores e competições no seu universo.</p><button class="btn" onclick="show('editor')">Abrir editor</button></article>
+<article class="card"><h3>📺 Identidade dos placares</h3><p>Crie modelos e personalize a identidade visual dos placares.</p><button class="btn" onclick="show('placares')">Personalizar placares</button></article>
+<article class="card"><h3>💾 Salvamento</h3><p>A carreira e as alterações ficam salvas neste navegador/dispositivo.</p><button class="btn ghost" onclick="saveDemo()">Salvar agora</button></article>
+</div>
+<div class="notice">Importante: esta é uma simulação local. Os resultados são gerados dentro do jogo e o progresso fica salvo neste aparelho/navegador. Ainda não há conexão com servidores ou dados oficiais ao vivo.</div>
+</section>
+<section id="carreira" class="view">
+<div id="careerSetup">
+<div class="grid">
+<article class="card"><h3>🏟️ Assumir um clube</h3><p>Comece escolhendo diretamente uma equipe.</p>
+<div class="field"><label>País</label><select id="country"><option>Brasil</option><option>Argentina</option><option>Inglaterra</option><option>Espanha</option><option>Alemanha</option><option>Itália</option></select></div>
+<div class="field"><label>Clube escolhido</label><input id="club" placeholder="Ex.: Flamengo" value="Flamengo"></div>
+<button class="btn primary" onclick="startClub()">Criar carreira com este clube</button></article>
+<article class="card"><h3>🧑‍💼 Criar treinador</h3><p>Comece desempregado, com reputação iniciante, e procure seu primeiro trabalho.</p>
+<div class="field"><label>Nome do treinador</label><input id="manager" placeholder="Nome e sobrenome"></div>
+<div class="row"><div class="field"><label>Nacionalidade</label><input id="nationality" value="Brasileira"></div><div class="field"><label>Idade</label><input id="age" type="number" min="18" max="90" value="35"></div></div>
+<div class="field"><label>Reputação inicial</label><input value="Iniciante" disabled></div><button class="btn primary" onclick="startManager()">Criar treinador</button></article>
+</div></div>
+<div id="careerHub" style="display:none">
+<div class="card"><div class="actions" style="justify-content:space-between;align-items:center"><div><span class="pill" id="careerStatus">EM ANDAMENTO</span><h2 id="clubTitle" style="margin:8px 0 2px">Clube</h2><div class="muted" id="managerLine"></div></div><button class="btn ghost" onclick="show('inicio')">Voltar ao início</button></div>
+<div class="stats"><div class="stat"><b id="statPosition">—</b><span>POSIÇÃO</span></div><div class="stat"><b id="statPoints">0</b><span>PONTOS</span></div><div class="stat"><b id="statBudget">—</b><span>ORÇAMENTO</span></div><div class="stat"><b id="statRound">0/9</b><span>RODADA</span></div></div></div>
+<nav id="careerNav"><button class="tab active" data-cview="painel">Painel</button><button class="tab" data-cview="elenco">Elenco</button><button class="tab" data-cview="calendario">Calendário</button><button class="tab" data-cview="classificacao">Classificação</button><button class="tab" data-cview="financas">Finanças</button></nav>
+<div id="painel" class="careerView"><div id="nextMatch" class="card"></div><div class="grid"><article class="card"><h3>📋 Objetivo da diretoria</h3><p id="boardGoal">Consolide o clube e busque bons resultados.</p></article><article class="card"><h3>🗞️ Últimas notícias</h3><div id="news" class="list"></div></article></div></div>
+<div id="elenco" class="careerView" style="display:none"><div class="card"><h3>👥 Elenco profissional</h3><p class="small">Elenco fictício inicial para a simulação. Você poderá editar nomes e posições no desenvolvimento seguinte.</p><div id="squadList"></div></div></div>
+<div id="calendario" class="careerView" style="display:none"><div class="card"><h3>📅 Calendário da temporada</h3><div id="fixtureList"></div></div></div>
+<div id="classificacao" class="careerView" style="display:none"><div class="card"><h3>🏆 Classificação</h3><div id="tableWrap"></div></div></div>
+<div id="financas" class="careerView" style="display:none"><div class="card"><h3>💰 Finanças do clube</h3><div id="financeInfo"></div></div></div>
+<div id="jobOffers" class="card" style="display:none"><h3>📨 Oportunidades de trabalho</h3><p>Como treinador desempregado, você pode aceitar uma das propostas abaixo.</p><div id="offersList" class="list"></div></div>
+</div>
+</section>
+<section id="editor" class="view"><div class="notice">Registre itens personalizados no seu universo. Os dados são salvos neste dispositivo.</div><div class="grid"><article class="card"><h3>🏆 Criar / editar item</h3><div class="field"><label>Categoria</label><select id="editType"><option>Clube</option><option>Jogador</option><option>Treinador</option><option>Competição</option><option>País</option><option>Estádio</option><option>Transferência</option></select></div><div class="field"><label>Nome</label><input id="editName" placeholder="Nome do item"></div><div class="field"><label>Detalhes</label><textarea id="editDetails" placeholder="Cidade, posição, capacidade, atributos..."></textarea></div><button class="btn primary" onclick="addEdit()">Adicionar ao meu universo</button></article><article class="card"><h3>📚 Itens cadastrados</h3><div id="editList" class="list"></div></article></div></section>
+<section id="placares" class="view"><div class="grid"><article class="card"><h3>🎨 Criador de placar</h3><div class="field"><label>Nome do modelo</label><input id="scoreName" value="Meu placar"></div><div class="field"><label>Competição associada</label><input id="competition" placeholder="Ex.: Campeonato Brasileiro"></div><div class="row"><div class="field"><label>Cor principal</label><input id="scoreColor" type="color" value="#1e6848"></div><div class="field"><label>Cor do texto</label><input id="textColor" type="color" value="#ffffff"></div></div><div class="field"><label>Formato</label><select id="scoreFormat"><option>Clássico horizontal</option><option>Compacto</option><option>Centralizado</option></select></div><button class="btn primary" onclick="addScore()">Salvar modelo</button></article><article class="card"><h3>👁️ Prévia do placar</h3><div class="scoreboard" id="preview"><div class="scoretop" id="prevComp">COMPETIÇÃO</div><div class="scoreline"><div class="team">MANDANTE</div><div class="score">1 — 0</div><div class="team">VISITANTE</div></div><div class="clock">45:00</div></div><div class="small">Prévia visual do modelo.</div></article></div><div class="card"><h3>Modelos salvos</h3><div id="scoreList" class="list"></div></div></section>
+<section id="sobre" class="view"><div class="card"><h3>📌 Onze Ideal 1.1</h3><div class="list"><div class="item">Início por escolha de clube ou criação de treinador <span class="pill">Ativo</span></div><div class="item">Painel, elenco, calendário e classificação <span class="pill">Ativo</span></div><div class="item">Simulação de rodadas e finanças básicas <span class="pill">Ativo</span></div><div class="item">Editor e criador de placares <span class="pill">Ativo</span></div><div class="item">Mercado completo, táticas avançadas e partidas minuto a minuto <span class="pill">Próximas versões</span></div></div></div></section>
+<footer>Onze Ideal • Carreira 1.1 • Projeto em desenvolvimento</footer>
 </main>
 <script>
 const $=id=>document.getElementById(id);
-function show(id){document.querySelectorAll('.view').forEach(v=>v.classList.toggle('active',v.id===id));document.querySelectorAll('.tab').forEach(t=>t.classList.toggle('active',t.dataset.view===id));}
-document.querySelectorAll('.tab').forEach(t=>t.addEventListener('click',()=>show(t.dataset.view)));
-function read(){try{return JSON.parse(localStorage.getItem('onzeIdealDemo')||'{"edits":[],"scores":[],"career":null}')}catch(e){return {edits:[],scores:[],career:null}}}
-function write(d){localStorage.setItem('onzeIdealDemo',JSON.stringify(d));}
-function saveDemo(){write(read());alert('Dados do protótipo salvos neste dispositivo.');}
-function startClub(){let club=$('club').value.trim();if(!club){alert('Digite o nome do clube.');return}let d=read();d.career={type:'Clube escolhido',club,country:$('country').value};write(d);render();alert('Carreira demonstrativa criada!');}
-function startManager(){let name=$('manager').value.trim();if(!name){alert('Digite o nome do treinador.');return}let d=read();d.career={type:'Treinador criado',name,nationality:$('nationality').value,age:$('age').value,reputation:'Iniciante',status:'Desempregado — procurando oportunidade'};write(d);render();alert('Treinador criado!');}
+const teams=['Flamengo','Palmeiras','Corinthians','São Paulo','Grêmio','Internacional','Atlético-MG','Fluminense','Botafogo','Santos'];
+const names=['Lucas Almeida','Pedro Henrique','Gabriel Souza','Matheus Costa','João Pedro','Rafael Lima','Bruno Martins','Caio Oliveira','André Santos','Felipe Rocha','Vitor Carvalho','Diego Ribeiro','Gustavo Alves','Thiago Nunes','Eduardo Melo','Samuel Barros','Arthur Freitas','Renan Gomes','Leonardo Dias','Davi Moreira'];
+const positions=['GOL','LD','ZAG','ZAG','LE','VOL','MC','MC','MEI','PD','PE','ATA','ATA','VOL','ZAG','LD','MEI','PE','GOL','ATA'];
+function fresh(){return {edits:[],scores:[],career:null}}
+function read(){try{return JSON.parse(localStorage.getItem('onzeIdealCareer')||localStorage.getItem('onzeIdealDemo')||'null')||fresh()}catch(e){return fresh()}}
+function write(d){localStorage.setItem('onzeIdealCareer',JSON.stringify(d));}
+function show(id){document.querySelectorAll('.view').forEach(v=>v.classList.toggle('active',v.id===id));document.querySelectorAll('#mainNav .tab').forEach(t=>t.classList.toggle('active',t.dataset.view===id));}
+document.querySelectorAll('#mainNav .tab').forEach(t=>t.addEventListener('click',()=>show(t.dataset.view)));
+document.querySelectorAll('#careerNav .tab').forEach(t=>t.addEventListener('click',()=>careerTab(t.dataset.cview)));
+function careerTab(id){document.querySelectorAll('.careerView').forEach(v=>v.style.display=v.id===id?'block':'none');document.querySelectorAll('#careerNav .tab').forEach(t=>t.classList.toggle('active',t.dataset.cview===id));}
+function saveDemo(){write(read());alert('Jogo salvo neste dispositivo.');}
+function makeSquad(){return names.map((n,i)=>({name:n,pos:positions[i],age:18+(i*3%15),rating:60+(i*7%21),goals:0}));}
+function makeTable(club){let list=[club,...teams.filter(t=>t.toLowerCase()!==club.toLowerCase())];while(list.length<10)list.push('Clube '+(list.length+1));return list.slice(0,10).map(name=>({name,p:0,w:0,d:0,l:0,gf:0,ga:0,pts:0}));}
+function makeFixtures(club){let opponents=teams.filter(t=>t.toLowerCase()!==club.toLowerCase());while(opponents.length<9)opponents.push('Adversário '+(opponents.length+1));return opponents.slice(0,9).map((opp,i)=>({round:i+1,home:i%2===0?club:opp,away:i%2===0?opp:club,played:false,score:null}));}
+function startClub(){let club=$('club').value.trim();if(!club){alert('Digite o nome do clube.');return}let d=read();d.career={type:'club',club,country:$('country').value,manager:'Treinador não definido',reputation:'Clube assumido',round:0,budget:25000000,squad:makeSquad(),table:makeTable(club),fixtures:makeFixtures(club),news:['A diretoria anunciou o início de um novo projeto.'],history:[]};write(d);render();openCareer();}
+function startManager(){let name=$('manager').value.trim(),age=Number($('age').value);if(!name){alert('Digite o nome do treinador.');return}if(age<18||age>90){alert('Informe uma idade entre 18 e 90 anos.');return}let d=read();d.career={type:'manager',club:null,country:'Brasil',manager:name,nationality:$('nationality').value,age,reputation:'Iniciante',status:'Desempregado',round:0,budget:0,squad:[],table:[],fixtures:[],news:['Você criou seu perfil de treinador e está aguardando uma oportunidade.'],history:[]};write(d);render();openCareer();}
+function openCareer(){show('carreira');$('careerSetup').style.display='none';$('careerHub').style.display='block';careerTab('painel');}
+function acceptJob(club){let d=read(),c=d.career;c.club=club;c.status='Empregado';c.budget=club==='Flamengo'?25000000:club==='Palmeiras'?22000000:club==='Santos'?8000000:10000000;c.squad=makeSquad();c.table=makeTable(club);c.fixtures=makeFixtures(club);c.round=0;c.news.unshift('Você foi anunciado como novo treinador do '+club+'.');write(d);render();alert('Contrato assinado! Sua carreira começou no '+club+'.');}
+function simulate(){let d=read(),c=d.career;if(!c||!c.club)return;let f=c.fixtures.find(x=>!x.played);if(!f){alert('A temporada demonstrativa terminou.');return}let isHome=f.home===c.club;let gf=Math.floor(Math.random()*4),ga=Math.floor(Math.random()*4);if(!isHome)[gf,ga]=[ga,gf];f.played=true;f.score=[gf,ga];c.round++;let own=c.table.find(t=>t.name===c.club),opp=c.table.find(t=>t.name===(isHome?f.away:f.home));own.p++;opp.p++;own.gf+=gf;own.ga+=ga;opp.gf+=ga;opp.ga+=gf;if(gf>ga){own.w++;own.pts+=3;opp.l++}else if(gf<ga){opp.w++;opp.pts+=3;own.l++}else{own.d++;opp.d++;own.pts++;opp.pts++}c.budget+=isHome?350000:150000;let result=gf>ga?'vitória':gf<ga?'derrota':'empate';c.news.unshift('Rodada '+c.round+': '+result+' por '+gf+' a '+ga+' contra '+(isHome?f.away:f.home)+'.');c.news=c.news.slice(0,6);c.history.unshift({round:c.round,opponent:isHome?f.away:f.home,score:gf+' x '+ga,result});write(d);render();careerTab('painel');}
+function sortedTable(c){return [...c.table].sort((a,b)=>b.pts-a.pts||(b.gf-b.ga)-(a.gf-a.ga)||b.gf-a.gf)}
+function render(){let d=read(),c=d.career;$('editList').innerHTML=d.edits.length?d.edits.map(x=>`<div class="item"><span><b>${esc(x.name)}</b><br><span class="small">${esc(x.type)} · ${esc(x.details||'Sem detalhes')}</span></span></div>`).join(''):'<div class="small">Nenhum item criado ainda.</div>';$('scoreList').innerHTML=d.scores.length?d.scores.map(x=>`<div class="item"><span><b>${esc(x.name)}</b><br><span class="small">${esc(x.comp)} · ${esc(x.format)}</span></span><span style="width:24px;height:24px;border-radius:6px;background:${x.color};border:1px solid #fff"></span></div>`).join(''):'<div class="small">Nenhum modelo salvo ainda.</div>';
+$('continueCard').innerHTML=c?`<div class="card"><span class="pill">CARREIRA SALVA</span><h3 style="margin-top:8px">${esc(c.club||c.manager)}</h3><p>${esc(c.manager)} · ${c.club?'Temporada em andamento':'Treinador desempregado'}</p><button class="btn primary" onclick="openCareer()">Continuar carreira</button></div>`:'';
+$('careerSetup').style.display=c?'none':'block';$('careerHub').style.display=c?'block':'none';if(!c)return;
+$('clubTitle').textContent=c.club||'Treinador desempregado';$('managerLine').textContent=(c.manager||'Treinador')+' · Reputação: '+(c.reputation||'Iniciante')+' · '+(c.country||'');$('careerStatus').textContent=c.club?'EM ANDAMENTO':(c.status||'DESEMPREGADO');let table=c.club?sortedTable(c):[];let own=table.find(t=>t.name===c.club);$('statPosition').textContent=own?(table.indexOf(own)+1)+'º':'—';$('statPoints').textContent=own?own.pts:0;$('statBudget').textContent=c.club?'R$ '+(c.budget/1000000).toFixed(1)+' mi':'—';$('statRound').textContent=c.round+'/'+(c.fixtures.length||9);
+$('boardGoal').textContent=c.club?'Objetivo inicial: terminar entre os 5 primeiros desta liga demonstrativa.':'Seu objetivo: conseguir o primeiro contrato e iniciar sua trajetória profissional.';
+$('news').innerHTML=(c.news||[]).map(n=>`<div class="item">${esc(n)}</div>`).join('');
+$('jobOffers').style.display=c.club?'none':'block';if(!c.club){$('offersList').innerHTML=['Santos','Ceará','Sport'].map(cl=>`<div class="item"><span><b>${cl}</b><br><span class="small">Contrato inicial · Reputação exigida: iniciante</span></span><button class="btn primary" onclick="acceptJob('${cl}')">Aceitar</button></div>`).join('');$('nextMatch').innerHTML='<h3>Você está sem clube</h3><p>Analise as propostas e aceite seu primeiro trabalho para começar a temporada.</p>';return}
+let next=c.fixtures.find(f=>!f.played);$('nextMatch').innerHTML=next?`<span class="pill">PRÓXIMA PARTIDA · RODADA ${next.round}</span><h3 style="margin-top:10px">${esc(next.home)} x ${esc(next.away)}</h3><p>Prepare o time e avance para jogar a próxima rodada.</p><button class="btn primary" onclick="simulate()">Simular próxima rodada</button>`:`<span class="pill">TEMPORADA CONCLUÍDA</span><h3>Fim da temporada demonstrativa</h3><p>Você completou as 9 rodadas. A classificação final está disponível.</p>`;
+$('squadList').innerHTML=c.squad.map((p,i)=>`<div class="item"><span><b>${esc(p.name)}</b><br><span class="small">${p.pos} · ${p.age} anos</span></span><span class="pill">GER ${p.rating} · ${p.goals} gols</span></div>`).join('');
+$('fixtureList').innerHTML=c.fixtures.map(f=>`<div class="item"><span><b>Rodada ${f.round}</b><br><span class="small">${esc(f.home)} x ${esc(f.away)}</span></span><b>${f.played?f.score.join(' x '):'A jogar'}</b></div>`).join('');
+$('tableWrap').innerHTML=`<table><thead><tr><th>#</th><th>Clube</th><th class="num">PJ</th><th class="num">V</th><th class="num">E</th><th class="num">D</th><th class="num">SG</th><th class="num">PTS</th></tr></thead><tbody>${table.map((t,i)=>`<tr class="${t.name===c.club?'highlight':''}"><td>${i+1}</td><td>${esc(t.name)}</td><td class="num">${t.p}</td><td class="num">${t.w}</td><td class="num">${t.d}</td><td class="num">${t.l}</td><td class="num">${t.gf-t.ga}</td><td class="num"><b>${t.pts}</b></td></tr>`).join('')}</tbody></table>`;
+$('financeInfo').innerHTML=`<div class="stats"><div class="stat"><b>R$ ${(c.budget/1000000).toFixed(1)} mi</b><span>CAIXA ATUAL</span></div><div class="stat"><b>R$ 25 mi</b><span>APORTE INICIAL</span></div></div><p class="muted">Receita demonstrativa: R$ 350 mil por jogo em casa e R$ 150 mil por jogo fora. As finanças serão ampliadas nas próximas versões.</p>`;
+}
+function esc(s){return String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
 function addEdit(){let name=$('editName').value.trim();if(!name){alert('Informe um nome.');return}let d=read();d.edits.push({type:$('editType').value,name,details:$('editDetails').value});write(d);$('editName').value='';$('editDetails').value='';render();}
 function addScore(){let name=$('scoreName').value.trim(),comp=$('competition').value.trim();if(!name||!comp){alert('Informe o nome do modelo e a competição.');return}let d=read();d.scores.push({name,comp,color:$('scoreColor').value,text:$('textColor').value,format:$('scoreFormat').value});write(d);render();alert('Modelo de placar salvo.');}
-function render(){let d=read();$('editList').innerHTML=d.edits.length?d.edits.map(x=>`<div class="item"><span><b>${esc(x.name)}</b><br><span class="small">${esc(x.type)} · ${esc(x.details||'Sem detalhes')}</span></span></div>`).join(''):'<div class="small">Nenhum item criado ainda.</div>';$('scoreList').innerHTML=d.scores.length?d.scores.map(x=>`<div class="item"><span><b>${esc(x.name)}</b><br><span class="small">${esc(x.comp)} · ${esc(x.format)}</span></span><span style="width:24px;height:24px;border-radius:6px;background:${x.color};border:1px solid #fff"></span></div>`).join(''):'<div class="small">Nenhum modelo salvo ainda.</div>';$('careerResult').innerHTML=d.career?`<b>${esc(d.career.type)}</b><br>${esc(d.career.club||d.career.name)} · ${esc(d.career.country||d.career.nationality||'')}<br>${esc(d.career.status||('Reputação: '+d.career.reputation))}`:'Sua carreira ainda não foi iniciada.';}
-function esc(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
 function updatePreview(){let c=$('scoreColor').value,t=$('textColor').value;$('preview').style.background=c;$('preview').style.color=t;$('preview').style.borderColor=c;$('prevComp').textContent=$('competition').value.toUpperCase()||'COMPETIÇÃO';}
 ['scoreColor','textColor','competition'].forEach(id=>$(id).addEventListener('input',updatePreview));
 render();updatePreview();
 </script>
-</body>
-</html>
+</body></html>

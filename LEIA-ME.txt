@@ -1,19 +1,10 @@
-# Onze Ideal — Protótipo 1.0
+ONZE IDEAL 1.1
 
-Este pacote contém um protótipo HTML responsivo para abrir no navegador do Android.
+Como publicar no GitHub Pages:
+1. Extraia este arquivo ZIP.
+2. Abra o repositório onze-ideal no GitHub.
+3. Envie/substitua o arquivo index.html na raiz do repositório.
+4. Confirme em Commit changes.
+5. Aguarde alguns minutos e atualize o site.
 
-## Como testar
-1. Extraia o arquivo ZIP.
-2. Abra `index.html` no Chrome ou outro navegador.
-3. Explore as abas Início, Nova carreira, Modo Editor e Placares.
-
-## O que funciona neste protótipo
-- Navegação entre telas.
-- Criação demonstrativa de uma carreira escolhendo clube.
-- Criação demonstrativa de treinador com reputação inicial iniciante.
-- Cadastro local de itens do universo no editor.
-- Criação e prévia de modelos de placar.
-- Salvamento dos dados no armazenamento local do navegador.
-
-## Importante
-Este é um protótipo de interface, não um APK e ainda não é o jogo completo. Motor de partidas, banco mundial de jogadores reais, calendário completo, mercado funcional, competições e sincronização/importação/exportação ainda precisam ser desenvolvidos e testados.
+O jogo funciona no navegador. O progresso é salvo localmente no navegador/dispositivo.
