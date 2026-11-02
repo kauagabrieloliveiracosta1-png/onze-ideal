@@ -255,10 +255,27 @@ body{overscroll-behavior:none}
  .side{grid-template-columns:repeat(2,minmax(0,1fr))}
 }
 
+
+/* PACOTE 2.17 — Gestão centralizada e organizada */
+.layout.wide-tab>#management.tab.active{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;width:100%;max-width:980px;margin:0 auto;padding:0 8px 28px;align-items:stretch}
+.layout.wide-tab>#management>.panel{width:100%;min-width:0;margin:0;padding:clamp(16px,2.4vw,24px);align-self:stretch}
+.layout.wide-tab>#management>.panel:first-child{grid-column:1}
+.layout.wide-tab>#management>.panel:nth-child(2){grid-column:2}
+.layout.wide-tab>#management>.panel:nth-child(3){grid-column:1/-1}
+#management h3{text-align:center;margin:0 0 16px;padding-bottom:11px;border-bottom:1px solid #536170}
+#management #managementGoals{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,230px),1fr));gap:9px;align-content:start}
+#management #managementGoals>.item{height:100%;min-width:0;display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}
+#management #managementGoals>p{grid-column:1/-1;text-align:center;line-height:1.6}
+#management #stabilityInfo{text-align:center;max-width:620px;margin:0 auto}
+#management #stabilityInfo .bar{max-width:100%;margin:10px auto 18px}
+#management>.panel:last-child .actions{justify-content:center;gap:10px;flex-wrap:wrap}
+#management>.panel:last-child .actions .btn{min-width:min(100%,190px)}
+@media(max-width:700px){.layout.wide-tab>#management.tab.active{grid-template-columns:minmax(0,1fr);padding:0 2px 24px}.layout.wide-tab>#management>.panel:first-child,.layout.wide-tab>#management>.panel:nth-child(2),.layout.wide-tab>#management>.panel:nth-child(3){grid-column:1}.layout.wide-tab>#management>.panel{padding:16px}}
+
 </style>
 </head>
 <body><div class="wrap">
-<header class="top"><div class="logo">OI</div><div><div class="brand">ONZE IDEAL <span class="pill">PACOTE 2.13</span></div><div class="sub">Simulador de gestão de futebol • Elencos e Identidade dos Clubes</div></div></header>
+<header class="top"><div class="logo">OI</div><div><div class="brand">ONZE IDEAL <span class="pill">PACOTE 2.17</span></div><div class="sub">Simulador de gestão de futebol • Elencos e Identidade dos Clubes</div></div></header>
 
 <section id="home" class="screen active">
  <div class="minimal-menu">
@@ -404,7 +421,7 @@ function freshDB(){let clubs={};[...CLUBS_A,...CLUBS_B,...CLUBS_C,...CLUBS_D].fo
 function db(){try{return JSON.parse(localStorage.getItem(KEY))||freshDB()}catch(e){return freshDB()}}
 function save(d){localStorage.setItem(KEY,JSON.stringify(d))}
 function go(id){document.querySelectorAll('.screen').forEach(x=>x.classList.toggle('active',x.id===id))}
-function setTab(id){document.querySelectorAll('.tab').forEach(x=>x.classList.toggle('active',x.id===id));document.querySelectorAll('[data-tab]').forEach(x=>x.classList.toggle('active',x.dataset.tab===id));const layout=document.querySelector('.layout');if(layout)layout.classList.toggle('wide-tab',id==='finance'||id==='news');}
+function setTab(id){document.querySelectorAll('.tab').forEach(x=>x.classList.toggle('active',x.id===id));document.querySelectorAll('[data-tab]').forEach(x=>x.classList.toggle('active',x.dataset.tab===id));const layout=document.querySelector('.layout');if(layout)layout.classList.toggle('wide-tab',['finance','news','management'].includes(id));}
 document.querySelectorAll('[data-tab]').forEach(b=>b.addEventListener('click',()=>{setTab(b.dataset.tab);if(current())renderCareer()}));
 function getClubNames(div){return Object.values(db().clubs).filter(c=>c.division===div).map(c=>c.name)}
 function fillClubPicker(){let d=db();$('clubPick').innerHTML=Object.values(d.clubs).map(c=>`<option value="${esc(c.name)}">${esc(c.name)} — Série ${c.division}</option>`).join('')}
