@@ -178,10 +178,34 @@ body:has(#home.active){background:#101820}.top{display:none}body:has(#home.activ
 #halftimePanel .halftime-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
 #halftimePanel select{width:100%;padding:10px;background:#08130c;color:white;border:1px solid #8c7138;border-radius:8px}
 @media(max-width:560px){#nextMatch .pre-match-info{grid-template-columns:1fr}#halftimePanel .halftime-grid{grid-template-columns:1fr}}
+
+/* PACOTE 2.11 — identidade visual unificada com o menu principal */
+:root{--bg:#101820;--panel:#18232e;--panel2:#1c2935;--line:#394653;--green:#d9c17a;--mint:#d9c17a;--text:#f3f5f7;--muted:#aab4bf;--gold:#d9c17a}
+body{background:#101820;color:#f3f5f7}
+.screen:not(#home){width:min(100%,1040px);margin:0 auto;padding:clamp(18px,4vw,38px);background:linear-gradient(180deg,#131e29,#101820 72%);border:1px solid #293743;border-top:2px solid #d9c17a;min-height:calc(100vh - 36px)}
+.screen:not(#home) .panel,.screen:not(#home) .career-head,.screen:not(#home) .side,.screen:not(#home) .stat,.screen:not(#home) .item,.screen:not(#home) .check{background:#18232e;border:1px solid #394653;border-radius:3px;box-shadow:none}
+.screen:not(#home) .panel{padding:clamp(14px,2.5vw,22px);margin:10px 0}
+.screen:not(#home) h1,.screen:not(#home) h2,.screen:not(#home) h3,.screen:not(#home) h4{color:#f3f5f7;letter-spacing:.2px}
+.screen:not(#home) .eyebrow{color:#d9c17a}
+.screen:not(#home) .btn{border-radius:2px;background:transparent;border:1px solid #526170;color:#e9edf1;box-shadow:none;padding:10px 14px;letter-spacing:.35px}
+.screen:not(#home) .btn.primary{background:#d9c17a;border-color:#d9c17a;color:#141b22;font-weight:850}
+.screen:not(#home) .btn.danger{background:#38252a;border-color:#80515a;color:#f5dadd}
+.screen:not(#home) .btn:hover{border-color:#d9c17a}
+.screen:not(#home) .field input,.screen:not(#home) .field select,.screen:not(#home) .input,.screen:not(#home) input:not([type=checkbox]):not([type=color]),.screen:not(#home) select{background:#101820;border:1px solid #465563;color:#f3f5f7;border-radius:2px}
+.screen:not(#home) .side .btn.active{background:#d9c17a;border-color:#d9c17a;color:#141b22}
+.screen:not(#home) .tag,.screen:not(#home) .pill{background:#202d38;border:1px solid #536170;color:#e1c982;border-radius:2px}
+.screen:not(#home) .career-head{background:#18232e}
+.screen:not(#home) .match{background:linear-gradient(135deg,#1c2935,#131e29);border:1px solid #9b8754;border-radius:3px}
+.screen:not(#home) .score-preview{border:1px solid #d9c17a;border-radius:2px}
+.screen:not(#home) .news{border-radius:2px}
+.oi-dialog-card,.round-choice-box{background:#18232e!important;border:1px solid #536170!important;border-radius:3px!important;color:#f3f5f7!important}
+.oi-dialog-card .btn,.round-choice-box .btn{border-radius:2px}
+@media(max-width:560px){.screen:not(#home){padding:14px 11px;min-height:100vh;border-left:0;border-right:0}.screen:not(#home) .actions .btn{flex:1 1 auto}}
+
 </style>
 </head>
 <body><div class="wrap">
-<header class="top"><div class="logo">OI</div><div><div class="brand">ONZE IDEAL <span class="pill">PACOTE 2.9</span></div><div class="sub">Simulador de gestão de futebol • Elencos e Identidade dos Clubes</div></div></header>
+<header class="top"><div class="logo">OI</div><div><div class="brand">ONZE IDEAL <span class="pill">PACOTE 2.11</span></div><div class="sub">Simulador de gestão de futebol • Elencos e Identidade dos Clubes</div></div></header>
 
 <section id="home" class="screen active">
  <div class="minimal-menu">
