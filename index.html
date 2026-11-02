@@ -227,6 +227,34 @@ body{background:#101820;color:#f3f5f7}
 .competition-block-title{display:flex;align-items:center;justify-content:space-between;gap:8px;margin:18px 0 10px}
 @media(max-width:560px){#competitions .subnav{grid-template-columns:repeat(3,minmax(0,1fr))}.competition-hub-title h3{font-size:17px}.competition-calendar{grid-template-columns:1fr}}
 
+
+/* PACOTE 2.16 — navegação fixa e rolagem contextual */
+html,body{height:100%;min-height:0;overflow:hidden}
+body{overscroll-behavior:none}
+.wrap{height:100vh;height:100dvh;min-height:0;display:flex;flex-direction:column;overflow:hidden}
+.top{flex:0 0 auto;position:relative;z-index:15;padding-bottom:12px;background:#101820}
+.screen{flex:1 1 auto;min-height:0;overflow-y:auto;overflow-x:hidden;overscroll-behavior:contain;scrollbar-gutter:stable}
+.screen.active{display:block}
+.screen:not(#home){min-height:0;height:100%;}
+.layout{align-items:start}
+.side{position:sticky;top:8px;max-height:calc(100dvh - 112px);overflow-y:auto;overscroll-behavior:contain;scrollbar-width:thin}
+.content{min-height:0}
+.table-wrap{max-width:100%;overflow-x:auto;overflow-y:visible;overscroll-behavior-x:contain}
+.match-modal,.oi-dialog{overscroll-behavior:contain}
+.match-modal{max-height:100dvh}
+.oi-dialog-card{max-height:min(90dvh,760px)}
+@media(max-width:800px){
+ .wrap{padding:10px 12px}
+ .top{padding:6px 0 10px}
+ .screen:not(#home){width:100%;padding:12px 2px 24px;min-height:0;height:100%}
+ .layout{margin-top:8px}
+ .side{position:relative;top:auto;max-height:none;overflow:visible;grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media(max-width:560px){
+ .screen:not(#home){padding:10px 0 20px}
+ .side{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+
 </style>
 </head>
 <body><div class="wrap">
