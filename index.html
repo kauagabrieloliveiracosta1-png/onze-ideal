@@ -468,6 +468,41 @@ body{overscroll-behavior:none}
 #nextMatch .poster-date{font-size:13px;font-weight:900;color:#e5ffb5;margin-top:3px}
 @media(max-width:700px){#matchSetup .lineup-content{grid-template-columns:1fr}#matchSetup .lineup-pitch{min-height:500px}#matchSetup #benchList{display:grid;grid-template-columns:1fr 1fr;gap:4px}#matchSetup .lineup-player{width:clamp(90px,24%,130px)}#nextMatch .next-match-poster{min-height:280px;padding:16px 10px}#nextMatch .poster-side .club-mark,#nextMatch .poster-side .real-crest,#nextMatch .poster-side .club-crest{width:62px;height:62px}}
 
+
+/* Menu principal reorganizado: partida, técnico e navegação lateral */
+#career .layout{display:block!important;min-width:0}
+#career .layout>.side{display:none!important}
+#career .layout>.content{width:100%;margin:0;min-width:0}
+#career #overview .career-dashboard{display:grid;grid-template-columns:minmax(0,1fr) minmax(245px,310px);grid-template-areas:"match menu" "manager menu";gap:14px;align-items:stretch}
+#career .career-dashboard>.panel{margin:0;min-width:0;padding:clamp(13px,1.8vw,20px);background:linear-gradient(145deg,#102744,#09172d);border:1px solid #28609a;border-radius:13px;box-shadow:0 5px 18px #0003}
+#career .dash-match{grid-area:match}
+#career .dash-manager{grid-area:manager}
+#career .dash-menu{grid-area:menu;display:flex;flex-direction:column;gap:7px;align-self:start;overflow:visible;height:fit-content;position:sticky;top:12px}
+#career .career-dashboard h3{font-size:16px;margin:0 0 12px;padding-bottom:9px;border-bottom:1px solid #ffffff22;color:#f1f6ff}
+#career .dash-kicker{font-size:10px;letter-spacing:2px;color:#58c8ff;font-weight:900;margin-bottom:8px}
+#career .dash-menu .btn{display:flex;align-items:center;justify-content:flex-start;width:100%;min-height:39px;padding:9px 12px;text-align:left;border:1px solid #244d78;border-radius:8px;background:#102f53;color:#eaf4ff;font-size:13px;font-weight:750;white-space:nowrap}
+#career .dash-menu .btn:hover,#career .dash-menu .btn.active{background:#0755b9;border-color:#42a5ff;color:#fff;box-shadow:inset 3px 0 #59d5ff}
+#career .dash-manager{background:linear-gradient(145deg,#102b48,#0a1a30)}
+#career .manager-overview{display:flex;align-items:center;gap:14px;margin:4px 0 14px}
+#career .manager-avatar{width:58px;height:58px;flex:0 0 58px;display:grid;place-items:center;border-radius:50%;background:linear-gradient(145deg,#1a5c91,#0a294b);border:1px solid #4d91c7;font-size:30px;color:#d8efff}
+#career .manager-details{min-width:0}
+#career .manager-details h2{font-size:clamp(18px,2.5vw,25px);margin:4px 0;color:#fff}
+#career .manager-stats{margin:8px 0 12px;grid-template-columns:repeat(4,minmax(0,1fr))}
+#career .manager-stats .stat{padding:9px 5px;background:#0b1c35;border:1px solid #204775;border-radius:8px;min-width:0}
+#career .manager-stats .stat b{font-size:clamp(15px,2vw,21px)}
+#career .manager-stats .stat span{font-size:9px}
+#career .manager-actions{display:flex;flex-wrap:wrap;gap:7px}
+#career .manager-actions .btn{font-size:11px;padding:8px 10px}
+#career .legacy-dashboard-data{display:none!important}
+#career .dash-match .match{min-height:220px}
+#career .dash-match .next-match-poster{min-height:310px}
+@media(max-width:760px){
+ #career #overview .career-dashboard{grid-template-columns:minmax(0,1fr);grid-template-areas:"match" "manager" "menu"}
+ #career .dash-menu{min-height:0}
+ #career .dash-menu .btn{min-height:42px}
+ #career .manager-stats{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+
 </style>
 </head>
 <body><div class="wrap">
@@ -499,12 +534,17 @@ body{overscroll-behavior:none}
 <section id="career" class="screen">
  <div class="actions"><button class="btn" onclick="go('home');renderHome()">← Voltar ao menu principal</button></div>
  <div id="careerHead" class="career-head"></div>
- <div class="panel"><div class="small" id="managerLabel"></div><h2 id="clubTitle"></h2><div id="seasonInfo" class="pill"></div><div class="stats" style="margin-top:12px"><div class="stat"><b id="rankStat">—</b><span>POSIÇÃO</span></div><div class="stat"><b id="pointsStat">0</b><span>PONTOS</span></div><div class="stat"><b id="cashStat">—</b><span>CAIXA</span></div><div class="stat"><b id="roundStat">0/38</b><span>RODADA</span></div></div>
- <div class="actions"><button class="btn primary" onclick="simulateRound()">Simular rodada</button><button class="btn" onclick="newJobSearch()">Procurar emprego</button><button class="btn danger" onclick="removeCareer()">Excluir carreira</button></div></div>
  <div class="layout"><nav class="side"><div class="side-label eyebrow">CENTRAL DO TREINADOR</div>
   <button class="btn active" data-tab="overview">⌂　Início</button><button class="btn" data-tab="club">♟　Clube e elenco</button><button class="btn" data-tab="youth">🌱　Categorias de base</button><button class="btn" data-tab="calendar">📅　Calendário</button><button class="btn" data-tab="competitions">▦　Competições</button><button class="btn" data-tab="market">⇄　Mercado</button><button class="btn" data-tab="management">⚙　Gestão</button><button class="btn" data-tab="finance">R$　Finanças</button><button class="btn" data-tab="news">▤　Central de notícias</button><button class="btn" data-tab="history">◷　Histórico</button><button class="btn" onclick="go('home');renderHome()">↩　Menu principal</button>
  </nav><div class="content">
-  <div id="overview" class="tab active"><div class="career-dashboard"><div class="panel dash-club"><div class="dash-kicker">CENTRAL DO TREINADOR</div><h3>Visão geral da carreira</h3><p class="small">Acompanhe o momento do clube e acesse rapidamente as principais áreas da gestão.</p><div class="dash-actions"><button class="btn" onclick="setTab('club');renderCareer()">♟ Elenco</button><button class="btn" onclick="setTab('market');renderCareer()">⇄ Transferências</button><button class="btn" onclick="setTab('management');renderCareer()">⚙ Gestão</button><button class="btn" onclick="setTab('calendar');renderCareer()">▦ Calendário</button></div></div><div class="panel dash-goals"><h3>Objetivos da diretoria</h3><div id="goalSummary"></div></div><div class="panel dash-pulse"><h3>Situação do clube</h3><div id="clubPulse"></div></div><div class="panel dash-match"><h3>Próximo compromisso</h3><div id="nextMatch" class="match"></div></div><div class="panel dash-news"><h3>Últimas notícias</h3><div id="homeNews"></div></div><div class="panel dash-finance"><h3>Resumo financeiro</h3><div id="dashboardFinance" class="dash-finance-value">—</div><button class="btn" onclick="setTab('finance');renderCareer()">Abrir finanças →</button></div></div></div>
+  <div id="overview" class="tab active"><div class="career-dashboard">
+ <div class="panel dash-match"><h3>Próximo compromisso</h3><div id="nextMatch" class="match"></div></div>
+ <div class="panel dash-manager"><div class="dash-kicker">CENTRAL DO TREINADOR</div><h3>Informações do técnico</h3><div class="manager-overview"><div class="manager-avatar">♟</div><div class="manager-details"><div class="small" id="managerLabel"></div><h2 id="clubTitle"></h2><div id="seasonInfo" class="pill"></div></div></div><div class="stats manager-stats"><div class="stat"><b id="rankStat">—</b><span>POSIÇÃO</span></div><div class="stat"><b id="pointsStat">0</b><span>PONTOS</span></div><div class="stat"><b id="cashStat">—</b><span>CAIXA</span></div><div class="stat"><b id="roundStat">0/38</b><span>RODADA</span></div></div><div class="actions manager-actions"><button class="btn primary" onclick="simulateRound()">Simular rodada</button><button class="btn" onclick="newJobSearch()">Procurar emprego</button><button class="btn danger" onclick="removeCareer()">Excluir carreira</button></div></div>
+ <nav class="panel dash-menu side"><div class="dash-kicker">NAVEGAÇÃO</div><h3>Menu principal</h3>
+  <button class="btn active" data-tab="overview">⌂　Início</button><button class="btn" data-tab="club">♟　Clube e elenco</button><button class="btn" data-tab="youth">🌱　Categorias de base</button><button class="btn" data-tab="calendar">📅　Calendário</button><button class="btn" data-tab="competitions">▦　Competições</button><button class="btn" data-tab="market">⇄　Mercado</button><button class="btn" data-tab="management">⚙　Gestão</button><button class="btn" data-tab="finance">R$　Finanças</button><button class="btn" data-tab="news">▤　Central de notícias</button><button class="btn" data-tab="history">◷　Histórico</button><button class="btn" onclick="go('home');renderHome()">↩　Menu inicial</button>
+ </nav>
+ <div class="legacy-dashboard-data" aria-hidden="true"><div id="goalSummary"></div><div id="clubPulse"></div><div id="homeNews"></div><div id="dashboardFinance"></div></div>
+</div></div>
   <div id="club" class="tab"><div class="panel"><h3>Estádio do clube</h3><div id="clubStadium"></div></div><div class="panel"><h3>Elenco profissional</h3><p class="small">Posição e ícone primeiro, nome do atleta em seguida. Jogadores com cadastro parcial são identificados; atletas de complemento são gerados provisoriamente.</p><div id="squadList"></div><div class="actions"><button class="btn" onclick="addPlayerToCareer()">＋ Adicionar jogador</button></div></div><div class="panel"><h3>Comissão técnica</h3><div id="staffInfo"></div></div><div class="panel"><h3>Centro de treinamento</h3><p class="small">Planeje sessões para desenvolver o elenco. O treino consome energia e só pode ser realizado uma vez a cada sete dias.</p><div class="field"><label>Foco da sessão</label><select id="trainingFocus" class="input"><option value="balanced">Treino equilibrado</option><option value="attack">Ataque e finalização</option><option value="defense">Defesa e marcação</option><option value="technical">Técnica e posse de bola</option><option value="physical">Preparação física</option></select></div><div id="trainingStatus"></div><div class="actions"><button class="btn primary" onclick="runTeamTraining()">Realizar sessão de treino</button></div><div id="trainingHistory"></div></div></div>
   <div id="youth" class="tab"><div class="panel"><h3>Centro de formação</h3><p class="small">Jovens disponíveis para promoção ao elenco principal.</p><div class="actions"><button class="btn primary" onclick="generateYouth()">＋ Observar novos talentos</button></div><div id="youthList"></div></div></div>
   <div id="calendar" class="tab"><div class="panel"><h3>Calendário da temporada</h3><p class="small">Rodadas organizadas por data. Uma rodada só é concluída quando todos os jogos daquela rodada forem registrados.</p><div class="calendar-toolbar"><button class="btn" onclick="changeCalendarMonth(-1)">‹</button><b id="calendarMonthLabel">Temporada</b><button class="btn" onclick="changeCalendarMonth(1)">›</button></div><div id="careerCalendar"></div></div><div class="panel"><h3>Próximos compromissos</h3><div id="calendarNext"></div></div></div>
