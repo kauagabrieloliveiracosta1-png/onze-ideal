@@ -597,7 +597,13 @@ html,body{width:100%;height:100%;margin:0;overflow:hidden!important}
    <button class="minimal-secondary" onclick="go('scores');renderScores()"><span>ESTÚDIO DE PLACARES</span><span>→</span></button>
   </div>
   <div class="minimal-tools"><button class="text-action" onclick="exportBackup()">Exportar backup</button><span>·</span><button class="text-action" onclick="$('importFile').click()">Importar backup</button><input id="importFile" type="file" accept="application/json" class="hidden" onchange="importBackup(event)"></div>
-  <div id="homeSaves"></div><div class="minimal-footer">ONZE IDEAL 26/27 <span>•</span> FOOTBALL MANAGER</div>
+  <div id="homeSaves"></div>
+  <section class="home-release-notes" aria-label="Versão e notas da atualização">
+   <div class="home-release-version"><span>VERSÃO ATUAL</span><strong>2.37</strong></div>
+   <div class="home-release-current"><h3>Notas da atualização 2.37</h3><ul><li>Correções de adaptação das telas para evitar conteúdo cortado.</li><li>Menu principal agora exibe a versão atual e as notas da atualização.</li></ul></div>
+   <div class="home-release-next"><span class="home-release-tag">PRÓXIMA ATUALIZAÇÃO</span><h3>Foco no modo SAF</h3><p>O próximo ciclo de desenvolvimento será dedicado ao modo <b>Virar SAF</b>, com mais opções e consequências para a gestão do clube.</p></div>
+  </section>
+  <div class="minimal-footer">ONZE IDEAL 26/27 <span>•</span> FOOTBALL MANAGER</div>
  </div>
 </section>
 
@@ -1331,4 +1337,30 @@ init();
  #matchLive>#halftimePanel p{margin:5px 0;font-size:11px}
 }
 @media(max-width:899px){#matchLive>#halftimePanel{order:3;width:100%}}
+
+/* PACOTE 2.37 — correção global de conteúdo cortado e notas no menu principal */
+html,body{width:100%;max-width:100%;min-width:0}
+@media(min-width:801px){body{min-width:0}}
+.wrap,.screen,.layout,.content,.tab,.panel,.career-dashboard,.competition-hub,.competition-match,.season-review-grid{min-width:0;max-width:100%}
+.screen{overflow-x:hidden;overflow-y:auto;scrollbar-gutter:stable}
+.screen:not(#home){height:100%;min-height:0;max-width:100%;}
+.panel,.item,.stat,.career-head,.competition-hero{overflow-wrap:anywhere}
+.grid,.grid3,.menu-grid,.stats,.career-dashboard{grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr))}
+.table-wrap{width:100%;max-width:100%;overflow-x:auto;overscroll-behavior-x:contain}
+img,svg,canvas,video{max-width:100%}
+input,select,textarea{max-width:100%;min-width:0}
+#finance .oi-finance-kpi{grid-template-columns:repeat(auto-fit,minmax(min(100%,210px),1fr))}
+#finance .oi-finance-kpi>.panel{min-width:0}
+#finance .item{flex-wrap:wrap;min-width:0}
+#finance .item b{white-space:normal;overflow-wrap:anywhere;text-align:right}
+.home-release-notes{display:grid;grid-template-columns:minmax(130px,.65fr) minmax(0,1.5fr) minmax(0,1.2fr);gap:12px;max-width:1100px;margin:24px 0 8px}
+.home-release-notes>div{min-width:0;padding:16px;border:1px solid #294c70;border-radius:12px;background:linear-gradient(145deg,#102744,#09172d)}
+.home-release-version{display:flex;flex-direction:column;justify-content:center;gap:8px}
+.home-release-version span,.home-release-tag{font-size:10px;letter-spacing:1.5px;color:#79caff;font-weight:900}
+.home-release-version strong{font-size:clamp(30px,4vw,42px);color:#fff;line-height:1}
+.home-release-notes h3{margin:0 0 9px;font-size:15px;color:#f1f6ff}
+.home-release-notes ul{margin:0;padding-left:18px;color:#c8d8eb;font-size:12px;line-height:1.65}
+.home-release-notes p{margin:7px 0 0;color:#c8d8eb;font-size:12px;line-height:1.6}
+@media(max-width:800px){.home-release-notes{grid-template-columns:1fr 1fr}.home-release-version{grid-column:1/-1}}
+@media(max-width:560px){.home-release-notes{grid-template-columns:1fr}.home-release-version{grid-column:auto}.screen:not(#home){padding-left:10px;padding-right:10px}}
 </style>
