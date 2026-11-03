@@ -260,7 +260,7 @@ body{overscroll-behavior:none}
 }
 
 
-/* PACOTE 2.39 — Gestão centralizada e organizada */
+/* PACOTE 2.42 — Gestão centralizada e organizada */
 .layout.wide-tab>#management.tab.active{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;width:100%;max-width:980px;margin:0 auto;padding:0 8px 28px;align-items:stretch}
 .layout.wide-tab>#management>.panel{width:100%;min-width:0;margin:0;padding:clamp(16px,2.4vw,24px);align-self:stretch}
 .layout.wide-tab>#management>.panel:first-child{grid-column:1}
@@ -277,7 +277,7 @@ body{overscroll-behavior:none}
 @media(max-width:700px){.layout.wide-tab>#management.tab.active{grid-template-columns:minmax(0,1fr);padding:0 2px 24px}.layout.wide-tab>#management>.panel:first-child,.layout.wide-tab>#management>.panel:nth-child(2),.layout.wide-tab>#management>.panel:nth-child(3){grid-column:1}.layout.wide-tab>#management>.panel{padding:16px}}
 
 
-/* PACOTE 2.39 — novo menu de carreira compacto */
+/* PACOTE 2.42 — novo menu de carreira compacto */
 #career .career-head{background:linear-gradient(115deg,#071a37,#102e59);border:1px solid #245a98;border-radius:12px;padding:12px 16px;box-shadow:0 8px 24px #0004}
 #career .career-head .tag{background:#10284a;border-color:#2865a5;color:#d7e9ff}
 #career .layout{display:block;margin-top:10px}
@@ -305,7 +305,7 @@ body{overscroll-behavior:none}
 
 
 
-/* PACOTE 2.39 — telas em largura total e layout desktop responsivo */
+/* PACOTE 2.42 — telas em largura total e layout desktop responsivo */
 @media(min-width:801px){
  html,body{width:100%;height:100%;min-height:100%;overflow:hidden}
  body{min-width:800px}
@@ -582,7 +582,7 @@ html,body{width:100%;height:100%;margin:0;overflow:hidden!important}
 @media(max-width:899px){.match-modal{overflow:auto}.match-shell{height:auto;min-height:calc(100dvh - 12px)}}
 
 
-/* PACOTE 2.39 — widescreen consistente e patrocínios legíveis */
+/* PACOTE 2.42 — widescreen consistente e patrocínios legíveis */
 @media (min-width: 900px){
  html,body{width:100%;min-height:100%;overflow-x:hidden}
  body>.wrap{width:100%;max-width:none;margin:0;padding:10px 18px}
@@ -631,7 +631,7 @@ html,body{width:100%;height:100%;margin:0;overflow:hidden!important}
 }
 
 
-/* PACOTE 2.39 — rolagem explícita nos menus Gestão, Finanças e Notícias */
+/* PACOTE 2.42 — rolagem explícita nos menus Gestão, Finanças e Notícias */
 @media (min-width:900px){
  #career.screen.active{height:100dvh;max-height:100dvh;min-height:0;overflow:hidden;display:flex;flex-direction:column}
  #career>.layout{flex:1 1 auto;height:calc(100dvh - 125px);min-height:0;max-height:calc(100dvh - 125px);overflow:hidden}
@@ -657,7 +657,7 @@ html,body{width:100%;height:100%;margin:0;overflow:hidden!important}
 </style>
 </head>
 <body><div class="wrap">
-<header class="top"><div class="logo">OI</div><div><div class="brand">ONZE IDEAL <span class="pill">PACOTE 2.39</span></div><div class="sub">Simulador de gestão de futebol • Elencos e Identidade dos Clubes</div></div></header>
+<header class="top"><div class="logo">OI</div><div><div class="brand">ONZE IDEAL <span class="pill">PACOTE 2.42</span></div><div class="sub">Simulador de gestão de futebol • Elencos e Identidade dos Clubes</div></div></header>
 
 <section id="home" class="screen active">
  <div class="minimal-menu">
@@ -782,8 +782,15 @@ const CREST_EXTRA={
 'CSA':'csa','ABC':'abc-fc','Retrô':'retro-fc','Tombense':'tombense-fc','Independência-AC':'independencia-fc','Galvez':'galvez','ASA':'asa-de-arapiraca','CSE':'cse','Nacional-AM':'nacional-fc','Manaus':'manaus-fc','Trem':'trem','Oratório':'oratorio','Jacuipense':'ec-jacuipense','Atlético de Alagoinhas':'atletico-de-alagoinhas','Maracanã-CE':'maracana','Ferroviário-CE':'ferroviario','Gama':'se-gama','Capital-DF':'capital-fc','Rio Branco-ES':'rio-branco-es','Vitória-ES':'vitoria-es','CRAC':'crac','ABECAT':'abecat-ouvidorense','Imperatriz':'imperatriz','Uberlândia':'uberlandia','Betim':'betim-futebol','Operário-MS':'operario-ms','Ivinhema':'ivinhema','Primavera-MT':'primavera','Mixto':'mixto','Tuna Luso':'tuna-luso','Águia de Marabá':'aguia-de-maraba','Sousa':'sousa','Serra Branca':'serra-branca','Maguary':'maguary','Piauí':'piaui','Cianorte':'cianorte','Azuriz':'azuriz','Sampaio Corrêa-RJ':'sampaio-correa-rj','Madureira':'madureira','América-RN':'america-de-natal','Laguna':'clube-laguna','Porto Velho':'porto-velho','Guaporé':'guapore','GAS':'gremio-atletico-sampaio','Monte Roraima':'monte-roraima','São Luiz':'sao-luiz','Guarany de Bagé':'guarany-de-bage','Santa Catarina':'santa-catarina','Joinville':'joinville','Lagarto':'lagarto','Sergipe':'sergipe','Velo Clube':'velo-clube','Portuguesa-SP':'associacao-portuguesa-de-desportos','Araguaína':'araguaina','Tocantinópolis':'tocantinopolis','Tirol':'tirol','Inhumas':'inhumas','Brasil de Pelotas':'brasil-de-pelotas','Blumenau':'blumenau','Noroeste':'noroeste','XV de Piracicaba':'xv-de-piracicaba','Goiatuba':'goiatuba','Aparecidense':'aparecidense','Altos':'altos','Ceilândia':'ceilandia','Manauara':'manauara','Central-PE':'central','São José-RS':'ec-sao-jose','Luverdense':'luverdense','Marcílio Dias':'marcilio-dias','Juazeirense':'juazeirense','Água Santa':'agua-santa','Sampaio Corrêa-MA':'sampaio-correa','FC Cascavel':'fc-cascavel','Maricá':'marica','Nova Iguaçu':'nova-iguacu','Brasiliense':'brasiliense','Pouso Alegre':'pouso-alegre','Portuguesa-RJ':'associacao-atletica-portuguesa','Humaitá':'sport-clube-humaita','São Raimundo-RR':'sao-raimundo-rr','Iguatu':'ad-iguatu','União Rondonópolis':'uniao-rondonopolis','Real Noroeste':'real-noroeste','Treze':'treze','Atlético-CE':'atletico-cearense','Operário-VG':'operario-vg','Moto Club':'moto-club','Parnahyba':'parnahyba',
 'IAPE':'iape','Decisão-PE':'decisao-pe','Fluminense-PI':'fluminense-pi','Porto Seguro':'porto-seguro','Democrata-SL':'democrata-sl','São Joseense':'sao-joseense','América-RJ':'america-football-club-rj'
 };
+// Escudos reais individuais verificados na coleção EscudosFC (temporada 2026).
+// Para clubes ainda não mapeados, mantém o catálogo anterior como segunda tentativa.
+const REAL_CREST_URLS={
+'Athletico-PR':'atlpr.png','Atlético-MG':'atletico.png','Bahia':'bahia.png','Botafogo':'botafogo.gif','Chapecoense':'chapeco.png','Corinthians':'corinthians.png','Coritiba':'coritiba.png','Cruzeiro':'cruzeiro.png','Flamengo':'fla.png','Fluminense':'fluminense.png','Grêmio':'gremio.png','Internacional':'interrs.png','Mirassol':'mirassol.jpg','Palmeiras':'palmeiras.png','Bragantino':'bragantino.png','Remo':'remo.png','Santos':'santos.png','São Paulo':'saopaulo.png','Vasco':'vasco.png','Vitória':'vitoria.png',
+'América-MG':'ammg.png','Athletic':'aletico_del_rey_mg.png','Atlético-GO':'atlego.png','Avaí':'avai.gif','Botafogo-SP':'botasp.png','Ceará':'ceara.png','CRB':'crb.gif','Criciúma':'criciuma.png','Cuiabá':'cuiaba_mt.png','Goiás':'goias.png','Novorizontino':'novorizontino_novo.jpg','Fortaleza':'fortaleza.png','Juventude':'juventude.png','Londrina':'londrina_pr.png','Náutico':'nautico.png','Operário-PR':'operario_pr.png','Ponte Preta':'pontepreta.gif','São Bernardo':'sao_bernarndo_sp.png','Sport':'sport.gif','Vila Nova':'vilanova.png',
+'Anápolis':'anapolis.png','Amazonas':'amazonas_fc_am.png','Barra-SC':'barra_sc.png','Botafogo-PB':'botapb.png','Brusque':'brusque.png','Caxias':'caxias.gif','Confiança':'confianca_se.png','Ferroviária':'ferroviaria.png','Figueirense':'figue.gif','Floresta':'floresta_ce.png','Guarani':'guarani.gif','Inter de Limeira':'intl.png','Itabaiana':'itabaiana.gif','Ituano':'ituano.png','Maranhão':'maranhao.png','Maringá':'gremio_maringa.png','Paysandu':'paysandu_pa.png','Santa Cruz':'santacruz.png','Volta Redonda':'volta.png','Ypiranga-RS':'ypiranga_rs.png'
+};
 const CREST_BASE='https://assets.footylogos.com/logos/';
-function crestUrl(name){name=canonicalClubName(name);let slug=CREST_SLUGS[name]||CREST_EXTRA[name];return slug?`${CREST_BASE}${slug}/${slug}-logo-footylogos.svg`:''}
+function crestUrl(name){name=canonicalClubName(name);if(REAL_CREST_URLS[name])return `https://escudosfc.com.br/images/${REAL_CREST_URLS[name]}`;let slug=CREST_SLUGS[name]||CREST_EXTRA[name];return slug?`${CREST_BASE}${slug}/${slug}-logo-footylogos.svg`:''}
 const COMPETITION_BRANDS={
  A:{name:'BRASILEIRÃO',subtitle:'SÉRIE A · 2026',color:'#c7ff00',bg:'#11152b',logo:'https://assets.footylogos.com/logos/brasileirao-serie-a/brasileirao-serie-a-logo-footylogos.svg',desc:'A elite do futebol brasileiro'},
  C:{name:'BRASILEIRÃO',subtitle:'SÉRIE C · 2026',color:'#e8b84b',bg:'#29220e',logo:'',desc:'Acesso e tradição nacional'},
