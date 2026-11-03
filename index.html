@@ -1100,7 +1100,18 @@ function advanceMatch(){
  if(next===90){m.done=true;stopAutoMatch();finishLiveMatch()}
  updateLiveUI();updateSubOptions();
 }
-function renderMatchScoreboard(){let m=liveMatch,el=$('liveScoreVisual');if(!m||!el)return;let home=m.fixture.home,away=m.fixture.away,style=m.scoreStyle||$('liveScoreStyle')?.value||'2025',h=m.home?m.hg:m.ag,a=m.home?m.ag:m.hg,abbr=n=>String(n||'').replace(/[^A-Za-zÀ-ÿ ]/g,'').split(/\s+/).filter(Boolean).map(w=>w.slice(0,3)).join('').slice(0,4).toUpperCase(),time=m.minute===45?'45’':m.minute===90?'90’':m.minute+ '’',comp=m.competitionCode||('SÉRIE '+(m.divisionAtStart||current()?.division||'B'));el.innerHTML=`<div class="tv-comp">${esc(comp)}</div><div class="tv-score tv-${style}"><span class="tv-team">${abbr(home)}</span><span class="tv-goals">${h} × ${a}</span><span class="tv-team">${abbr(away)}</span><span class="tv-time">${time}</span></div>`}
+function renderMatchScoreboard(){
+ let m=liveMatch,el=$('liveScoreVisual');if(!m||!el)return;
+ let home=m.fixture.home,away=m.fixture.away,style=m.scoreStyle||$('liveScoreStyle')?.value||'2025';
+ let h=m.home?m.hg:m.ag,a=m.home?m.ag:m.hg;
+ const abbr=n=>CREST_SHORT[canonicalClubName(n)]||String(n||'').replace(/[^A-Za-zÀ-ÿ ]/g,'').split(/\s+/).filter(Boolean).map(w=>w.slice(0,3)).join('').slice(0,4).toUpperCase();
+ const colors=n=>CREST_COLORS[canonicalClubName(n)]||['#263746','#f4f6f8'];
+ const contrast=hex=>{let v=String(hex||'#000').replace('#','');if(v.length===3)v=v.split('').map(x=>x+x).join('');let r=parseInt(v.slice(0,2),16),g=parseInt(v.slice(2,4),16),b=parseInt(v.slice(4,6),16);return(.299*r+.587*g+.114*b)>155?'#101820':'#ffffff'};
+ const hc=colors(home),ac=colors(away),ht=contrast(hc[0]),at=contrast(ac[0]);
+ const teamStyle=(c,t)=>`background:${c[0]};color:${t};border-bottom:5px solid ${c[1]};`;
+ let time=m.minute===45?'45’':m.minute===90?'90’':m.minute+'’',comp=m.competitionCode||('SÉRIE '+(m.divisionAtStart||current()?.division||'B'));
+ el.innerHTML=`<div class="tv-comp">${esc(comp)}</div><div class="tv-score tv-${style}"><span class="tv-team tv-home" style="${teamStyle(hc,ht)}">${esc(abbr(home))}</span><span class="tv-goals tv-home-goal" style="background:${hc[0]};color:${ht}">${h}</span><span class="tv-goals tv-away-goal" style="background:${ac[0]};color:${at}">${a}</span><span class="tv-team tv-away" style="${teamStyle(ac,at)}">${esc(abbr(away))}</span><span class="tv-time">${m.minute<45?'1T':m.minute===45?'INT':m.minute<90?'2T':'FIM'} ${String(m.minute%45).padStart(2,'0')}:00</span></div>`;
+}
 function updateLiveUI(){let m=liveMatch;if(!m)return;renderMatchScoreboard();$('liveStatus').textContent=m.done?'Encerrada':m.minute===45?'Intervalo':m.minute===0?'Aquecimento':m.minute<45?'Primeiro tempo':'Segundo tempo';renderLiveEventStrip();renderLiveStandings();let st=m.stats,homeName=m.fixture.home;let vals=[['Posse de bola',st.pos[0],st.pos[1],'%'],['Finalizações',st.shots[0],st.shots[1],''],['No alvo',st.on[0],st.on[1],''],['Escanteios',st.corners[0],st.corners[1],''],['Faltas',st.fouls[0],st.fouls[1],''],['Amarelos',st.yellow[0],st.yellow[1],''],['Vermelhos',st.red[0],st.red[1],''],['Impedimentos',st.offsides[0],st.offsides[1],'']];$('matchStats').innerHTML=vals.map(v=>`<div class="match-stat"><b>${v[1]}${v[3]}</b><div><div class="small" style="text-align:center">${v[0]}</div><div class="bar"><i style="width:${Math.max(3,v[1]/Math.max(1,v[1]+v[2])*100)}%"></i></div></div><b>${v[2]}${v[3]}</b></div>`).join('');$('nextSegment').textContent=m.done?'Partida encerrada':m.minute===45?'Ajuste a equipe no intervalo':m.minute===0?'Iniciar partida':'Avançar 1 minuto';$('nextSegment').disabled=m.done||m.minute===45;if($('halftimePanel'))$('halftimePanel').classList.toggle('hidden',m.minute!==45||m.done);if($('autoMatchBtn'))$('autoMatchBtn').disabled=m.done}
 function updateHalfTimeOptions(){let m=liveMatch,c=current();if(!m||!c)return;let on=m.xi.map(id=>c.squad.find(p=>p.id===id)).filter(Boolean),off=m.bench.map(id=>c.squad.find(p=>p.id===id)).filter(Boolean);$('halfOut').innerHTML=on.map(p=>`<option value="${esc(p.id)}">${esc(p.name)} · ${p.pos}</option>`).join('');$('halfIn').innerHTML=off.map(p=>`<option value="${esc(p.id)}">${esc(p.name)} · ${p.pos}</option>`).join('');$('halfSubsUsed').textContent=`${m.subs}/5 substituições · ${m.stops}/3 janelas utilizadas`;$('halftimePanel').querySelector('button').disabled=m.subs>=5||!off.length||m.stops>=3}
 function makeHalftimeSubstitution(){let m=liveMatch,c=current();if(!m||m.minute!==45||m.subs>=5||m.stops>=3)return;let out=$('halfOut').value,inn=$('halfIn').value,i=m.xi.indexOf(out),p=c.squad.find(x=>x.id===inn),q=c.squad.find(x=>x.id===out);if(i<0||!p||!q||!m.bench.includes(inn))return; m.xi[i]=inn;m.bench=m.bench.filter(x=>x!==inn);m.bench.push(out);m.subs++;m.stops++;m.lastSubMinute=45;addMatchEvent('No intervalo: '+q.name+' sai, '+p.name+' entra.',45);updateHalfTimeOptions();updateSubOptions();updateLiveUI()}
@@ -1181,4 +1192,56 @@ init();
  #matchLive>.panel h3{font-size:15px;margin-bottom:8px}
 }
 @media (max-width:899px){#matchLive:not(.hidden){display:flex;flex-direction:column}.live-score-stage{min-height:100px}.live-score-visual .tv-team{font-size:16px}.live-score-visual .tv-goals{font-size:23px}}
+</style>
+
+
+<style>
+/* PACOTE 2.29 — proporção desktop, resumo widescreen e placar de TV solicitado */
+@media (min-width:900px){
+ .match-modal.open{display:flex!important;align-items:center;justify-content:center;padding:2vh 2vw;overflow:auto}
+ .match-modal .match-shell{width:min(96vw,1500px);max-width:1500px;height:auto;max-height:96dvh;min-height:0;margin:auto;padding:clamp(10px,1.2vw,18px);overflow:auto}
+ #matchLive:not(.hidden){grid-template-columns:minmax(0,1.45fr) minmax(300px,.9fr);grid-template-areas:"score score" "log subs" "stats actions";gap:10px;align-content:start}
+ #matchLive>.live-score-stage{min-height:clamp(112px,17vh,160px);padding:clamp(8px,1vh,14px) 16px}
+ #matchLive .live-score-visual{min-height:75px;gap:5px}
+ #matchLive .live-score-visual .tv-score{position:relative;display:flex!important;align-items:stretch;justify-content:center;overflow:visible;margin-top:24px;min-height:62px;filter:drop-shadow(0 5px 8px #0005)}
+ #matchLive .live-score-visual .tv-team{font-size:clamp(20px,2.2vw,32px);font-weight:950;padding:10px clamp(16px,2vw,30px);min-width:clamp(80px,9vw,130px);background:#111;color:#fff}
+ #matchLive .live-score-visual .tv-team.tv-home{background:#078b20;border-bottom:5px solid #00b94b}
+ #matchLive .live-score-visual .tv-team.tv-away{background:#111;border-bottom:5px solid #555}
+ #matchLive .live-score-visual .tv-goals{font-size:clamp(27px,3vw,43px);font-weight:1000;min-width:48px;padding:7px 12px;background:#078b20;color:white}
+ #matchLive .live-score-visual .tv-away-goal{background:#111;color:white}
+ #matchLive .live-score-visual .tv-time{position:absolute;z-index:2;left:50%;top:-31px;transform:translateX(-50%);font-size:clamp(13px,1.2vw,18px);font-weight:950;letter-spacing:.04em;padding:5px 13px;background:#080808;color:white;white-space:nowrap;border-radius:2px}
+ #matchLive .live-score-visual .tv-comp{font-size:10px}
+ #matchLive #liveStatus{margin-top:4px}
+ #liveStandings{max-height:34vh;overflow:auto}
+ #matchStats{gap:3px 12px}
+ #matchLive>.panel,#matchLive>.actions{min-width:0}
+ .season-review-modal.open{display:flex!important;align-items:center;justify-content:center;overflow:auto;padding:1.5vh 1.5vw}
+ .season-review-shell{width:min(97vw,1680px);max-width:1680px;max-height:97dvh;height:auto;overflow:auto;padding:12px 16px}
+ .season-review-shell>.actions:first-child{margin:0 0 6px!important}
+ .season-review-hero{padding:5px 4px 9px;margin-bottom:8px}
+ .season-review-hero h2{font-size:clamp(20px,2vw,30px);margin:4px 0}
+ .season-review-grid{grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;align-items:stretch}
+ .season-review-grid>.panel{padding:9px;margin:0;max-height:36vh;overflow:auto}
+ .season-review-grid>.panel:nth-child(2){grid-column:span 1}
+ .season-review-grid .item{padding:5px 7px;margin:4px 0;font-size:11px}
+ .season-review-grid h3{font-size:13px;margin:0 0 6px}
+ .season-review-grid h4{font-size:11px;margin:5px 0}
+ .season-review-standings{max-height:25vh;overflow:auto}
+ .season-review-shell>.actions:last-child{margin-top:7px}
+}
+@media (min-width:900px) and (max-height:700px){
+ .match-modal .match-shell{max-height:98dvh;padding:8px 12px}
+ #matchLive>.live-score-stage{min-height:100px}
+ #matchLive .live-score-visual .tv-score{min-height:52px;margin-top:20px}
+ #matchLive .live-score-visual .tv-team{padding:7px 16px;font-size:22px}
+ #matchLive .live-score-visual .tv-goals{font-size:30px;padding:5px 10px}
+ #liveStandings{max-height:28vh}
+ .season-review-shell{max-height:98dvh;padding:8px 12px}
+ .season-review-grid>.panel{max-height:32vh;padding:7px}
+}
+@media(max-width:899px){
+ .match-modal.open,.season-review-modal.open{display:block!important;overflow:auto}
+ .match-modal .match-shell,.season-review-shell{width:100%;max-width:none;height:auto;max-height:none;overflow:visible;margin:0}
+ .season-review-grid{grid-template-columns:1fr}
+}
 </style>
