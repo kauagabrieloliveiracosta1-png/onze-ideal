@@ -260,7 +260,7 @@ body{overscroll-behavior:none}
 }
 
 
-/* PACOTE 2.21 — Gestão centralizada e organizada */
+/* PACOTE 2.38 — Gestão centralizada e organizada */
 .layout.wide-tab>#management.tab.active{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;width:100%;max-width:980px;margin:0 auto;padding:0 8px 28px;align-items:stretch}
 .layout.wide-tab>#management>.panel{width:100%;min-width:0;margin:0;padding:clamp(16px,2.4vw,24px);align-self:stretch}
 .layout.wide-tab>#management>.panel:first-child{grid-column:1}
@@ -277,7 +277,7 @@ body{overscroll-behavior:none}
 @media(max-width:700px){.layout.wide-tab>#management.tab.active{grid-template-columns:minmax(0,1fr);padding:0 2px 24px}.layout.wide-tab>#management>.panel:first-child,.layout.wide-tab>#management>.panel:nth-child(2),.layout.wide-tab>#management>.panel:nth-child(3){grid-column:1}.layout.wide-tab>#management>.panel{padding:16px}}
 
 
-/* PACOTE 2.21 — novo menu de carreira compacto */
+/* PACOTE 2.38 — novo menu de carreira compacto */
 #career .career-head{background:linear-gradient(115deg,#071a37,#102e59);border:1px solid #245a98;border-radius:12px;padding:12px 16px;box-shadow:0 8px 24px #0004}
 #career .career-head .tag{background:#10284a;border-color:#2865a5;color:#d7e9ff}
 #career .layout{display:block;margin-top:10px}
@@ -305,7 +305,7 @@ body{overscroll-behavior:none}
 
 
 
-/* PACOTE 2.21 — telas em largura total e layout desktop responsivo */
+/* PACOTE 2.38 — telas em largura total e layout desktop responsivo */
 @media(min-width:801px){
  html,body{width:100%;height:100%;min-height:100%;overflow:hidden}
  body{min-width:800px}
@@ -581,10 +581,59 @@ html,body{width:100%;height:100%;margin:0;overflow:hidden!important}
 @media(min-width:900px) and (max-height:760px){#matchSetup>.panel{grid-template-columns:minmax(0,1fr) 220px;padding:6px 9px;gap:5px}#matchSetup>.panel>.field{max-width:300px}#matchSetup .lineup-top{padding:3px 8px}#matchSetup .lineup-content{grid-template-columns:minmax(0,1fr) 155px;padding:5px}#matchSetup .lineup-player{width:clamp(76px,12%,112px)}#matchSetup .lineup-player select{font-size:8px;padding:2px 1px}#matchSetup .lineup-reserves h3{font-size:12px;margin:2px 0 5px}}
 @media(max-width:899px){.match-modal{overflow:auto}.match-shell{height:auto;min-height:calc(100dvh - 12px)}}
 
+
+/* PACOTE 2.38 — widescreen consistente e patrocínios legíveis */
+@media (min-width: 900px){
+ html,body{width:100%;min-height:100%;overflow-x:hidden}
+ body>.wrap{width:100%;max-width:none;margin:0;padding:10px 18px}
+ #career.screen.active{height:100dvh;max-height:100dvh;min-height:0;overflow:hidden!important;display:flex;flex-direction:column;gap:7px;padding:6px 2px}
+ #career>.actions{flex:0 0 auto;margin:0}
+ #careerHead{flex:0 0 auto;padding:8px 12px;min-height:48px}
+ #career>.layout{flex:1 1 auto;min-height:0;height:auto;grid-template-columns:clamp(155px,13vw,205px) minmax(0,1fr);gap:12px;margin:0}
+ #career .side{position:sticky;top:0;max-height:100%;overflow-y:auto;align-self:stretch;padding:7px;gap:3px}
+ #career .side .btn{padding:8px 9px;font-size:12px;white-space:normal;line-height:1.2}
+ #career .content{min-width:0;min-height:0;height:100%;overflow:auto;overscroll-behavior:contain;padding:0 5px 14px}
+ #career .tab.active{min-width:0;width:100%;max-width:100%;overflow:visible}
+ #career .panel{min-width:0}
+ #career #finance.tab.active{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(340px,.85fr);grid-template-areas:"summary sponsor" "season ledger";gap:10px;align-items:start}
+ #finance>.panel{margin:0;min-width:0;padding:clamp(10px,1vw,16px)}
+ #finance>.panel:nth-child(1){grid-area:summary}
+ #finance>.panel:nth-child(2){grid-area:sponsor}
+ #finance>.panel:nth-child(3){grid-area:season}
+ #finance>.panel:nth-child(4){grid-area:ledger}
+ #finance .oi-finance-kpi{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+ #finance .oi-finance-kpi .panel{padding:10px;min-width:0}
+ #finance .oi-finance-kpi .panel b{font-size:clamp(15px,1.4vw,22px);overflow-wrap:anywhere}
+ #sponsorPanel{min-width:0;max-width:100%}
+ #sponsorPanel .field{margin:8px 0}
+ #sponsorPanel select,#sponsorPanel .input{width:100%;max-width:100%;min-width:0;white-space:normal;font-size:13px}
+ #sponsorPanel h4{margin:9px 0 5px}
+ #sponsorPanel .item{min-width:0;flex-wrap:wrap}
+ #sponsorPanel .item span{min-width:0;overflow-wrap:anywhere}
+ #finance #seasonFinance,#finance #ledger{max-height:30vh;overflow:auto}
+ #career .tab .table-wrap{max-width:100%;overflow:auto}
+}
+@media (min-width:900px) and (max-height:760px){
+ #career.screen.active{padding:3px 2px;gap:4px}
+ #careerHead{min-height:40px;padding:5px 10px}
+ #career>.layout{gap:8px}
+ #career .side .btn{padding:6px 8px;font-size:11px}
+ #finance>.panel{padding:9px}
+ #finance .oi-finance-kpi .panel{padding:7px}
+}
+@media (max-width:899px){
+ body>.wrap{width:100%;max-width:100%;padding:10px}
+ #career .content{min-width:0;width:100%;overflow:visible}
+ #finance.tab.active{display:flex;flex-direction:column;gap:8px}
+ #finance>.panel{width:100%;min-width:0;margin:0}
+ #sponsorPanel select,#sponsorPanel .input{width:100%;max-width:100%;min-width:0}
+ #sponsorPanel .item{flex-wrap:wrap}
+}
+
 </style>
 </head>
 <body><div class="wrap">
-<header class="top"><div class="logo">OI</div><div><div class="brand">ONZE IDEAL <span class="pill">PACOTE 2.21</span></div><div class="sub">Simulador de gestão de futebol • Elencos e Identidade dos Clubes</div></div></header>
+<header class="top"><div class="logo">OI</div><div><div class="brand">ONZE IDEAL <span class="pill">PACOTE 2.38</span></div><div class="sub">Simulador de gestão de futebol • Elencos e Identidade dos Clubes</div></div></header>
 
 <section id="home" class="screen active">
  <div class="minimal-menu">
@@ -599,8 +648,8 @@ html,body{width:100%;height:100%;margin:0;overflow:hidden!important}
   <div class="minimal-tools"><button class="text-action" onclick="exportBackup()">Exportar backup</button><span>·</span><button class="text-action" onclick="$('importFile').click()">Importar backup</button><input id="importFile" type="file" accept="application/json" class="hidden" onchange="importBackup(event)"></div>
   <div id="homeSaves"></div>
   <section class="home-release-notes" aria-label="Versão e notas da atualização">
-   <div class="home-release-version"><span>VERSÃO ATUAL</span><strong>2.37</strong></div>
-   <div class="home-release-current"><h3>Notas da atualização 2.37</h3><ul><li>Correções de adaptação das telas para evitar conteúdo cortado.</li><li>Menu principal agora exibe a versão atual e as notas da atualização.</li></ul></div>
+   <div class="home-release-version"><span>VERSÃO ATUAL</span><strong>2.38</strong></div>
+   <div class="home-release-current"><h3>Notas da atualização 2.38</h3><ul><li>Layout widescreen reorganizado para manter os menus dentro da área visível.</li><li>Patrocínios com melhor legibilidade, controles em largura total e rolagem própria quando necessário.</li></ul></div>
    <div class="home-release-next"><span class="home-release-tag">PRÓXIMA ATUALIZAÇÃO</span><h3>Foco no modo SAF</h3><p>O próximo ciclo de desenvolvimento será dedicado ao modo <b>Virar SAF</b>, com mais opções e consequências para a gestão do clube.</p></div>
   </section>
   <div class="minimal-footer">ONZE IDEAL 26/27 <span>•</span> FOOTBALL MANAGER</div>
