@@ -672,8 +672,8 @@ html,body{width:100%;height:100%;margin:0;overflow:hidden!important}
   <div class="minimal-tools"><button class="text-action" onclick="exportBackup()">Exportar backup</button><span>·</span><button class="text-action" onclick="$('importFile').click()">Importar backup</button><input id="importFile" type="file" accept="application/json" class="hidden" onchange="importBackup(event)"></div>
   <div id="homeSaves"></div>
   <section class="home-release-notes" aria-label="Versão e notas da atualização">
-   <div class="home-release-version"><span>VERSÃO ATUAL</span><strong>2.39</strong></div>
-   <div class="home-release-current"><h3>Notas da atualização 2.39</h3><ul><li>Layout widescreen reorganizado para manter os menus dentro da área visível.</li><li>Patrocínios com melhor legibilidade, controles em largura total e rolagem própria quando necessário.</li></ul></div>
+   <div class="home-release-version"><span>VERSÃO ATUAL</span><strong>2.44</strong></div>
+   <div class="home-release-current"><h3>Notas da atualização 2.44</h3><ul><li>Barras de rolagem visíveis e padronizadas nos menus e painéis com conteúdo longo.</li><li>Rolagem vertical ajustada para desktop e celular, sem esconder o final das telas.</li><li>Versão do jogo e notas de atualização sincronizadas com o pacote 2.44.</li></ul></div>
    <div class="home-release-next"><span class="home-release-tag">PRÓXIMA ATUALIZAÇÃO</span><h3>Foco no modo SAF</h3><p>O próximo ciclo de desenvolvimento será dedicado ao modo <b>Virar SAF</b>, com mais opções e consequências para a gestão do clube.</p></div>
   </section>
   <div class="minimal-footer">ONZE IDEAL 26/27 <span>•</span> FOOTBALL MANAGER</div>
@@ -1450,4 +1450,20 @@ input,select,textarea{max-width:100%;min-width:0}
 .home-release-notes p{margin:7px 0 0;color:#c8d8eb;font-size:12px;line-height:1.6}
 @media(max-width:800px){.home-release-notes{grid-template-columns:1fr 1fr}.home-release-version{grid-column:1/-1}}
 @media(max-width:560px){.home-release-notes{grid-template-columns:1fr}.home-release-version{grid-column:auto}.screen:not(#home){padding-left:10px;padding-right:10px}}
+
+/* PACOTE 2.44 — rolagem consistente e visível em todos os menus */
+html,body{overflow-x:hidden}
+.screen.active{min-height:0;max-width:100%;overflow-x:hidden;overflow-y:auto;overscroll-behavior-y:contain;scrollbar-gutter:stable;scrollbar-width:thin;scrollbar-color:#568b67 #101a14}
+.screen.active::-webkit-scrollbar,.screen.active *::-webkit-scrollbar{width:10px;height:10px}
+.screen.active::-webkit-scrollbar-track,.screen.active *::-webkit-scrollbar-track{background:#101a14;border-radius:8px}
+.screen.active::-webkit-scrollbar-thumb,.screen.active *::-webkit-scrollbar-thumb{background:#568b67;border:2px solid #101a14;border-radius:8px}
+.screen.active *{scrollbar-width:thin;scrollbar-color:#568b67 #101a14}
+#career.screen.active{overflow:hidden}
+#career>.layout{min-height:0}
+#career>.layout>.content{min-height:0;max-height:100%;overflow-x:hidden;overflow-y:auto;overscroll-behavior:contain;scrollbar-gutter:stable;scrollbar-width:thin;scrollbar-color:#568b67 #101a14}
+#career .layout.wide-tab>.content{max-height:calc(100dvh - 150px);overflow-y:auto}
+#career .layout.wide-tab>.side{scrollbar-width:thin;scrollbar-color:#568b67 #101a14}
+#career .layout.wide-tab>.side::-webkit-scrollbar{height:8px}
+#career .layout.wide-tab>.side::-webkit-scrollbar-thumb{background:#568b67;border-radius:8px}
+@media(max-width:899px){.screen.active:not(#career){max-height:100dvh}#career.screen.active{height:100dvh;max-height:100dvh}#career>.layout{flex:1 1 auto;min-height:0;height:auto;overflow:hidden}#career>.layout>.content{height:100%;max-height:100%;overflow-x:hidden;overflow-y:auto;padding-bottom:24px}#career .layout.wide-tab>.content{max-height:100%;overflow-y:auto}}
 </style>
