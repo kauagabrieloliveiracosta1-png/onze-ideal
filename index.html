@@ -1004,7 +1004,38 @@ function exportBackup(){let blob=new Blob([JSON.stringify(db(),null,2)],{type:'a
 function importBackup(e){let file=e.target.files[0];if(!file)return;let r=new FileReader();r.onload=()=>{try{let d=JSON.parse(r.result);if(!d||typeof d!=='object'||!d.clubs||typeof d.clubs!=='object'||!Array.isArray(d.careers)||!Array.isArray(d.scoreboards||[]))throw 0;if(d.active!=null&&!d.careers.some(c=>c.id===d.active))throw 0;save(d);alert('Backup restaurado.');location.reload()}catch(_){alert('Arquivo de backup inválido.')}};r.readAsText(file)}
 
 let liveMatch=null;
-function nextFixture(c){return leagueParts(c,c.division||'A')[1].find(f=>!f.played&&(f.home===c.club||f.away===c.club))}
+function ensureCareerSchedule(c){
+ const div=['A','B','C','D'].includes(c?.division)?c.division:'A';
+ const [table,fixtures]=leagueParts(c,div);
+ if(!Array.isArray(fixtures))return null;
+ const hasClub=fixtures.some(f=>f.home===c.club||f.away===c.club);
+ if(!fixtures.length||!hasClub){
+  let names=[...new Set([...(Array.isArray(table)?table.map(x=>x.name):[]),c.club].filter(Boolean))];
+  if(div==='A'||div==='B'){
+   const pool=div==='A'?CLUBS_A:CLUBS_B;
+   names=[...new Set([...pool.filter(n=>names.includes(n)),...names])];
+   while(names.length<20){const extra=getClubNames(div).find(n=>!names.includes(n));if(!extra)break;names.push(extra)}
+   if(names.length>20)names=names.slice(0,20);
+   const fresh=makeSchedule(names);
+   if(div==='A')c.fixturesA=fresh;else c.fixturesB=fresh;
+  }else if(div==='C')c.fixturesC=makeSingleSchedule(names);
+  else c.fixturesD=makeSeriesDSchedule(names);
+  if(!Array.isArray(table)||!table.some(x=>x.name===c.club)){
+   const target=div==='A'?'leagueA':div==='B'?'leagueB':div==='C'?'leagueC':'leagueD';
+   c[target]=[...(Array.isArray(table)?table:[]),{name:c.club,p:0,w:0,d:0,l:0,gf:0,ga:0,pts:0}];
+  }
+  saveCareer(c);
+ }
+ return leagueParts(c,div)[1];
+}
+function nextFixture(c){
+ if(!c?.club)return null;
+ const fixtures=ensureCareerSchedule(c);
+ if(!fixtures)return null;
+ const pending=fixtures.filter(f=>!f.played&&(f.home===c.club||f.away===c.club));
+ pending.sort((a,b)=>(Number(a.round)||0)-(Number(b.round)||0));
+ return pending.find(f=>(Number(f.round)||0)>=(Number(c.round)||0)+1)||pending[0]||null;
+}
 function prepareNextMatch(){let c=current();if(!c?.club)return alert('Assuma um clube para disputar partidas.');if(c.round>=(c.division==='D'?10:c.division==='C'?19:38))return alert('A temporada terminou.');let f=nextFixture(c);if(!f)return alert('Não há próxima partida disponível.');addNews(c,'Pré-jogo: '+f.home+' x '+f.away,`A comissão técnica finaliza a preparação para a rodada ${f.round}. A expectativa é de um confronto equilibrado, com impacto direto na classificação.`, 'PRÉ-JOGO');liveMatch={fixture:f,home:f.home===c.club,club:c.club,opponent:f.home===c.club?f.away:f.home,minute:0,hg:0,ag:0,events:[],stats:{shots:[0,0],on:[0,0],pos:[50,50],corners:[0,0],fouls:[0,0],yellow:[0,0],red:[0,0],offsides:[0,0],saves:[0,0]},subs:0,stops:0,used:[],done:false};$('matchModal').classList.add('open');$('matchTitle').textContent=c.club+' x '+liveMatch.opponent;$('matchSetup').classList.remove('hidden');$('matchLive').classList.add('hidden');$('matchEnd').classList.add('hidden');$('halftimePanel')?.classList.add('hidden');$('matchFormation').value=c.formation||'4-3-3';if($('liveScoreStyle'))$('liveScoreStyle').value=liveMatch.scoreStyle||'2025';liveMatch.scoreStyle=$('liveScoreStyle')?.value||'2025';autoXI();}
 let matchTimer=null;function setMatchSpeed(v){if(+v===0){stopAutoMatch();return}if(matchTimer){stopAutoMatch();startAutoMatch(+v)}}function startAutoMatch(ms=900){stopAutoMatch();if(!liveMatch||liveMatch.done)return;matchTimer=setInterval(()=>{if(!liveMatch||liveMatch.done){stopAutoMatch();return}if(liveMatch.minute===45){stopAutoMatch();return}advanceMatch()},ms);$('autoMatchBtn').textContent='Ⅱ Pausar automático'}function stopAutoMatch(){if(matchTimer){clearInterval(matchTimer);matchTimer=null}let b=$('autoMatchBtn');if(b)b.textContent='▶ Iniciar automático'}function toggleAutoMatch(){if(matchTimer){stopAutoMatch();return}let ms=+$('matchSpeed')?.value||900;if(!ms){$('matchSpeed').value='900';ms=900}if(liveMatch?.minute===45){return}startAutoMatch(ms)}
 function closeMatch(){stopAutoMatch(); $('matchModal').classList.remove('open'); liveMatch=null }
