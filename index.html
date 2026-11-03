@@ -383,6 +383,35 @@ body{overscroll-behavior:none}
 #competitions .classic-standings tr.rank-red td:not(.rank-cell){background:#301820}
 @media(max-width:760px){#competitions .broadcast-columns{grid-template-columns:1fr;gap:8px}#competitions .broadcast-table td{height:38px;font-size:11px}#competitions .broadcast-table .club-cell{font-size:11px}#competitions .broadcast-table th{font-size:9px}}
 
+
+/* Ajuste fino: indicadores coerentes com as regras de cada divisão e clube em evidência */
+#competitions .broadcast-table .club-cell{padding-left:9px;text-align:left}
+#competitions .broadcast-table .club-name{gap:9px;min-width:0}
+#competitions .broadcast-table .club-name strong{font-size:clamp(10px,1.2vw,15px);font-weight:950;letter-spacing:.015em;color:#fff;text-shadow:0 1px 2px #000}
+#competitions .broadcast-table .club-name .crest-wrap{width:27px;height:27px;flex:0 0 27px;display:inline-flex;align-items:center;justify-content:center;position:relative}
+#competitions .broadcast-table .club-name .real-crest,#competitions .broadcast-table .club-name .club-crest{width:25px;height:25px;object-fit:contain;filter:drop-shadow(0 1px 2px #0008)}
+#competitions .broadcast-table .club-name .club-crest{font-size:9px;font-weight:950;border-radius:50%;border:1px solid #ffffff55}
+#competitions .broadcast-table tr.rank-teal .rank-cell{background:#08a99a}
+#competitions .broadcast-table tr.rank-teal td:not(.rank-cell){background:#172d3b}
+#competitions .table-legend{display:flex;flex-wrap:wrap;gap:7px;margin:0 0 10px}
+#competitions .zone-key{display:inline-flex;align-items:center;gap:5px;padding:5px 8px;border-radius:5px;font-size:10px;font-weight:850;background:#263449;color:#f5f7fa}
+#competitions .zone-key:before{content:"";width:8px;height:8px;border-radius:2px;background:#8792a1}
+#competitions .zone-key.lib:before,#competitions .zone-key.up:before{background:#08a94d}
+#competitions .zone-key.pre:before{background:#08a99a}
+#competitions .zone-key.sula:before{background:#087fca}
+#competitions .zone-key.down:before{background:#c91f32}
+#competitions .classic-standings .club-name{gap:10px}
+#competitions .classic-standings .club-name strong{font-size:14px;font-weight:950;color:#fff}
+#competitions .classic-standings .club-name .crest-wrap{width:31px;height:31px;flex:0 0 31px;display:inline-flex;align-items:center;justify-content:center}
+#competitions .classic-standings .club-name .real-crest,#competitions .classic-standings .club-name .club-crest{width:29px;height:29px;object-fit:contain;filter:drop-shadow(0 1px 2px #0009)}
+#competitions .classic-standings tr.rank-teal .rank-cell{background:#08a99a}
+#competitions .classic-standings tr.rank-teal td:not(.rank-cell){background:#102b31}
+#competitions .classic-standings .zone-pill{font-size:10px;font-weight:900;padding:4px 7px;border-radius:5px;white-space:nowrap}
+#competitions .classic-standings .zone-pill.up{background:#087c3d;color:#fff}
+#competitions .classic-standings .zone-pill.down{background:#a91f32;color:#fff}
+#competitions .classic-standings .zone-pill.mid{background:#555e6c;color:#fff}
+@media(max-width:760px){#competitions .broadcast-table .club-name .crest-wrap{width:23px;height:23px;flex-basis:23px}#competitions .broadcast-table .club-name .real-crest,#competitions .broadcast-table .club-name .club-crest{width:21px;height:21px}#competitions .broadcast-table .club-name strong{font-size:10px}}
+
 </style>
 </head>
 <body><div class="wrap">
@@ -575,29 +604,33 @@ function tableHTML(t,club,division='A'){
    if(i>=5&&i<=11)return ['sula','Sul-Americana'];
    if(i>=16)return ['down','Rebaixamento'];
   }else if(division==='B'){
-   if(i<=1)return ['up','Acesso direto'];
-   if(i<=5)return ['pre','Playoff de acesso'];
-   if(i>=16)return ['down','Rebaixamento'];
+   if(i<=3)return ['up','Acesso à Série A'];
+   if(i>=16)return ['down','Rebaixamento à Série C'];
   }else if(division==='C'){
    if(i<=7)return ['up','Quadrangular'];
-   if(i>=18)return ['down','Rebaixamento'];
+   if(i>=18)return ['down','Rebaixamento à Série D'];
   }else if(division==='D'){
    if(i<4)return ['up','Classificado'];
-   return ['down','Fora da classificação'];
+   return ['mid','Fora da classificação'];
   }
-  return ['mid','—'];
+  return ['mid','Zona intermediária'];
  };
- const legend=division==='A'?'<span class="zone-key lib">Libertadores · 1º–4º</span><span class="zone-key pre">Pré · 5º</span><span class="zone-key sula">Sul-Americana · 6º–12º</span><span class="zone-key down">Rebaixamento · 17º–20º</span>':division==='B'?'<span class="zone-key up">Acesso direto · 1º–2º</span><span class="zone-key pre">Playoffs · 3º–6º</span><span class="zone-key down">Rebaixamento · 17º–20º</span>':division==='C'?'<span class="zone-key up">Quadrangulares · 1º–8º</span><span class="zone-key down">Rebaixamento · 19º–20º</span>':'<span class="zone-key up">Classificados · 1º–4º</span><span class="zone-key down">Fora da classificação · 5º–6º</span>';
- const posClass=i=>i<=4?'rank-green':i<=10?'rank-blue':i<=15?'rank-neutral':'rank-red';
+ const legend=division==='A'
+ ?'<span class="zone-key lib">Libertadores · 1º–4º</span><span class="zone-key pre">Pré-Libertadores · 5º</span><span class="zone-key sula">Sul-Americana · 6º–12º</span><span class="zone-key mid">Meio da tabela · 13º–16º</span><span class="zone-key down">Rebaixamento · 17º–20º</span>'
+ :division==='B'?'<span class="zone-key up">Acesso · 1º–4º</span><span class="zone-key mid">Permanência · 5º–16º</span><span class="zone-key down">Rebaixamento · 17º–20º</span>'
+ :division==='C'?'<span class="zone-key up">Quadrangular · 1º–8º</span><span class="zone-key mid">Permanência · 9º–18º</span><span class="zone-key down">Rebaixamento · 19º–20º</span>'
+ :'<span class="zone-key up">Classificados · 1º–4º de cada grupo</span><span class="zone-key mid">Eliminados · 5º–6º</span>';
+ const posClass=i=>{const z=classify(i)[0];return z==='down'?'rank-red':z==='mid'?'rank-neutral':z==='sula'?'rank-blue':z==='pre'?'rank-teal':'rank-green'};
+ const crestName=x=>`<span class="club-name">${clubMark(x.name,true)}<strong>${esc(x.name)}</strong></span>`;
  const makeRows=(list,offset)=>list.map((x,j)=>{
-   const i=offset+j,z=classify(i),pos=i+1;
-   return `<tr class="${x.name===club?'highlight ':''}zone-${z[0]} ${posClass(i)}"><td class="rank-cell"><b>${pos}º</b></td><td class="club-cell"><span class="club-name">${clubMark(x.name,true)}<strong>${esc(x.name)}</strong></span></td><td class="pts-cell">${x.pts||0}</td><td>${x.p||0}</td><td>${x.w||0}</td><td>${(x.gf||0)-(x.ga||0)}</td></tr>`;
+   const i=offset+j,z=classify(i);
+   return `<tr class="${x.name===club?'highlight ':''}zone-${z[0]} ${posClass(i)}"><td class="rank-cell"><b>${i+1}º</b></td><td class="club-cell">${crestName(x)}</td><td class="pts-cell">${x.pts||0}</td><td>${x.p||0}</td><td>${x.w||0}</td><td>${(x.gf||0)-(x.ga||0)}</td></tr>`;
  }).join('');
  if((division==='A'||division==='B')&&rows.length===20){
   const half=(list,offset)=>`<div class="broadcast-half"><table class="broadcast-table"><thead><tr><th class="rank-head">#</th><th>CLUBE</th><th>PTS</th><th>PJ</th><th>V</th><th>SG</th></tr></thead><tbody>${makeRows(list,offset)}</tbody></table></div>`;
   return `<div class="table-legend">${legend}</div><div class="broadcast-board"><div class="broadcast-heading"><span>BRASILEIRÃO SÉRIE ${division}</span><small>CLASSIFICAÇÃO</small></div><div class="broadcast-columns">${half(rows.slice(0,10),0)}${half(rows.slice(10,20),10)}</div></div><p class="small broadcast-note">PTS: pontos · PJ: jogos · V: vitórias · SG: saldo de gols. Classificação atualizada após cada rodada.</p>`;
  }
- return '<div class="table-legend">'+legend+'</div><div class="classic-standings"><table><thead><tr><th>#</th><th>Clube</th><th>PTS</th><th>PJ</th><th>V</th><th>E</th><th>D</th><th>SG</th><th>Faixa</th></tr></thead><tbody>'+rows.map((x,i)=>{const z=classify(i);return `<tr class="${x.name===club?'highlight ':''}zone-${z[0]} ${posClass(i)}"><td class="rank-cell"><b>${i+1}º</b></td><td><span style="display:inline-flex;align-items:center;gap:7px">${clubMark(x.name,true)}${esc(x.name)}</span></td><td><b>${x.pts||0}</b></td><td>${x.p||0}</td><td>${x.w||0}</td><td>${x.d||0}</td><td>${x.l||0}</td><td>${(x.gf||0)-(x.ga||0)}</td><td><span class="zone-pill ${z[0]}">${z[1]}</span></td></tr>`}).join('')+'</tbody></table></div><p class="small">Faixas indicativas da temporada; vagas continentais podem mudar conforme os campeões das copas.</p>';
+ return '<div class="table-legend">'+legend+'</div><div class="classic-standings"><table><thead><tr><th>#</th><th>Clube</th><th>PTS</th><th>PJ</th><th>V</th><th>E</th><th>D</th><th>SG</th><th>Faixa</th></tr></thead><tbody>'+rows.map((x,i)=>{const z=classify(i);return `<tr class="${x.name===club?'highlight ':''}zone-${z[0]} ${posClass(i)}"><td class="rank-cell"><b>${i+1}º</b></td><td class="club-main">${crestName(x)}</td><td><b>${x.pts||0}</b></td><td>${x.p||0}</td><td>${x.w||0}</td><td>${x.d||0}</td><td>${x.l||0}</td><td>${(x.gf||0)-(x.ga||0)}</td><td><span class="zone-pill ${z[0]}">${z[1]}</span></td></tr>`}).join('')+'</tbody></table></div><p class="small">Faixas indicativas da temporada.</p>';
 }
 function realisticScore(homeStrength,awayStrength){
  const hs=Math.max(45,Math.min(98,Number(homeStrength)||60));
