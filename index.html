@@ -657,7 +657,7 @@ html,body{width:100%;height:100%;margin:0;overflow:hidden!important}
 </style>
 </head>
 <body><div class="wrap">
-<header class="top"><div class="logo">OI</div><div><div class="brand">ONZE IDEAL <span class="pill">PACOTE 2.45</span></div><div class="sub">Simulador de gestão de futebol • Elencos e Identidade dos Clubes</div></div></header>
+<header class="top"><div class="logo">OI</div><div><div class="brand">ONZE IDEAL <span class="pill">PACOTE 2.46</span></div><div class="sub">Simulador de gestão de futebol • Elencos e Identidade dos Clubes</div></div></header>
 
 <section id="home" class="screen active">
  <div class="minimal-menu">
@@ -672,8 +672,8 @@ html,body{width:100%;height:100%;margin:0;overflow:hidden!important}
   <div class="minimal-tools"><button class="text-action" onclick="exportBackup()">Exportar backup</button><span>·</span><button class="text-action" onclick="$('importFile').click()">Importar backup</button><input id="importFile" type="file" accept="application/json" class="hidden" onchange="importBackup(event)"></div>
   <div id="homeSaves"></div>
   <section class="home-release-notes" aria-label="Versão e notas da atualização">
-   <div class="home-release-version"><span>VERSÃO ATUAL</span><strong>2.44</strong></div>
-   <div class="home-release-current"><h3>Notas da atualização 2.45</h3><ul><li>Rolagem corrigida na estrutura das telas: a própria tela da carreira pode rolar, sem depender de um painel interno com altura travada.</li><li>Menus e telas longas podem ser percorridos até o final no celular e no computador.</li><li>Versão do jogo e notas de atualização sincronizadas com o pacote 2.45.</li></ul></div>
+   <div class="home-release-version"><span>VERSÃO ATUAL</span><strong>2.46</strong></div>
+   <div class="home-release-current"><h3>Notas da atualização 2.46</h3><ul><li>Remapeamento visual dos menus para monitores widescreen.</li><li>Opções da carreira reorganizadas em uma grade compacta, com todos os destinos de navegação visíveis ao mesmo tempo.</li><li>Menu principal, nova carreira, editor, placares e configurações reorganizados em colunas para aproveitar melhor a tela.</li><li>Layout adaptativo: em telas menores, a disposição original em fluxo continua ativa.</li></ul></div>
    <div class="home-release-next"><span class="home-release-tag">PRÓXIMA ATUALIZAÇÃO</span><h3>Foco no modo SAF</h3><p>O próximo ciclo de desenvolvimento será dedicado ao modo <b>Virar SAF</b>, com mais opções e consequências para a gestão do clube.</p></div>
   </section>
   <div class="minimal-footer">ONZE IDEAL 26/27 <span>•</span> FOOTBALL MANAGER</div>
@@ -1467,7 +1467,7 @@ html,body{overflow-x:hidden}
 #career .layout.wide-tab>.side::-webkit-scrollbar-thumb{background:#568b67;border-radius:8px}
 @media(max-width:899px){.screen.active:not(#career){max-height:100dvh}#career.screen.active{height:100dvh;max-height:100dvh}#career>.layout{flex:1 1 auto;min-height:0;height:auto;overflow:hidden}#career>.layout>.content{height:100%;max-height:100%;overflow-x:hidden;overflow-y:auto;padding-bottom:24px}#career .layout.wide-tab>.content{max-height:100%;overflow-y:auto}}
 
-/* PACOTE 2.45 — correção estrutural da rolagem: a tela ativa rola como um todo */
+/* PACOTE 2.46 — correção estrutural da rolagem: a tela ativa rola como um todo */
 html,body{min-height:100%;overflow-x:hidden}
 body{overflow-y:auto}
 .wrap{min-height:100dvh;height:auto;overflow:visible}
@@ -1495,4 +1495,51 @@ html::-webkit-scrollbar-thumb,body::-webkit-scrollbar-thumb,.wrap::-webkit-scrol
  #career.screen.active{height:auto;max-height:none;overflow:visible}
  #career>.layout,#career>.layout>.content{height:auto;max-height:none;overflow:visible}
 }
+
+
+/* PACOTE 2.46 — remapeamento dos menus para widescreen (16:9) */
+@media (min-width:1100px) and (min-aspect-ratio: 4/3){
+ .wrap{max-width: min(98vw,1900px);padding:clamp(12px,1.2vw,22px)}
+ .top{padding:5px 0 12px}
+ /* Menu principal: ações e notas em uma composição horizontal */
+ #home .minimal-menu{display:grid;grid-template-columns:minmax(240px,.8fr) minmax(320px,1.15fr) minmax(300px,1fr);grid-template-areas:"brand brand brand" "hero actions actions" "hero tools tools" "release release release" "saves saves saves" "footer footer footer";gap:12px;align-items:stretch}
+ #home .minimal-brand{grid-area:brand}
+ #home .minimal-hero{grid-area:hero;min-height:100%;display:flex;flex-direction:column;justify-content:center;padding:clamp(18px,2vw,34px)}
+ #home .minimal-actions{grid-area:actions;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px;align-content:center}
+ #home .minimal-actions>*{min-width:0}
+ #home .minimal-tools{grid-area:tools;align-self:start}
+ #home .home-release-notes{grid-area:release;max-width:none;margin:0;grid-template-columns:minmax(150px,.55fr) minmax(0,1.5fr) minmax(0,1.1fr)}
+ #home #homeSaves{grid-area:saves}
+ #home .minimal-footer{grid-area:footer}
+ /* Nova carreira e editor: campos agrupados lado a lado */
+ #setup>.panel>.grid{grid-template-columns:repeat(2,minmax(0,1fr));align-items:stretch}
+ #setup>.panel>.grid>.panel{margin:0}
+ #editor>.panel>.grid{grid-template-columns:minmax(280px,.8fr) minmax(0,1.5fr);gap:18px}
+ #editor>.panel>.grid>div{min-width:0}
+ #editor>.panel>.grid .field{margin:7px 0}
+ #editor>.panel>.grid .field input,#editor>.panel>.grid .field select{padding:8px}
+ /* Carreira: todos os destinos do menu ficam visíveis numa faixa de navegação */
+ #career>.layout{display:grid;grid-template-columns:minmax(0,1fr);gap:10px;margin-top:10px}
+ #career>.layout>.side{position:static;display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:6px;padding:8px;align-self:stretch}
+ #career .side-label{grid-column:1/-1;margin:0 0 2px}
+ #career .side .btn{min-width:0;width:100%;text-align:center;padding:9px 6px;font-size:clamp(11px,.78vw,13px);white-space:normal;line-height:1.2;min-height:38px}
+ #career>.layout>.content{min-width:0}
+ /* Submenus e painéis de opções em grade, sem esconder comandos */
+ #career .subnav,#career .oi-tabs{display:flex;flex-wrap:wrap;gap:7px}
+ #career .subnav .btn,#career .oi-tabs .btn{flex:0 1 auto;white-space:nowrap}
+ #career .career-head{padding:9px 12px}
+ #career .career-dashboard{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+ #career .career-dashboard>*{min-width:0}
+ #settings>.panel{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px 18px;align-items:end}
+ #settings>.panel h2,#settings>.panel>.btn{grid-column:1/-1}
+ #scores .score-builder{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:16px;align-items:start}
+ #scores .score-builder>.panel{margin:0}
+ #scores .score-options{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:7px}
+ #scores>.panel{margin-top:8px}
+}
+@media (min-width:1500px) and (min-aspect-ratio:4/3){
+ #career>.layout>.side{grid-template-columns:repeat(11,minmax(0,1fr))}
+ #career .side .btn{font-size:12px;padding:10px 5px}
+}
+
 </style>
