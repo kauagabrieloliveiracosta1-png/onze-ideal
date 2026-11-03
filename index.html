@@ -654,10 +654,52 @@ html,body{width:100%;height:100%;margin:0;overflow:hidden!important}
  #career .content::-webkit-scrollbar-thumb{background:#477b58;border-radius:8px}
 }
 
+
+
+/* PACOTE 2.47 — correção do painel vazio e remapeamento responsivo real */
+/* Neutraliza os limites rígidos introduzidos pelas regras antigas de rolagem. */
+@media (min-width:801px){
+ html,body{height:auto!important;min-height:100%!important;overflow-x:hidden!important;overflow-y:auto!important}
+ body{min-width:0!important}
+ .wrap{width:100%!important;max-width:none!important;height:auto!important;min-height:100dvh!important;overflow:visible!important;padding:12px clamp(12px,2vw,30px)!important}
+ .top{width:100%!important;flex:0 0 auto!important}
+ .screen.active{display:block!important;height:auto!important;min-height:0!important;max-height:none!important;overflow:visible!important}
+ #career.screen.active{width:100%!important;height:auto!important;max-height:none!important;overflow:visible!important}
+ #career>.layout{display:grid!important;grid-template-columns:minmax(0,1fr)!important;grid-template-rows:auto auto!important;gap:10px!important;height:auto!important;min-height:0!important;max-height:none!important;overflow:visible!important}
+ #career>.layout>.side{position:static!important;display:grid!important;grid-template-columns:repeat(6,minmax(0,1fr))!important;grid-auto-flow:row!important;width:100%!important;max-height:none!important;height:auto!important;overflow:visible!important;white-space:normal!important;align-items:stretch!important}
+ #career>.layout>.side .side-label{grid-column:1/-1!important}
+ #career>.layout>.side .btn{display:flex!important;align-items:center!important;justify-content:center!important;width:100%!important;min-width:0!important;min-height:38px!important;white-space:normal!important;text-align:center!important;overflow-wrap:anywhere!important}
+ #career>.layout>.content{display:block!important;width:100%!important;height:auto!important;min-height:0!important;max-height:none!important;overflow:visible!important;margin-top:0!important}
+ #career .content>.tab{display:none}
+ #career .content>.tab.active{display:block!important;width:100%!important;height:auto!important;min-height:0!important;max-height:none!important;overflow:visible!important}
+ #career .career-dashboard{grid-template-columns:repeat(2,minmax(0,1fr))!important;grid-template-areas:'club goals' 'pulse actions' 'match match' 'news finance'!important}
+ #home.screen.active{height:auto!important;max-height:none!important;overflow:visible!important}
+ #home .minimal-menu{min-height:0!important}
+}
+@media (min-width:801px) and (max-width:1199px){
+ #career>.layout>.side{grid-template-columns:repeat(4,minmax(0,1fr))!important}
+ #career .career-dashboard{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+ #home .minimal-menu{display:flex!important;flex-direction:column!important;gap:12px!important}
+ #home .minimal-actions{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important}
+ #home .home-release-notes{display:grid!important;grid-template-columns:1fr!important}
+}
+@media (min-width:1200px){
+ #career>.layout>.side{grid-template-columns:repeat(11,minmax(0,1fr))!important}
+ #career .career-dashboard{grid-template-columns:minmax(230px,1fr) minmax(320px,1.4fr) minmax(230px,1fr)!important;grid-template-areas:'club goals actions' 'club pulse actions' 'match match news' 'match match finance'!important}
+}
+@media(max-width:800px){
+ html,body{height:auto!important;min-height:100%!important;overflow-x:hidden!important;overflow-y:auto!important}
+ .wrap{height:auto!important;min-height:100dvh!important;overflow:visible!important}
+ .screen.active,#career.screen.active{height:auto!important;max-height:none!important;overflow:visible!important}
+ #career>.layout,#career>.layout>.content{height:auto!important;max-height:none!important;overflow:visible!important}
+ #career>.layout>.side{position:static!important;max-height:none!important;overflow:visible!important;display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important}
+ #career .content>.tab.active{display:block!important;height:auto!important;max-height:none!important;overflow:visible!important}
+}
+
 </style>
 </head>
 <body><div class="wrap">
-<header class="top"><div class="logo">OI</div><div><div class="brand">ONZE IDEAL <span class="pill">PACOTE 2.46</span></div><div class="sub">Simulador de gestão de futebol • Elencos e Identidade dos Clubes</div></div></header>
+<header class="top"><div class="logo">OI</div><div><div class="brand">ONZE IDEAL <span class="pill">PACOTE 2.47</span></div><div class="sub">Simulador de gestão de futebol • Elencos e Identidade dos Clubes</div></div></header>
 
 <section id="home" class="screen active">
  <div class="minimal-menu">
@@ -673,7 +715,7 @@ html,body{width:100%;height:100%;margin:0;overflow:hidden!important}
   <div id="homeSaves"></div>
   <section class="home-release-notes" aria-label="Versão e notas da atualização">
    <div class="home-release-version"><span>VERSÃO ATUAL</span><strong>2.46</strong></div>
-   <div class="home-release-current"><h3>Notas da atualização 2.46</h3><ul><li>Remapeamento visual dos menus para monitores widescreen.</li><li>Opções da carreira reorganizadas em uma grade compacta, com todos os destinos de navegação visíveis ao mesmo tempo.</li><li>Menu principal, nova carreira, editor, placares e configurações reorganizados em colunas para aproveitar melhor a tela.</li><li>Layout adaptativo: em telas menores, a disposição original em fluxo continua ativa.</li></ul></div>
+   <div class="home-release-current"><h3>Notas da atualização 2.47</h3><ul><li>Correção da área de conteúdo da carreira, que podia ficar vazia em janelas com largura intermediária ou zoom do navegador.</li><li>Menu da carreira reorganizado em grade responsiva, mantendo todos os destinos visíveis sem ocultar a área da aba selecionada.</li><li>Remapeamento widescreen aplicado também ao menu principal, nova carreira, editor, placares e configurações.</li><li>Layout adaptativo por largura real disponível, sem exigir monitor acima de 1.100 px.</li></ul></div>
    <div class="home-release-next"><span class="home-release-tag">PRÓXIMA ATUALIZAÇÃO</span><h3>Foco no modo SAF</h3><p>O próximo ciclo de desenvolvimento será dedicado ao modo <b>Virar SAF</b>, com mais opções e consequências para a gestão do clube.</p></div>
   </section>
   <div class="minimal-footer">ONZE IDEAL 26/27 <span>•</span> FOOTBALL MANAGER</div>
@@ -1467,7 +1509,7 @@ html,body{overflow-x:hidden}
 #career .layout.wide-tab>.side::-webkit-scrollbar-thumb{background:#568b67;border-radius:8px}
 @media(max-width:899px){.screen.active:not(#career){max-height:100dvh}#career.screen.active{height:100dvh;max-height:100dvh}#career>.layout{flex:1 1 auto;min-height:0;height:auto;overflow:hidden}#career>.layout>.content{height:100%;max-height:100%;overflow-x:hidden;overflow-y:auto;padding-bottom:24px}#career .layout.wide-tab>.content{max-height:100%;overflow-y:auto}}
 
-/* PACOTE 2.46 — correção estrutural da rolagem: a tela ativa rola como um todo */
+/* PACOTE 2.47 — correção estrutural da rolagem: a tela ativa rola como um todo */
 html,body{min-height:100%;overflow-x:hidden}
 body{overflow-y:auto}
 .wrap{min-height:100dvh;height:auto;overflow:visible}
@@ -1497,7 +1539,7 @@ html::-webkit-scrollbar-thumb,body::-webkit-scrollbar-thumb,.wrap::-webkit-scrol
 }
 
 
-/* PACOTE 2.46 — remapeamento dos menus para widescreen (16:9) */
+/* PACOTE 2.47 — remapeamento dos menus para widescreen (16:9) */
 @media (min-width:1100px) and (min-aspect-ratio: 4/3){
  .wrap{max-width: min(98vw,1900px);padding:clamp(12px,1.2vw,22px)}
  .top{padding:5px 0 12px}
