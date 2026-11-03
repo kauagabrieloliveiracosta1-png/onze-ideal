@@ -340,6 +340,49 @@ body{overscroll-behavior:none}
 .calendar-toolbar{display:flex;align-items:center;justify-content:center;gap:18px;margin:12px 0}.calendar-grid{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:5px}.calendar-weekday{text-align:center;padding:8px;background:var(--panel2);border-radius:7px;font-weight:700}.calendar-day{min-height:100px;padding:7px;border:1px solid var(--line);border-radius:8px;background:rgba(10,25,48,.55);min-width:0}.calendar-day.empty{opacity:.25}.calendar-event{font-size:11px;line-height:1.3;margin-top:6px;padding:5px;border-radius:6px;background:rgba(40,120,220,.18);overflow-wrap:anywhere}.calendar-event.played{background:rgba(40,170,110,.18)}.calendar-event small{opacity:.8}.social-compose{display:grid;gap:8px;padding:12px;border:1px solid var(--line);border-radius:12px;margin:12px 0 18px}.social-post{padding:14px;border:1px solid var(--line);border-radius:12px;margin:12px 0;background:var(--panel2)}.social-user,.social-actions{display:flex;align-items:center;justify-content:space-between;gap:10px}.social-actions{border-top:1px solid var(--line);padding-top:9px;margin-top:10px}@media(max-width:650px){.calendar-grid{gap:2px}.calendar-day{min-height:72px;padding:3px}.calendar-event{font-size:9px;padding:3px}}
 
 .season-review-modal{z-index:10020;padding:2vh 2vw}.season-review-shell{width:min(96vw,1500px);max-width:1500px;max-height:94vh;overflow:auto;padding:22px 26px}.season-review-hero{padding:18px 4px 22px;border-bottom:1px solid var(--line);margin-bottom:16px}.season-review-hero h2{font-size:clamp(26px,3vw,42px);margin:8px 0}.season-review-hero p{color:var(--muted);margin:0}.season-review-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;align-items:start}.season-review-grid>.panel{margin:0;min-width:0}.season-review-standings{max-height:340px;overflow:auto;padding-right:4px}.season-review-grid .item{gap:8px;overflow-wrap:anywhere}.season-review-grid .item b{text-align:right}.season-review-grid>.panel:nth-child(2){grid-column:span 2}.season-review-grid>.panel:nth-child(1){grid-column:span 1}@media(max-width:900px){.season-review-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.season-review-grid>.panel:nth-child(2){grid-column:span 1}}@media(max-width:620px){.season-review-modal{padding:0}.season-review-grid{grid-template-columns:1fr}.season-review-shell{width:100%;max-width:none;max-height:96vh;padding:12px}.season-review-grid>.panel:nth-child(2){grid-column:auto}}
+
+/* Classificação inspirada diretamente nas referências de transmissão esportiva */
+#competitions .broadcast-board{background:linear-gradient(110deg,#101b31,#172641 52%,#101b31);border:1px solid #31445f;border-radius:8px;padding:clamp(9px,1.4vw,18px);box-shadow:inset 0 0 28px #07101d;overflow:hidden}
+#competitions .broadcast-heading{display:flex;align-items:center;justify-content:space-between;color:#f2f5fa;font-weight:950;letter-spacing:.08em;font-size:clamp(14px,1.7vw,22px);padding:2px 8px 12px;border-bottom:1px solid #52617a}
+#competitions .broadcast-heading small{font-size:10px;color:#9eb1ca;letter-spacing:.14em}
+#competitions .broadcast-columns{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(8px,1.4vw,18px)}
+#competitions .broadcast-half{min-width:0}
+#competitions .broadcast-table{width:100%;border-collapse:separate;border-spacing:0 3px;table-layout:fixed}
+#competitions .broadcast-table th{font-size:clamp(8px,.9vw,11px);color:#b8c8df;text-align:center;padding:7px 3px;font-weight:900;white-space:nowrap}
+#competitions .broadcast-table th:nth-child(2){text-align:left}
+#competitions .broadcast-table td{height:clamp(35px,4vw,52px);padding:4px 5px;background:#15243b;color:#f3f6fb;text-align:center;font-size:clamp(10px,1.15vw,15px);font-weight:750;border-top:1px solid #33445e;border-bottom:1px solid #0a1425;white-space:nowrap;overflow:hidden}
+#competitions .broadcast-table .rank-cell{width:42px;padding:0;color:#fff;font-weight:950}
+#competitions .broadcast-table .rank-cell b{display:flex;height:100%;align-items:center;justify-content:center}
+#competitions .broadcast-table .club-cell{text-align:left;font-size:clamp(9px,1.1vw,14px);font-weight:900}
+#competitions .broadcast-table .club-name{display:flex;align-items:center;gap:6px;min-width:0}
+#competitions .broadcast-table .club-name strong{overflow:hidden;text-overflow:ellipsis}
+#competitions .broadcast-table .club-name .crest,#competitions .broadcast-table .club-name img{width:20px;height:20px;flex:0 0 20px}
+#competitions .broadcast-table .pts-cell{color:#caff73;font-size:clamp(12px,1.35vw,17px);font-weight:950}
+#competitions .broadcast-table tr.rank-green .rank-cell{background:#08a94d}
+#competitions .broadcast-table tr.rank-blue .rank-cell{background:#087fca}
+#competitions .broadcast-table tr.rank-neutral .rank-cell{background:#667080}
+#competitions .broadcast-table tr.rank-red .rank-cell{background:#c91f32}
+#competitions .broadcast-table tr.rank-green td:not(.rank-cell){background:#17283b}
+#competitions .broadcast-table tr.rank-blue td:not(.rank-cell){background:#14263d}
+#competitions .broadcast-table tr.rank-neutral td:not(.rank-cell){background:#17243a}
+#competitions .broadcast-table tr.rank-red td:not(.rank-cell){background:#2b1b2b}
+#competitions .broadcast-table tr.highlight td{outline:1px solid #d4f57a;outline-offset:-2px}
+#competitions .broadcast-note{margin:8px 2px 0;color:var(--muted)}
+#competitions .classic-standings{overflow-x:auto}
+#competitions .classic-standings table{width:100%;border-collapse:separate;border-spacing:0 3px}
+#competitions .classic-standings td{padding:8px 7px;background:#101a2a;border-block:1px solid #29394d}
+#competitions .classic-standings .rank-cell{padding:0;color:#fff;text-align:center;min-width:42px}
+#competitions .classic-standings .rank-cell b{display:block;padding:9px 5px}
+#competitions .classic-standings tr.rank-green .rank-cell{background:#08a94d}
+#competitions .classic-standings tr.rank-blue .rank-cell{background:#087fca}
+#competitions .classic-standings tr.rank-neutral .rank-cell{background:#77752d}
+#competitions .classic-standings tr.rank-red .rank-cell{background:#c91f32}
+#competitions .classic-standings tr.rank-green td:not(.rank-cell){background:#102d20}
+#competitions .classic-standings tr.rank-blue td:not(.rank-cell){background:#10283b}
+#competitions .classic-standings tr.rank-neutral td:not(.rank-cell){background:#25291a}
+#competitions .classic-standings tr.rank-red td:not(.rank-cell){background:#301820}
+@media(max-width:760px){#competitions .broadcast-columns{grid-template-columns:1fr;gap:8px}#competitions .broadcast-table td{height:38px;font-size:11px}#competitions .broadcast-table .club-cell{font-size:11px}#competitions .broadcast-table th{font-size:9px}}
+
 </style>
 </head>
 <body><div class="wrap">
@@ -540,12 +583,21 @@ function tableHTML(t,club,division='A'){
    if(i>=18)return ['down','Rebaixamento'];
   }else if(division==='D'){
    if(i<4)return ['up','Classificado'];
-   return ['down','Fora do G-4'];
+   return ['down','Fora da classificação'];
   }
   return ['mid','—'];
  };
  const legend=division==='A'?'<span class="zone-key lib">Libertadores · 1º–4º</span><span class="zone-key pre">Pré · 5º</span><span class="zone-key sula">Sul-Americana · 6º–12º</span><span class="zone-key down">Rebaixamento · 17º–20º</span>':division==='B'?'<span class="zone-key up">Acesso direto · 1º–2º</span><span class="zone-key pre">Playoffs · 3º–6º</span><span class="zone-key down">Rebaixamento · 17º–20º</span>':division==='C'?'<span class="zone-key up">Quadrangulares · 1º–8º</span><span class="zone-key down">Rebaixamento · 19º–20º</span>':'<span class="zone-key up">Classificados · 1º–4º</span><span class="zone-key down">Fora da classificação · 5º–6º</span>';
- return '<div class="table-legend">'+legend+'</div><table><thead><tr><th>#</th><th>Clube</th><th>PJ</th><th>V</th><th>E</th><th>D</th><th>SG</th><th>PTS</th><th>Faixa</th></tr></thead><tbody>'+rows.map((x,i)=>{const z=classify(i);return `<tr class="${x.name===club?'highlight ':''}zone-${z[0]}"><td><b>${i+1}º</b></td><td><span style="display:inline-flex;align-items:center;gap:7px">${clubMark(x.name,true)}${esc(x.name)}</span></td><td>${x.p}</td><td>${x.w}</td><td>${x.d}</td><td>${x.l}</td><td>${x.gf-x.ga}</td><td><b>${x.pts}</b></td><td><span class="zone-pill ${z[0]}">${z[1]}</span></td></tr>`}).join('')+'</tbody></table><p class="small">Faixas indicativas da temporada; vagas continentais podem mudar conforme os campeões das copas.</p>';
+ const posClass=i=>i<=4?'rank-green':i<=10?'rank-blue':i<=15?'rank-neutral':'rank-red';
+ const makeRows=(list,offset)=>list.map((x,j)=>{
+   const i=offset+j,z=classify(i),pos=i+1;
+   return `<tr class="${x.name===club?'highlight ':''}zone-${z[0]} ${posClass(i)}"><td class="rank-cell"><b>${pos}º</b></td><td class="club-cell"><span class="club-name">${clubMark(x.name,true)}<strong>${esc(x.name)}</strong></span></td><td class="pts-cell">${x.pts||0}</td><td>${x.p||0}</td><td>${x.w||0}</td><td>${(x.gf||0)-(x.ga||0)}</td></tr>`;
+ }).join('');
+ if((division==='A'||division==='B')&&rows.length===20){
+  const half=(list,offset)=>`<div class="broadcast-half"><table class="broadcast-table"><thead><tr><th class="rank-head">#</th><th>CLUBE</th><th>PTS</th><th>PJ</th><th>V</th><th>SG</th></tr></thead><tbody>${makeRows(list,offset)}</tbody></table></div>`;
+  return `<div class="table-legend">${legend}</div><div class="broadcast-board"><div class="broadcast-heading"><span>BRASILEIRÃO SÉRIE ${division}</span><small>CLASSIFICAÇÃO</small></div><div class="broadcast-columns">${half(rows.slice(0,10),0)}${half(rows.slice(10,20),10)}</div></div><p class="small broadcast-note">PTS: pontos · PJ: jogos · V: vitórias · SG: saldo de gols. Classificação atualizada após cada rodada.</p>`;
+ }
+ return '<div class="table-legend">'+legend+'</div><div class="classic-standings"><table><thead><tr><th>#</th><th>Clube</th><th>PTS</th><th>PJ</th><th>V</th><th>E</th><th>D</th><th>SG</th><th>Faixa</th></tr></thead><tbody>'+rows.map((x,i)=>{const z=classify(i);return `<tr class="${x.name===club?'highlight ':''}zone-${z[0]} ${posClass(i)}"><td class="rank-cell"><b>${i+1}º</b></td><td><span style="display:inline-flex;align-items:center;gap:7px">${clubMark(x.name,true)}${esc(x.name)}</span></td><td><b>${x.pts||0}</b></td><td>${x.p||0}</td><td>${x.w||0}</td><td>${x.d||0}</td><td>${x.l||0}</td><td>${(x.gf||0)-(x.ga||0)}</td><td><span class="zone-pill ${z[0]}">${z[1]}</span></td></tr>`}).join('')+'</tbody></table></div><p class="small">Faixas indicativas da temporada; vagas continentais podem mudar conforme os campeões das copas.</p>';
 }
 function realisticScore(homeStrength,awayStrength){
  const hs=Math.max(45,Math.min(98,Number(homeStrength)||60));
