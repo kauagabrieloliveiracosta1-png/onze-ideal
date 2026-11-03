@@ -657,7 +657,7 @@ html,body{width:100%;height:100%;margin:0;overflow:hidden!important}
 </style>
 </head>
 <body><div class="wrap">
-<header class="top"><div class="logo">OI</div><div><div class="brand">ONZE IDEAL <span class="pill">PACOTE 2.42</span></div><div class="sub">Simulador de gestão de futebol • Elencos e Identidade dos Clubes</div></div></header>
+<header class="top"><div class="logo">OI</div><div><div class="brand">ONZE IDEAL <span class="pill">PACOTE 2.45</span></div><div class="sub">Simulador de gestão de futebol • Elencos e Identidade dos Clubes</div></div></header>
 
 <section id="home" class="screen active">
  <div class="minimal-menu">
@@ -673,7 +673,7 @@ html,body{width:100%;height:100%;margin:0;overflow:hidden!important}
   <div id="homeSaves"></div>
   <section class="home-release-notes" aria-label="Versão e notas da atualização">
    <div class="home-release-version"><span>VERSÃO ATUAL</span><strong>2.44</strong></div>
-   <div class="home-release-current"><h3>Notas da atualização 2.44</h3><ul><li>Barras de rolagem visíveis e padronizadas nos menus e painéis com conteúdo longo.</li><li>Rolagem vertical ajustada para desktop e celular, sem esconder o final das telas.</li><li>Versão do jogo e notas de atualização sincronizadas com o pacote 2.44.</li></ul></div>
+   <div class="home-release-current"><h3>Notas da atualização 2.45</h3><ul><li>Rolagem corrigida na estrutura das telas: a própria tela da carreira pode rolar, sem depender de um painel interno com altura travada.</li><li>Menus e telas longas podem ser percorridos até o final no celular e no computador.</li><li>Versão do jogo e notas de atualização sincronizadas com o pacote 2.45.</li></ul></div>
    <div class="home-release-next"><span class="home-release-tag">PRÓXIMA ATUALIZAÇÃO</span><h3>Foco no modo SAF</h3><p>O próximo ciclo de desenvolvimento será dedicado ao modo <b>Virar SAF</b>, com mais opções e consequências para a gestão do clube.</p></div>
   </section>
   <div class="minimal-footer">ONZE IDEAL 26/27 <span>•</span> FOOTBALL MANAGER</div>
@@ -1466,4 +1466,33 @@ html,body{overflow-x:hidden}
 #career .layout.wide-tab>.side::-webkit-scrollbar{height:8px}
 #career .layout.wide-tab>.side::-webkit-scrollbar-thumb{background:#568b67;border-radius:8px}
 @media(max-width:899px){.screen.active:not(#career){max-height:100dvh}#career.screen.active{height:100dvh;max-height:100dvh}#career>.layout{flex:1 1 auto;min-height:0;height:auto;overflow:hidden}#career>.layout>.content{height:100%;max-height:100%;overflow-x:hidden;overflow-y:auto;padding-bottom:24px}#career .layout.wide-tab>.content{max-height:100%;overflow-y:auto}}
+
+/* PACOTE 2.45 — correção estrutural da rolagem: a tela ativa rola como um todo */
+html,body{min-height:100%;overflow-x:hidden}
+body{overflow-y:auto}
+.wrap{min-height:100dvh;height:auto;overflow:visible}
+.screen.active{display:block;min-height:0;height:auto;max-height:none;overflow-x:hidden;overflow-y:visible;scrollbar-gutter:auto}
+#career.screen.active{display:block;height:auto;min-height:0;max-height:none;overflow-x:hidden;overflow-y:visible}
+#career>.layout{display:block;height:auto;min-height:0;max-height:none;overflow:visible}
+#career>.layout>.content{display:block;height:auto;min-height:0;max-height:none;overflow:visible}
+#career .content>.tab.active{height:auto;max-height:none;overflow:visible}
+/* Barras visíveis nos elementos que realmente possuem rolagem horizontal/vertical */
+html{scrollbar-width:auto;scrollbar-color:#65bd83 #101a14}
+html::-webkit-scrollbar,body::-webkit-scrollbar,.wrap::-webkit-scrollbar,.screen::-webkit-scrollbar,#career .side::-webkit-scrollbar,.table-wrap::-webkit-scrollbar{width:12px;height:12px}
+html::-webkit-scrollbar-track,body::-webkit-scrollbar-track,.wrap::-webkit-scrollbar-track,.screen::-webkit-scrollbar-track,#career .side::-webkit-scrollbar-track,.table-wrap::-webkit-scrollbar-track{background:#101a14}
+html::-webkit-scrollbar-thumb,body::-webkit-scrollbar-thumb,.wrap::-webkit-scrollbar-thumb,.screen::-webkit-scrollbar-thumb,#career .side::-webkit-scrollbar-thumb,.table-wrap::-webkit-scrollbar-thumb{background:#65bd83;border:2px solid #101a14;border-radius:10px}
+@media(min-width:801px){
+ html,body{height:100%;min-height:100%;overflow:hidden}
+ .wrap{height:100dvh;min-height:0;overflow:hidden}
+ #career.screen.active{height:calc(100dvh - 76px);max-height:calc(100dvh - 76px);overflow-x:hidden;overflow-y:auto;overscroll-behavior:contain;scrollbar-gutter:stable;scrollbar-width:auto;scrollbar-color:#65bd83 #101a14}
+ #career>.layout,#career>.layout>.content{height:auto;max-height:none;overflow:visible}
+ .screen.active:not(#career){height:calc(100dvh - 76px);max-height:calc(100dvh - 76px);overflow-x:hidden;overflow-y:auto;overscroll-behavior:contain;scrollbar-gutter:stable}
+}
+@media(max-width:800px){
+ html,body{height:auto;min-height:100%;overflow-x:hidden;overflow-y:auto}
+ .wrap{height:auto;min-height:100dvh;overflow:visible}
+ .screen.active{height:auto;max-height:none;overflow:visible}
+ #career.screen.active{height:auto;max-height:none;overflow:visible}
+ #career>.layout,#career>.layout>.content{height:auto;max-height:none;overflow:visible}
+}
 </style>
