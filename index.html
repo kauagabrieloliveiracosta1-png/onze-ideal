@@ -779,10 +779,10 @@ function tableHTML(t,club,division='A'){
    if(i<=3)return ['up','Acesso à Série A'];
    if(i>=16)return ['down','Rebaixamento à Série C'];
   }else if(division==='C'){
-   if(i<=7)return ['up','Quadrangular'];
+   if(i<=7)return ['playoff','Play-offs · Quadrangular'];
    if(i>=18)return ['down','Rebaixamento à Série D'];
   }else if(division==='D'){
-   if(i<4)return ['up','Classificado'];
+   if(i<4)return ['playoff','Play-offs · Mata-mata'];
    return ['mid','Fora da classificação'];
   }
   return ['mid','Zona intermediária'];
@@ -790,8 +790,8 @@ function tableHTML(t,club,division='A'){
  const legend=division==='A'
  ?'<span class="zone-key lib">Libertadores · 1º–4º</span><span class="zone-key pre">Pré-Libertadores · 5º</span><span class="zone-key sula">Sul-Americana · 6º–12º</span><span class="zone-key mid">Meio da tabela · 13º–16º</span><span class="zone-key down">Rebaixamento · 17º–20º</span>'
  :division==='B'?'<span class="zone-key up">Acesso · 1º–4º</span><span class="zone-key mid">Permanência · 5º–16º</span><span class="zone-key down">Rebaixamento · 17º–20º</span>'
- :division==='C'?'<span class="zone-key up">Quadrangular · 1º–8º</span><span class="zone-key mid">Permanência · 9º–18º</span><span class="zone-key down">Rebaixamento · 19º–20º</span>'
- :'<span class="zone-key up">Classificados · 1º–4º de cada grupo</span><span class="zone-key mid">Eliminados · 5º–6º</span>';
+ :division==='C'?'<span class="zone-key playoff">Play-offs / Quadrangular · 1º–8º</span><span class="zone-key mid">Permanência · 9º–18º</span><span class="zone-key down">Rebaixamento · 19º–20º</span>'
+ :'<span class="zone-key playoff">Play-offs · 1º–4º de cada grupo</span><span class="zone-key mid">Eliminados · 5º–6º</span>';
  const posClass=i=>{const z=classify(i)[0];return z==='down'?'rank-red':z==='mid'?'rank-neutral':z==='sula'?'rank-blue':z==='pre'?'rank-teal':'rank-green'};
  const crestName=x=>`<span class="club-name">${clubMark(x.name,true)}<strong>${esc(x.name)}</strong></span>`;
  const makeRows=(list,offset)=>list.map((x,j)=>{
@@ -1055,7 +1055,7 @@ function renderIndividualStats(){
 }
 function addMatchEvent(t,minute=null){liveMatch.events.unshift({m:minute===null?liveMatch.minute:minute,t})}
 function renderLiveEventStrip(){let m=liveMatch,el=$('liveEventsStrip');if(!m||!el)return;let rows=(m.events||[]).slice(0,5);el.innerHTML=rows.length?rows.map(e=>{let t=e.t||'',kind=/GOL|marca|gol/i.test(t)?'goal':/amarelo/i.test(t)?'yellow':/vermelho|expuls/i.test(t)?'red':/substitui|entra|sai/i.test(t)?'sub':'other',ico=kind==='goal'?'⚽':kind==='yellow'?'🟨':kind==='red'?'🟥':kind==='sub'?'🔄':'•';return `<div class="live-event-chip ${kind}"><b>${ico} ${e.m}'</b><span>${esc(t)}</span></div>`}).join(''):'<span class="small">Aguardando os primeiros lances…</span>'}
-function renderLiveStandings(){let m=liveMatch,c=current(),el=$('liveStandings');if(!m||!c||!el)return;let [base]=leagueParts(c,c.division),rows=base.map(x=>({...x})),apply=(home,away,hg,ag)=>{let a=rows.find(x=>x.name===home),b=rows.find(x=>x.name===away);if(!a||!b)return;a.p=(a.p||0)+1;b.p=(b.p||0)+1;a.gf=(a.gf||0)+hg;a.ga=(a.ga||0)+ag;b.gf=(b.gf||0)+ag;b.ga=(b.ga||0)+hg;if(hg>ag){a.w=(a.w||0)+1;a.pts=(a.pts||0)+3;b.l=(b.l||0)+1}else if(ag>hg){b.w=(b.w||0)+1;b.pts=(b.pts||0)+3;a.l=(a.l||0)+1}else{a.d=(a.d||0)+1;b.d=(b.d||0)+1;a.pts=(a.pts||0)+1;b.pts=(b.pts||0)+1}};let homeScore=m.fixture.home===c.club?m.hg:m.ag,awayScore=m.fixture.home===c.club?m.ag:m.hg;apply(m.fixture.home,m.fixture.away,homeScore,awayScore);(m.parallelFixtures||[]).forEach(f=>{let hg=0,ag=0;f.events.forEach((ev,i)=>{if(f.seen.includes(i)){if(ev.side===0)hg++;else ag++}});apply(f.home,f.away,hg,ag)});rows.sort((a,b)=>(b.pts||0)-(a.pts||0)||((b.gf||0)-(b.ga||0))-((a.gf||0)-(a.ga||0))||(b.w||0)-(a.w||0)||a.name.localeCompare(b.name,'pt-BR'));$('liveStandingsTitle').textContent='Série '+c.division+' · classificação ao vivo';el.innerHTML=`<div class="live-table-wrap"><table class="live-table"><thead><tr><th>#</th><th>Clube</th><th>PTS</th><th>PJ</th><th>SG</th></tr></thead><tbody>${rows.map((x,i)=>`<tr class="${x.name===c.club?'live-own-club':''}"><td>${i+1}</td><td>${esc(x.name)}</td><td><b>${x.pts||0}</b></td><td>${x.p||0}</td><td>${(x.gf||0)-(x.ga||0)}</td></tr>`).join('')}</tbody></table></div>`}
+function renderLiveStandings(){let m=liveMatch,c=current(),el=$('liveStandings');if(!m||!c||!el)return;let [base]=leagueParts(c,c.division),rows=base.map(x=>({...x})),apply=(home,away,hg,ag)=>{let a=rows.find(x=>x.name===home),b=rows.find(x=>x.name===away);if(!a||!b)return;a.p=(a.p||0)+1;b.p=(b.p||0)+1;a.gf=(a.gf||0)+hg;a.ga=(a.ga||0)+ag;b.gf=(b.gf||0)+ag;b.ga=(b.ga||0)+hg;if(hg>ag){a.w=(a.w||0)+1;a.pts=(a.pts||0)+3;b.l=(b.l||0)+1}else if(ag>hg){b.w=(b.w||0)+1;b.pts=(b.pts||0)+3;a.l=(a.l||0)+1}else{a.d=(a.d||0)+1;b.d=(b.d||0)+1;a.pts=(a.pts||0)+1;b.pts=(b.pts||0)+1}};let homeScore=m.fixture.home===c.club?m.hg:m.ag,awayScore=m.fixture.home===c.club?m.ag:m.hg;apply(m.fixture.home,m.fixture.away,homeScore,awayScore);(m.parallelFixtures||[]).forEach(f=>{let hg=0,ag=0;f.events.forEach((ev,i)=>{if(f.seen.includes(i)){if(ev.side===0)hg++;else ag++}});apply(f.home,f.away,hg,ag)});rows.sort((a,b)=>(b.pts||0)-(a.pts||0)||((b.gf||0)-(b.ga||0))-((a.gf||0)-(a.ga||0))||(b.w||0)-(a.w||0)||a.name.localeCompare(b.name,'pt-BR'));$('liveStandingsTitle').textContent='Série '+c.division+' · classificação ao vivo';const liveZone=i=>c.division==='C'&&i<8?'PLAY-OFF':c.division==='D'&&i<4?'PLAY-OFF':c.division==='B'&&i<4?'ACESSO':c.division==='A'&&i<4?'LIBERTA':(c.division==='A'&&i>=16)||(c.division==='B'&&i>=16)||(c.division==='C'&&i>=18)?'REBAIXA':'—';el.innerHTML=`<div class="live-table-wrap"><table class="live-table"><thead><tr><th>#</th><th>Clube</th><th>PTS</th><th>PJ</th><th>SG</th><th>FAIXA</th></tr></thead><tbody>${rows.map((x,i)=>`<tr class="${x.name===c.club?'live-own-club':''} ${liveZone(i)==='PLAY-OFF'?'live-playoff':''}"><td>${i+1}</td><td>${esc(x.name)}</td><td><b>${x.pts||0}</b></td><td>${x.p||0}</td><td>${(x.gf||0)-(x.ga||0)}</td><td><small>${liveZone(i)}</small></td></tr>`).join('')}</tbody></table></div>`}
 function advanceMatch(){
  if(!liveMatch||liveMatch.done)return;
  const c=current(),m=liveMatch;if(m.minute===45){return}const next=m.minute+1;
@@ -1063,7 +1063,8 @@ function advanceMatch(){
  (m.parallelFixtures||[]).forEach(f=>f.events.forEach((ev,i)=>{if(ev.minute===next&&!f.seen.includes(i)){f.seen.push(i);addMatchEvent('⚽ '+f.home+' '+(ev.side===0?'marca contra '+f.away:'sofre gol de '+f.away)+'.',next);}}));
  const userSide=m.home?0:1,opponent=db().clubs[m.opponent],oppStrength=opponent?.strength||65;
  const starters=m.xi.map(id=>c.squad.find(p=>p.id===id)).filter(Boolean);
- const teamStrength=starters.reduce((sum,p)=>sum+p.rating,0)/Math.max(1,starters.length);
+ const squadAverage=starters.reduce((sum,p)=>sum+p.rating,0)/Math.max(1,starters.length);
+ const teamStrength=squadAverage*.72+(Number(c.strength)||squadAverage)*.28;
  const style=$('matchStyle').value;
  const tacticalBoost=style==='Ofensivo'||style==='Pressão alta'?1.12:style==='Defensivo'?.90:style==='Posse de bola'?1.05:1;
  for(let side=0;side<2;side++){
@@ -1110,7 +1111,7 @@ function renderMatchScoreboard(){
  const hc=colors(home),ac=colors(away),ht=contrast(hc[0]),at=contrast(ac[0]);
  const teamStyle=(c,t)=>`background:${c[0]};color:${t};border-bottom:5px solid ${c[1]};`;
  let time=m.minute===45?'45’':m.minute===90?'90’':m.minute+'’',comp=m.competitionCode||('SÉRIE '+(m.divisionAtStart||current()?.division||'B'));
- el.innerHTML=`<div class="tv-comp">${esc(comp)}</div><div class="tv-score tv-${style}"><span class="tv-team tv-home" style="${teamStyle(hc,ht)}">${esc(abbr(home))}</span><span class="tv-goals tv-home-goal" style="background:${hc[0]};color:${ht}">${h}</span><span class="tv-goals tv-away-goal" style="background:${ac[0]};color:${at}">${a}</span><span class="tv-team tv-away" style="${teamStyle(ac,at)}">${esc(abbr(away))}</span><span class="tv-time">${m.minute<45?'1T':m.minute===45?'INT':m.minute<90?'2T':'FIM'} ${String(m.minute%45).padStart(2,'0')}:00</span></div>`;
+ el.innerHTML=`<div class="tv-comp">${esc(comp)}</div><div class="tv-score tv-reference-score"><span class="tv-time">${m.minute<45?'1T':m.minute===45?'INT':m.minute<90?'2T':'FIM'} ${String(m.minute%45).padStart(2,'0')}:00</span><div class="tv-side tv-home-side" style="--club-main:${hc[0]};--club-detail:${hc[1]};--club-text:${ht}"><span class="tv-team">${esc(abbr(home))}</span><b class="tv-goals">${h}</b></div><div class="tv-side tv-away-side" style="--club-main:${ac[0]};--club-detail:${ac[1]};--club-text:${at}"><b class="tv-goals">${a}</b><span class="tv-team">${esc(abbr(away))}</span></div></div>`;
 }
 function updateLiveUI(){let m=liveMatch;if(!m)return;renderMatchScoreboard();$('liveStatus').textContent=m.done?'Encerrada':m.minute===45?'Intervalo':m.minute===0?'Aquecimento':m.minute<45?'Primeiro tempo':'Segundo tempo';renderLiveEventStrip();renderLiveStandings();let st=m.stats,homeName=m.fixture.home;let vals=[['Posse de bola',st.pos[0],st.pos[1],'%'],['Finalizações',st.shots[0],st.shots[1],''],['No alvo',st.on[0],st.on[1],''],['Escanteios',st.corners[0],st.corners[1],''],['Faltas',st.fouls[0],st.fouls[1],''],['Amarelos',st.yellow[0],st.yellow[1],''],['Vermelhos',st.red[0],st.red[1],''],['Impedimentos',st.offsides[0],st.offsides[1],'']];$('matchStats').innerHTML=vals.map(v=>`<div class="match-stat"><b>${v[1]}${v[3]}</b><div><div class="small" style="text-align:center">${v[0]}</div><div class="bar"><i style="width:${Math.max(3,v[1]/Math.max(1,v[1]+v[2])*100)}%"></i></div></div><b>${v[2]}${v[3]}</b></div>`).join('');$('nextSegment').textContent=m.done?'Partida encerrada':m.minute===45?'Ajuste a equipe no intervalo':m.minute===0?'Iniciar partida':'Avançar 1 minuto';$('nextSegment').disabled=m.done||m.minute===45;if($('halftimePanel'))$('halftimePanel').classList.toggle('hidden',m.minute!==45||m.done);if($('autoMatchBtn'))$('autoMatchBtn').disabled=m.done}
 function updateHalfTimeOptions(){let m=liveMatch,c=current();if(!m||!c)return;let on=m.xi.map(id=>c.squad.find(p=>p.id===id)).filter(Boolean),off=m.bench.map(id=>c.squad.find(p=>p.id===id)).filter(Boolean);$('halfOut').innerHTML=on.map(p=>`<option value="${esc(p.id)}">${esc(p.name)} · ${p.pos}</option>`).join('');$('halfIn').innerHTML=off.map(p=>`<option value="${esc(p.id)}">${esc(p.name)} · ${p.pos}</option>`).join('');$('halfSubsUsed').textContent=`${m.subs}/5 substituições · ${m.stops}/3 janelas utilizadas`;$('halftimePanel').querySelector('button').disabled=m.subs>=5||!off.length||m.stops>=3}
@@ -1164,7 +1165,32 @@ init();
 .score-preview-bold .score-numbers{font-size:clamp(32px,5vw,48px)}
 .score-preview-bold .score-clock{background:#17202b;color:#fff}
 .score-extra{display:flex;justify-content:center;gap:8px;flex-wrap:wrap;font-size:9px;font-weight:900;letter-spacing:1px}
-</style></body></html>
+</style>
+<style>
+/* PACOTE 2.32 — placar fiel à referência, faixas de play-off e layout de leitura */
+#matchLive .live-score-visual .tv-reference-score{position:relative;display:flex!important;align-items:stretch;justify-content:center;gap:0;width:max-content;max-width:100%;margin:30px auto 8px;padding:0;min-height:66px;filter:drop-shadow(0 5px 8px #0006);overflow:visible}
+#matchLive .live-score-visual .tv-reference-score .tv-time{position:absolute;z-index:3;left:50%;top:-31px;transform:translateX(-50%);display:block;background:#080808;color:#fff;padding:5px 13px;border-radius:1px;font-size:clamp(15px,1.5vw,23px);font-weight:1000;line-height:1.15;white-space:nowrap;letter-spacing:.02em}
+#matchLive .live-score-visual .tv-side{display:flex;align-items:stretch;min-width:0;background:var(--club-main);color:var(--club-text);border-bottom:5px solid var(--club-detail);}
+#matchLive .live-score-visual .tv-home-side{border-right:2px solid #ffffff45}
+#matchLive .live-score-visual .tv-away-side{border-left:2px solid #00000035}
+#matchLive .live-score-visual .tv-reference-score .tv-team{display:flex;align-items:center;justify-content:center;background:transparent!important;color:var(--club-text)!important;border:0!important;padding:10px clamp(12px,1.6vw,24px);font-size:clamp(20px,2.5vw,34px);font-weight:1000;letter-spacing:.04em;min-width:clamp(68px,8vw,110px)}
+#matchLive .live-score-visual .tv-reference-score .tv-goals{display:flex;align-items:center;justify-content:center;background:transparent!important;color:var(--club-text)!important;padding:6px clamp(10px,1.4vw,20px);min-width:clamp(44px,5vw,68px);font-size:clamp(32px,3.7vw,52px);font-weight:1000;line-height:1}
+#matchLive .live-score-visual .tv-reference-score .tv-home-side .tv-team{order:0}
+#matchLive .live-score-visual .tv-reference-score .tv-home-side .tv-goals{order:1}
+#matchLive .live-score-visual .tv-reference-score .tv-away-side .tv-goals{order:0}
+#matchLive .live-score-visual .tv-reference-score .tv-away-side .tv-team{order:1}
+.zone-key.playoff,.zone-pill.playoff{background:#6044a8;color:#fff;border-color:#a78bfa}
+.rank-playoff .rank-cell{color:#c4a7ff!important}
+.live-playoff{background:#7652c52b!important;outline:1px solid #a78bfa55}
+.live-table td:last-child{font-size:9px;font-weight:900;color:#c4a7ff;white-space:nowrap}
+@media(max-width:899px){#matchLive .live-score-visual .tv-reference-score .tv-team{font-size:18px;padding:8px 10px;min-width:55px}#matchLive .live-score-visual .tv-reference-score .tv-goals{font-size:29px;padding:6px 9px}}
+</style>
+<script>
+/* Recalibra uma única vez a força-base cadastrada, preservando elencos e saves. */
+(function(){try{const key='onzeIdeal_nova_fundacao_v1',raw=localStorage.getItem(key);if(!raw)return;const d=JSON.parse(raw);if(!d.meta)d.meta={};if((d.meta.strengthCalibration||0)<1){Object.values(d.clubs||{}).forEach(cl=>{const real=REAL_STRENGTH[cl.name];if(Number.isFinite(real))cl.strength=Math.round(48+(real-48)*.88);});d.meta.strengthCalibration=1;localStorage.setItem(key,JSON.stringify(d));}}catch(e){console.warn('Calibração de força adiada:',e)}})();
+</script>
+
+</body></html>
 
 <style>
 /* PACOTE 2.27 — central da partida: placar em destaque e painel lateral */
@@ -1244,4 +1270,21 @@ init();
  .match-modal .match-shell,.season-review-shell{width:100%;max-width:none;height:auto;max-height:none;overflow:visible;margin:0}
  .season-review-grid{grid-template-columns:1fr}
 }
+</style>
+<style>
+/* PACOTE 2.31 — intervalo no painel de comandos, sem sobreposição ou posição solta */
+@media (min-width:900px){
+ #matchLive:not(.hidden){grid-template-areas:"score score" "log subs" "stats actions";grid-template-columns:minmax(0,1.45fr) minmax(300px,.9fr);align-content:start;}
+ #matchLive>#halftimePanel{grid-area:subs!important;align-self:stretch;margin:0!important;min-width:0;position:relative;z-index:2;display:flex;flex-direction:column;justify-content:center;}
+ #matchLive>#halftimePanel.hidden{display:none!important}
+ #matchLive>#subPanel{grid-area:subs!important}
+ #matchLive>#subPanel.hidden{display:none!important}
+ #matchLive:has(>#halftimePanel:not(.hidden))>#subPanel{display:none!important}
+ #matchLive>#halftimePanel .halftime-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+ #matchLive>#halftimePanel .actions{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0 0}
+ #matchLive>#halftimePanel .actions .btn{flex:1 1 150px;width:auto;padding:10px}
+ #matchLive>#halftimePanel h3{margin:0 0 6px}
+ #matchLive>#halftimePanel p{margin:5px 0;font-size:11px}
+}
+@media(max-width:899px){#matchLive>#halftimePanel{order:3;width:100%}}
 </style>
