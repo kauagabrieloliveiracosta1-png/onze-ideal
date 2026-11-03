@@ -1151,3 +1151,31 @@ init();
 .score-preview-bold .score-clock{background:#17202b;color:#fff}
 .score-extra{display:flex;justify-content:center;gap:8px;flex-wrap:wrap;font-size:9px;font-weight:900;letter-spacing:1px}
 </style></body></html>
+
+<style>
+/* PACOTE 2.27 — central da partida: placar em destaque e painel lateral */
+@media (min-width:900px){
+ #matchLive:not(.hidden){display:grid;grid-template-columns:minmax(0,1.45fr) minmax(280px,.85fr);grid-template-areas:"score score" "half half" "log subs" "stats actions";gap:8px;align-content:start;align-items:stretch;}
+ #matchLive>.live-score-stage{grid-area:score;min-height:132px;margin:0;padding:15px 18px;display:flex;flex-direction:column;justify-content:center;gap:7px;background:linear-gradient(120deg,#103f70,#0b6a68);border:1px solid #4b9cc1;box-shadow:0 8px 24px #0003}
+ #matchLive .live-score-visual{min-height:84px;gap:7px}
+ #matchLive .live-score-visual .tv-comp{font-size:12px;letter-spacing:.16em}
+ #matchLive .live-score-visual .tv-score{min-height:66px;filter:drop-shadow(0 5px 8px #0005)}
+ #matchLive .live-score-visual .tv-team{font-size:clamp(18px,2vw,27px);padding:13px 20px;min-width:90px}
+ #matchLive .live-score-visual .tv-goals{font-size:clamp(27px,3.3vw,42px);padding:12px 24px;min-width:130px}
+ #matchLive .live-score-visual .tv-time{font-size:17px;padding:10px 13px}
+ #matchLive #liveStatus{font-size:13px;font-weight:800;letter-spacing:.04em}
+ #matchLive>#halftimePanel{grid-area:half;margin:0}
+ #matchLive>.panel:has(#matchLog){grid-area:log;margin:0;min-width:0}
+ #matchLive>.panel:has(#matchStats){grid-area:stats;margin:0;min-width:0}
+ #matchLive>.panel:has(#subOut){grid-area:subs;margin:0;min-width:0;display:flex;flex-direction:column;justify-content:flex-start}
+ #matchLive>.actions{grid-area:actions;align-self:end;display:flex;flex-direction:column;gap:8px;margin:0 0 0 auto;width:100%;padding-top:0}
+ #matchLive>.actions label{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:12px;background:#102b40;border:1px solid #315b7d;border-radius:9px}
+ #matchLive>.actions label select{min-width:100px;padding:8px;background:#091a2b;color:white;border:1px solid #416786;border-radius:7px}
+ #matchLive>.actions .btn{width:100%;padding:12px}
+ #matchLog{max-height:160px;overflow:auto}
+ #matchStats{display:grid;grid-template-columns:1fr 1fr;column-gap:14px}
+ #matchStats .match-stat{grid-template-columns:32px minmax(0,1fr) 32px;font-size:11px;margin:5px 0}
+ #matchLive>.panel h3{font-size:15px;margin-bottom:8px}
+}
+@media (max-width:899px){#matchLive:not(.hidden){display:flex;flex-direction:column}.live-score-stage{min-height:100px}.live-score-visual .tv-team{font-size:16px}.live-score-visual .tv-goals{font-size:23px}}
+</style>
