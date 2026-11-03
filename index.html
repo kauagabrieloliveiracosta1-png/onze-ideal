@@ -656,7 +656,7 @@ html,body{width:100%;height:100%;margin:0;overflow:hidden!important}
 
 
 
-/* PACOTE 2.47 — correção do painel vazio e remapeamento responsivo real */
+/* PACOTE 2.48 — correção do painel vazio e remapeamento responsivo real */
 /* Neutraliza os limites rígidos introduzidos pelas regras antigas de rolagem. */
 @media (min-width:801px){
  html,body{height:auto!important;min-height:100%!important;overflow-x:hidden!important;overflow-y:auto!important}
@@ -696,29 +696,47 @@ html,body{width:100%;height:100%;margin:0;overflow:hidden!important}
  #career .content>.tab.active{display:block!important;height:auto!important;max-height:none!important;overflow:visible!important}
 }
 
+
+/* PACOTE 2.48 — novo menu principal inspirado na referência enviada */
+body:has(#home.active){background:#041719!important;color:#f5f8f4!important}
+body:has(#home.active) .wrap{width:100%!important;max-width:none!important;min-height:100vh!important;padding:0!important;overflow:visible!important}
+#home.screen.active{display:block!important;width:100%!important;min-height:100vh!important;height:auto!important;overflow:visible!important;padding:0!important}
+#home .stadium-home{position:relative;isolation:isolate;min-height:100vh;overflow:hidden;padding:0 clamp(18px,5vw,76px) 22px;background:radial-gradient(ellipse at 50% 100%,rgba(113,190,54,.8),transparent 42%),linear-gradient(180deg,#04151b 0%,#06262a 48%,#123c25 76%,#285b28 100%);}
+#home .stadium-home:before{content:"";position:absolute;z-index:-1;inset:34% -15% -35%;background:repeating-linear-gradient(165deg,transparent 0 85px,rgba(210,255,190,.12) 87px 89px,transparent 91px 170px),linear-gradient(90deg,transparent 49.7%,rgba(255,255,255,.55) 50%,transparent 50.3%);transform:perspective(500px) rotateX(24deg);transform-origin:top;}
+#home .stadium-nav{height:88px;display:flex;align-items:center;justify-content:space-between;border-radius:0 0 22px 22px;background:rgba(3,18,25,.78);padding:0 clamp(18px,3vw,46px);border:1px solid rgba(180,220,190,.12)}
+#home .stadium-logo{display:flex;align-items:center;gap:10px;font-size:25px;font-weight:950;font-style:italic;line-height:.85;color:#fff}#home .stadium-logo b{display:block;color:#b9ed48;font-size:23px}#home .stadium-logo small{display:block;font-size:8px;letter-spacing:2px;color:#a9bac0;font-style:normal;margin-top:8px}.logo-ball{color:#b9ed48;font-size:34px}
+#home .stadium-links{display:flex;gap:clamp(12px,2.4vw,38px)}#home .stadium-links button,#home .stadium-menu-icon{background:transparent;border:0;color:#e7f0e9;font-size:10px;letter-spacing:2px;font-weight:850;padding:10px}#home .stadium-menu-icon{font-size:22px}
+#home .stadium-main{width:min(100%,1120px);margin:0 auto;padding:clamp(34px,6vh,70px) 0 20px}#home .stadium-heading{text-align:center;margin-bottom:38px}#home .stadium-heading>span{color:#b9ed48;font-size:10px;letter-spacing:4px;font-weight:900}#home .stadium-heading h1{font-size:clamp(30px,4vw,48px);margin:8px 0 4px;color:#fff}#home .stadium-heading p{margin:0;color:#c3d2c7;font-weight:700}
+#home .stadium-cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}#home .stadium-card{position:relative;min-height:clamp(250px,37vh,360px);border:2px solid #b9ed48;border-radius:28px;background:linear-gradient(135deg,rgba(10,32,42,.97),rgba(7,24,35,.94));color:white;text-align:left;padding:clamp(22px,4vw,48px);overflow:hidden;display:flex;flex-direction:column;justify-content:space-between;box-shadow:0 0 22px rgba(175,239,55,.18);transition:transform .2s,box-shadow .2s}#home .stadium-card:after{content:"";position:absolute;width:220px;height:220px;right:-80px;bottom:-100px;border:35px solid rgba(185,237,72,.12);transform:rotate(45deg);pointer-events:none}#home .stadium-card:hover{transform:translateY(-4px);box-shadow:0 0 30px rgba(185,237,72,.35)}#home .card-kicker{font-size:9px;letter-spacing:3px;color:#aebfc0;font-weight:900}#home .card-symbol{position:absolute;right:30px;top:22px;color:#c8f45b;font-size:35px}#home .stadium-card strong{font-size:clamp(34px,5vw,64px);line-height:.98;color:#c4f34e;letter-spacing:-2px}#home .card-bottom{font-size:10px;letter-spacing:2px;color:#d9e5dc;font-weight:900}#home .card-bottom b{float:right;color:#c4f34e;font-size:20px}
+#home .stadium-editor-wrap{display:flex;flex-direction:column;align-items:center;margin:34px auto 0}#home .stadium-editor{border:0;border-radius:60px;background:#071923;color:white;padding:19px 34px;min-width:300px;font-size:22px;font-weight:900;box-shadow:0 12px 30px rgba(0,0,0,.28)}#home .stadium-editor span{color:#c4f34e;margin-right:12px}#home .stadium-editor b{margin-left:15px}#home .editor-options,#home .home-quick-links{display:none;gap:8px;padding:10px;background:#0b2029;border:1px solid #385443;border-radius:12px;margin-top:8px}#home .editor-options.open,#home .home-quick-links.open{display:flex}#home .editor-options button,#home .home-quick-links button{background:#17313a;color:#fff;border:1px solid #46614c;border-radius:8px;padding:10px 14px}#home .home-quick-links{position:absolute;z-index:5;right:clamp(18px,5vw,76px);top:76px}#home .stadium-tools{display:flex;justify-content:center;gap:12px;margin-top:18px;color:#d6e6d7}#home .stadium-tools button{background:none;border:0;color:#e6f4df;text-decoration:underline;font-size:12px}#home .stadium-footer{text-align:center;padding:25px 0 12px;color:#d4e2d2;font-size:9px;letter-spacing:3px}#home .stadium-footer span{color:#c4f34e;padding:0 8px}
+#home .home-release-notes{width:min(100%,1120px);margin:16px auto 0;display:grid;grid-template-columns:.7fr 1.6fr 1fr;gap:12px;background:rgba(3,18,25,.7);border:1px solid rgba(190,230,180,.15);border-radius:14px;padding:14px;color:#dce8dc}#home .home-release-notes h3{margin:0 0 6px;font-size:13px}#home .home-release-notes p,#home .home-release-notes li{font-size:10px;color:#b9c9bb}#home .home-release-notes ul{margin:4px 0;padding-left:17px}#home .home-release-version strong{display:block;font-size:25px;color:#c4f34e}
+@media(max-width:700px){#home .stadium-nav{height:72px;padding:0 14px}#home .stadium-links{display:none}#home .stadium-cards{grid-template-columns:1fr;gap:13px}#home .stadium-card{min-height:210px}#home .stadium-main{padding-top:30px}#home .home-release-notes{grid-template-columns:1fr}#home .stadium-editor{min-width:0;width:min(100%,320px)}#home .editor-options.open{flex-wrap:wrap;justify-content:center}}
+
 </style>
 </head>
 <body><div class="wrap">
-<header class="top"><div class="logo">OI</div><div><div class="brand">ONZE IDEAL <span class="pill">PACOTE 2.47</span></div><div class="sub">Simulador de gestão de futebol • Elencos e Identidade dos Clubes</div></div></header>
+<header class="top"><div class="logo">OI</div><div><div class="brand">ONZE IDEAL <span class="pill">PACOTE 2.48</span></div><div class="sub">Simulador de gestão de futebol • Elencos e Identidade dos Clubes</div></div></header>
 
 <section id="home" class="screen active">
- <div class="minimal-menu">
-  <div class="minimal-brand"><div class="minimal-mark">OI</div><div><div class="minimal-name">ONZE IDEAL</div><div class="minimal-season">FOOTBALL MANAGER · 26/27</div></div></div>
-  <div class="minimal-hero"><div class="eyebrow">SUA HISTÓRIA. SEU TIME.</div><h1>O próximo capítulo<br>começa agora.</h1><p>Construa seu projeto. Faça escolhas. Entre para a história.</p></div>
-  <div class="minimal-actions"><button class="minimal-primary" onclick="go('setup')">NOVA CARREIRA <span>↗</span></button>
-   <button class="minimal-secondary" onclick="showSaves()"><span>CARREGAR JOGO</span><span>→</span></button>
-   <button class="minimal-secondary" onclick="go('editor');renderEditor()"><span>EDITOR</span><span>→</span></button>
-   <button class="minimal-secondary" onclick="go('settings')"><span>CONFIGURAÇÕES</span><span>→</span></button>
-   <button class="minimal-secondary" onclick="go('scores');renderScores()"><span>ESTÚDIO DE PLACARES</span><span>→</span></button>
-  </div>
-  <div class="minimal-tools"><button class="text-action" onclick="exportBackup()">Exportar backup</button><span>·</span><button class="text-action" onclick="$('importFile').click()">Importar backup</button><input id="importFile" type="file" accept="application/json" class="hidden" onchange="importBackup(event)"></div>
-  <div id="homeSaves"></div>
-  <section class="home-release-notes" aria-label="Versão e notas da atualização">
-   <div class="home-release-version"><span>VERSÃO ATUAL</span><strong>2.46</strong></div>
-   <div class="home-release-current"><h3>Notas da atualização 2.47</h3><ul><li>Correção da área de conteúdo da carreira, que podia ficar vazia em janelas com largura intermediária ou zoom do navegador.</li><li>Menu da carreira reorganizado em grade responsiva, mantendo todos os destinos visíveis sem ocultar a área da aba selecionada.</li><li>Remapeamento widescreen aplicado também ao menu principal, nova carreira, editor, placares e configurações.</li><li>Layout adaptativo por largura real disponível, sem exigir monitor acima de 1.100 px.</li></ul></div>
-   <div class="home-release-next"><span class="home-release-tag">PRÓXIMA ATUALIZAÇÃO</span><h3>Foco no modo SAF</h3><p>O próximo ciclo de desenvolvimento será dedicado ao modo <b>Virar SAF</b>, com mais opções e consequências para a gestão do clube.</p></div>
-  </section>
-  <div class="minimal-footer">ONZE IDEAL 26/27 <span>•</span> FOOTBALL MANAGER</div>
+ <div class="stadium-home">
+  <header class="stadium-nav">
+   <div class="stadium-logo"><span class="logo-ball">◉</span><span>Onze <b>Ideal</b><small>FOOTBALL MANAGER 26/27</small></span></div>
+   <nav class="stadium-links"><button onclick="go('scores');renderScores()">PLACARES</button><button onclick="go('settings')">AJUSTES</button><button onclick="exportBackup()">BACKUP</button><button onclick="$('importFile').click()">IMPORTAR</button></nav>
+   <button class="stadium-menu-icon" onclick="document.getElementById('homeQuickLinks').classList.toggle('open')" aria-label="Abrir opções">☰</button>
+  </header>
+  <div id="homeQuickLinks" class="home-quick-links"><button onclick="go('editor');renderEditor()">Modo Editor</button><button onclick="go('settings')">Configurações</button><button onclick="go('scores');renderScores()">Estúdio de placares</button></div>
+  <main class="stadium-main">
+   <div class="stadium-heading"><span>O SEU CLUBE. A SUA HISTÓRIA.</span><h1>Manager pronto</h1><p>Football Management · Temporada 2026/27</p></div>
+   <div class="stadium-cards">
+    <button class="stadium-card new-career" onclick="go('setup')"><span class="card-kicker">COMECE UMA NOVA JORNADA</span><span class="card-symbol">◇</span><strong>Nova<br>Carreira</strong><span class="card-bottom">CRIAR CARREIRA <b>↗</b></span></button>
+    <button class="stadium-card load-career" onclick="showSaves()"><span class="card-kicker">CONTINUE DE ONDE PAROU</span><span class="card-symbol">◆</span><strong>Carregar<br>Jogo</strong><span class="card-bottom">ABRIR MEUS SAVES <b>→</b></span></button>
+   </div>
+   <div class="stadium-editor-wrap"><button class="stadium-editor" onclick="document.getElementById('editorOptions').classList.toggle('open')"><span>⚙</span> Modo Editor <b>⌄</b></button><div id="editorOptions" class="editor-options"><button onclick="go('editor');renderEditor()">Abrir Editor</button><button onclick="go('settings')">Configurações</button><button onclick="go('scores');renderScores()">Estúdio de placares</button></div></div>
+   <div class="stadium-tools"><button onclick="exportBackup()">Exportar backup</button><span>·</span><button onclick="$('importFile').click()">Importar backup</button><input id="importFile" type="file" accept="application/json" class="hidden" onchange="importBackup(event)"></div>
+   <div id="homeSaves"></div>
+  </main>
+  <footer class="stadium-footer">ONZE IDEAL 26/27 <span>•</span> CONSTRUA SEU LEGADO</footer>
+  <section class="home-release-notes" aria-label="Versão e notas da atualização"><div class="home-release-version"><span>VERSÃO ATUAL</span><strong>2.48</strong></div><div class="home-release-current"><h3>Notas da atualização 2.48</h3><ul><li>Novo menu principal inspirado na referência visual enviada.</li><li>Acesso destacado para Nova Carreira e Carregar Jogo.</li><li>Modo Editor e ferramentas secundárias preservados.</li></ul></div><div class="home-release-next"><span class="home-release-tag">ONZE IDEAL</span><h3>Seu clube, suas decisões</h3><p>Assuma o comando e construa sua história no futebol.</p></div></section>
  </div>
 </section>
 
@@ -1509,7 +1527,7 @@ html,body{overflow-x:hidden}
 #career .layout.wide-tab>.side::-webkit-scrollbar-thumb{background:#568b67;border-radius:8px}
 @media(max-width:899px){.screen.active:not(#career){max-height:100dvh}#career.screen.active{height:100dvh;max-height:100dvh}#career>.layout{flex:1 1 auto;min-height:0;height:auto;overflow:hidden}#career>.layout>.content{height:100%;max-height:100%;overflow-x:hidden;overflow-y:auto;padding-bottom:24px}#career .layout.wide-tab>.content{max-height:100%;overflow-y:auto}}
 
-/* PACOTE 2.47 — correção estrutural da rolagem: a tela ativa rola como um todo */
+/* PACOTE 2.48 — correção estrutural da rolagem: a tela ativa rola como um todo */
 html,body{min-height:100%;overflow-x:hidden}
 body{overflow-y:auto}
 .wrap{min-height:100dvh;height:auto;overflow:visible}
@@ -1539,7 +1557,7 @@ html::-webkit-scrollbar-thumb,body::-webkit-scrollbar-thumb,.wrap::-webkit-scrol
 }
 
 
-/* PACOTE 2.47 — remapeamento dos menus para widescreen (16:9) */
+/* PACOTE 2.48 — remapeamento dos menus para widescreen (16:9) */
 @media (min-width:1100px) and (min-aspect-ratio: 4/3){
  .wrap{max-width: min(98vw,1900px);padding:clamp(12px,1.2vw,22px)}
  .top{padding:5px 0 12px}
