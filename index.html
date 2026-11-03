@@ -656,7 +656,7 @@ html,body{width:100%;height:100%;margin:0;overflow:hidden!important}
 
 
 
-/* PACOTE 2.49 — correção do painel vazio e remapeamento responsivo real */
+/* PACOTE 2.50 — correção do painel vazio e remapeamento responsivo real */
 /* Neutraliza os limites rígidos introduzidos pelas regras antigas de rolagem. */
 @media (min-width:801px){
  html,body{height:auto!important;min-height:100%!important;overflow-x:hidden!important;overflow-y:auto!important}
@@ -697,7 +697,7 @@ html,body{width:100%;height:100%;margin:0;overflow:hidden!important}
 }
 
 
-/* PACOTE 2.49 — novo menu principal inspirado na referência enviada */
+/* PACOTE 2.50 — novo menu principal inspirado na referência enviada */
 body:has(#home.active){background:#041719!important;color:#f5f8f4!important}
 body:has(#home.active) .wrap{width:100%!important;max-width:none!important;min-height:100vh!important;padding:0!important;overflow:visible!important}
 #home.screen.active{display:block!important;width:100%!important;min-height:100vh!important;height:auto!important;overflow:visible!important;padding:0!important}
@@ -714,38 +714,53 @@ body:has(#home.active) .wrap{width:100%!important;max-width:none!important;min-h
 
 
 
-/* PACOTE 2.49 — menu principal PC em tela cheia, sem menus recolhidos */
+/* PACOTE 2.50 — reorganização definitiva do menu principal para PC */
 @media (min-width:701px){
  html:has(#home.active),body:has(#home.active){width:100%;height:100%;min-height:100%;margin:0;overflow:hidden!important}
- body:has(#home.active) .wrap{width:100%;height:100dvh;min-height:0;max-width:none;margin:0;padding:0!important;overflow:hidden!important}
- body:has(#home.active) #home.screen.active{display:block!important;width:100%;height:100dvh;min-height:0;max-height:100dvh;margin:0;overflow:hidden!important}
- #home .stadium-home{box-sizing:border-box;width:100%;height:100dvh;min-height:0;padding:0 clamp(24px,5vw,84px) 12px;display:grid;grid-template-rows:76px minmax(0,1fr) 22px auto;gap:8px;overflow:hidden}
- #home .stadium-nav{height:76px;min-height:76px;box-sizing:border-box}
+ body:has(#home.active) .wrap{width:100%!important;height:100dvh!important;min-height:0!important;max-width:none!important;margin:0!important;padding:0!important;overflow:hidden!important}
+ body:has(#home.active) #home.screen.active{display:block!important;box-sizing:border-box;width:100%!important;height:100dvh!important;min-height:0!important;max-height:100dvh!important;margin:0!important;padding:0!important;overflow:hidden!important}
+ #home .stadium-home{box-sizing:border-box;display:grid!important;width:100%;height:100dvh;min-height:0;grid-template-rows:72px minmax(0,1fr) 20px 104px;gap:8px;padding:0 clamp(24px,4vw,64px) 12px;overflow:hidden}
+ #home .stadium-nav{box-sizing:border-box;width:100%;height:72px;min-height:72px;padding:0 clamp(18px,3vw,42px)}
+ #home .stadium-links{display:flex!important;align-items:center;gap:clamp(12px,2vw,30px)}
  #home .stadium-menu-icon,#home .home-quick-links{display:none!important}
- #home .stadium-main{box-sizing:border-box;width:min(100%,1500px);height:100%;min-height:0;margin:0 auto;padding:clamp(8px,1.8vh,20px) 0 0;display:grid;grid-template-rows:auto minmax(190px,1fr) auto auto;align-content:stretch;gap:clamp(8px,1.4vh,16px)}
- #home .stadium-heading{margin:0;text-align:center;align-self:center}
- #home .stadium-heading>span{font-size:10px}
- #home .stadium-heading h1{font-size:clamp(27px,3.1vw,43px);margin:4px 0}
- #home .stadium-heading p{font-size:12px}
- #home .stadium-cards{height:100%;min-height:0;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(14px,2vw,28px)}
- #home .stadium-card{box-sizing:border-box;width:100%;height:100%;min-height:190px;padding:clamp(20px,3vw,42px)}
- #home .stadium-card strong{font-size:clamp(34px,4.5vw,64px);line-height:1.02}
- #home .stadium-editor-wrap{display:grid;grid-template-columns:minmax(210px,.65fr) minmax(0,2fr);align-items:center;gap:12px;margin:0 auto;width:min(100%,1100px)}
- #home .stadium-editor{width:100%;min-width:0;min-height:54px;padding:12px 20px;font-size:18px;cursor:default}
- #home .editor-options{display:flex!important;flex-wrap:nowrap;justify-content:center;gap:8px;margin:0;padding:8px;background:rgba(5,24,31,.82)}
- #home .editor-options button{flex:1 1 0;min-height:42px;white-space:nowrap;font-size:12px;cursor:pointer}
- #home .stadium-tools{margin:0;align-items:center;justify-content:center;min-height:24px}
- #home .stadium-footer{padding:0;text-align:center;align-self:center}
- #home .home-release-notes{box-sizing:border-box;width:min(100%,1500px);margin:0 auto;grid-template-columns:.65fr 1.7fr 1fr;gap:14px;padding:10px 16px;min-height:78px;max-height:108px;overflow:hidden}
- #home .home-release-notes h3{font-size:12px;margin-bottom:3px}
- #home .home-release-notes p,#home .home-release-notes li{font-size:9px;line-height:1.25}
+ #home .stadium-main{box-sizing:border-box;display:grid!important;width:min(1120px,100%);height:100%;min-height:0;margin:0 auto;padding:clamp(8px,1.5vh,18px) 0 0;grid-template-rows:auto minmax(170px,1fr) auto auto min-content;gap:clamp(8px,1.3vh,14px);align-content:stretch}
+ #home .stadium-heading{margin:0!important;text-align:center;align-self:center}
+ #home .stadium-heading>span{font-size:10px;letter-spacing:3px}
+ #home .stadium-heading h1{font-size:clamp(28px,3vw,42px);line-height:1.05;margin:4px 0}
+ #home .stadium-heading p{font-size:12px;margin:0}
+ #home .stadium-cards{display:grid!important;width:100%;height:100%;min-height:170px;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(14px,2vw,24px)}
+ #home .stadium-card{box-sizing:border-box;display:flex!important;width:100%;height:100%;min-width:0;min-height:170px;padding:clamp(18px,2.5vw,34px);border-radius:24px}
+ #home .stadium-card strong{display:block;font-size:clamp(32px,3.5vw,54px);line-height:1.02;letter-spacing:-1.5px;overflow-wrap:normal}
+ #home .card-kicker{font-size:9px;letter-spacing:2px}
+ #home .card-bottom{font-size:9px;letter-spacing:1.5px}
+ #home .stadium-editor-wrap{display:grid!important;width:min(900px,100%);grid-template-columns:210px minmax(0,1fr);align-items:center;gap:12px;margin:0 auto!important}
+ #home .stadium-editor{box-sizing:border-box;width:100%;min-width:0;min-height:48px;padding:10px 16px;font-size:17px;white-space:nowrap}
+ #home .editor-options{display:flex!important;flex-wrap:nowrap;justify-content:stretch;gap:8px;margin:0;padding:0;background:transparent;border:0}
+ #home .editor-options button{flex:1 1 0;min-width:0;min-height:42px;padding:8px 10px;white-space:nowrap;font-size:11px}
+ #home .stadium-tools{display:flex!important;justify-content:center;align-items:center;margin:0;min-height:20px}
+ #home #homeSaves:empty{display:none!important}
+ #home .stadium-footer{align-self:center;padding:0;margin:0;text-align:center;font-size:9px}
+ #home .home-release-notes{box-sizing:border-box;display:grid!important;width:min(1120px,100%);height:100%;min-height:0;max-height:none;margin:0 auto;padding:10px 14px;grid-template-columns:.65fr 1.7fr 1fr;gap:14px;overflow:hidden}
+ #home .home-release-notes h3{font-size:11px;line-height:1.2;margin:0 0 4px}
+ #home .home-release-notes p,#home .home-release-notes li{font-size:9px;line-height:1.25;margin-top:2px}
+ #home .home-release-notes ul{margin:2px 0;padding-left:15px}
  #home .home-release-version strong{font-size:22px}
+}
+@media (min-width:701px) and (max-height:650px){
+ #home .stadium-home{grid-template-rows:60px minmax(0,1fr) 16px 78px;gap:5px;padding-bottom:6px}
+ #home .stadium-nav{height:60px;min-height:60px}
+ #home .stadium-main{padding-top:4px;grid-template-rows:auto minmax(145px,1fr) auto auto min-content;gap:5px}
+ #home .stadium-card{min-height:145px;padding:14px 22px}
+ #home .stadium-card strong{font-size:clamp(28px,3vw,42px)}
+ #home .stadium-editor{min-height:40px;padding:7px 12px;font-size:15px}
+ #home .editor-options button{min-height:34px;padding:5px 8px;font-size:10px}
+ #home .home-release-notes{padding:6px 10px}
 }
 
 </style>
 </head>
 <body><div class="wrap">
-<header class="top"><div class="logo">OI</div><div><div class="brand">ONZE IDEAL <span class="pill">PACOTE 2.49</span></div><div class="sub">Simulador de gestão de futebol • Elencos e Identidade dos Clubes</div></div></header>
+<header class="top"><div class="logo">OI</div><div><div class="brand">ONZE IDEAL <span class="pill">PACOTE 2.50</span></div><div class="sub">Simulador de gestão de futebol • Elencos e Identidade dos Clubes</div></div></header>
 
 <section id="home" class="screen active">
  <div class="stadium-home">
@@ -766,7 +781,7 @@ body:has(#home.active) .wrap{width:100%!important;max-width:none!important;min-h
    <div id="homeSaves"></div>
   </main>
   <footer class="stadium-footer">ONZE IDEAL 26/27 <span>•</span> CONSTRUA SEU LEGADO</footer>
-  <section class="home-release-notes" aria-label="Versão e notas da atualização"><div class="home-release-version"><span>VERSÃO ATUAL</span><strong>2.49</strong></div><div class="home-release-current"><h3>Notas da atualização 2.49</h3><ul><li>Menu principal em tela cheia para PC, com todas as opções visíveis.</li><li>Atalhos do Editor, placares, ajustes e backup sempre acessíveis.</li><li>Cards de Nova Carreira e Carregar Jogo mantêm suas ações originais.</li></ul></div><div class="home-release-next"><span class="home-release-tag">ONZE IDEAL</span><h3>Seu clube, suas decisões</h3><p>Assuma o comando e construa sua história no futebol.</p></div></section>
+  <section class="home-release-notes" aria-label="Versão e notas da atualização"><div class="home-release-version"><span>VERSÃO ATUAL</span><strong>2.49</strong></div><div class="home-release-current"><h3>Notas da atualização 2.50</h3><ul><li>Menu principal reorganizado para PC, com cards inteiros e alinhamento central.</li><li>Editor, ajustes, placares e ferramentas alinhados em uma faixa única.</li><li>Layout ajustado para diferentes resoluções widescreen, sem cortes nos cards.</li></ul></div><div class="home-release-next"><span class="home-release-tag">ONZE IDEAL</span><h3>Seu clube, suas decisões</h3><p>Assuma o comando e construa sua história no futebol.</p></div></section>
  </div>
 </section>
 
@@ -1557,7 +1572,7 @@ html,body{overflow-x:hidden}
 #career .layout.wide-tab>.side::-webkit-scrollbar-thumb{background:#568b67;border-radius:8px}
 @media(max-width:899px){.screen.active:not(#career){max-height:100dvh}#career.screen.active{height:100dvh;max-height:100dvh}#career>.layout{flex:1 1 auto;min-height:0;height:auto;overflow:hidden}#career>.layout>.content{height:100%;max-height:100%;overflow-x:hidden;overflow-y:auto;padding-bottom:24px}#career .layout.wide-tab>.content{max-height:100%;overflow-y:auto}}
 
-/* PACOTE 2.49 — correção estrutural da rolagem: a tela ativa rola como um todo */
+/* PACOTE 2.50 — correção estrutural da rolagem: a tela ativa rola como um todo */
 html,body{min-height:100%;overflow-x:hidden}
 body{overflow-y:auto}
 .wrap{min-height:100dvh;height:auto;overflow:visible}
@@ -1587,7 +1602,7 @@ html::-webkit-scrollbar-thumb,body::-webkit-scrollbar-thumb,.wrap::-webkit-scrol
 }
 
 
-/* PACOTE 2.49 — remapeamento dos menus para widescreen (16:9) */
+/* PACOTE 2.50 — remapeamento dos menus para widescreen (16:9) */
 @media (min-width:1100px) and (min-aspect-ratio: 4/3){
  .wrap{max-width: min(98vw,1900px);padding:clamp(12px,1.2vw,22px)}
  .top{padding:5px 0 12px}
