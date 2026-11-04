@@ -990,10 +990,87 @@ body:has(#home.active) .wrap{width:100%!important;max-width:none!important;min-h
  #home .home-release-notes{height:76px;min-height:76px;max-height:76px;padding:7px 10px}
 }
 
+
+
+/* PACOTE 2.55 — correção estrutural global: rolagem natural em todas as telas PC */
+html,body{
+  width:100%!important; min-width:0!important; height:auto!important;
+  min-height:100%!important; overflow-x:hidden!important; overflow-y:auto!important;
+  overscroll-behavior-y:auto!important;
+}
+body{margin:0!important}
+.wrap{
+  width:100%!important; max-width:none!important; height:auto!important;
+  min-height:100dvh!important; max-height:none!important;
+  overflow:visible!important; padding:12px clamp(12px,2vw,30px)!important;
+}
+.screen,.screen.active,.screen:not(#home).active{
+  box-sizing:border-box!important; display:block!important; width:100%!important;
+  height:auto!important; min-height:0!important; max-height:none!important;
+  overflow:visible!important; overscroll-behavior: auto!important;
+}
+.screen.active{min-height:calc(100dvh - 24px)!important}
+/* Não criar áreas internas com scroll preso: o documento inteiro rola. */
+#career.screen.active{
+  display:block!important; height:auto!important; min-height:0!important;
+  max-height:none!important; overflow:visible!important; padding-bottom:28px!important;
+}
+#career>.layout{
+  display:grid!important; grid-template-columns:minmax(205px,235px) minmax(0,1fr)!important;
+  grid-template-rows:auto!important; align-items:start!important; gap:14px!important;
+  width:100%!important; height:auto!important; min-height:0!important;
+  max-height:none!important; overflow:visible!important;
+}
+#career>.layout>.side{
+  position:static!important; top:auto!important; align-self:start!important;
+  display:flex!important; flex-direction:column!important; flex-wrap:nowrap!important;
+  width:100%!important; height:auto!important; min-height:0!important;
+  max-height:none!important; overflow:visible!important; white-space:normal!important;
+  gap:6px!important;
+}
+#career>.layout>.side .btn{
+  display:flex!important; width:100%!important; min-width:0!important;
+  min-height:38px!important; height:auto!important; white-space:normal!important;
+  justify-content:flex-start!important; text-align:left!important; overflow-wrap:anywhere!important;
+}
+#career>.layout>.content{
+  display:block!important; width:100%!important; min-width:0!important;
+  height:auto!important; min-height:0!important; max-height:none!important;
+  overflow:visible!important; padding:0 2px 28px!important;
+}
+#career .content>.tab{display:none!important;height:auto!important;max-height:none!important;overflow:visible!important}
+#career .content>.tab.active{display:block!important;width:100%!important;min-width:0!important;height:auto!important;max-height:none!important;overflow:visible!important}
+/* Menus de entrada e formulários também acompanham a altura real do conteúdo. */
+#home.screen.active,#setup.screen.active{
+  width:100%!important;height:auto!important;min-height:100dvh!important;
+  max-height:none!important;overflow:visible!important;
+}
+#home .stadium-home{
+  width:100%!important;height:auto!important;min-height:100dvh!important;
+  max-height:none!important;grid-template-rows:auto auto auto!important;
+  overflow:visible!important;padding-bottom:20px!important;
+}
+#home .stadium-main{height:auto!important;min-height:0!important;overflow:visible!important}
+#home .stadium-cards{height:auto!important;min-height:0!important}
+#home .stadium-card{height:auto!important;min-height:210px!important}
+#home .home-release-notes{height:auto!important;min-height:76px!important;max-height:none!important;overflow:visible!important}
+#setup.screen.active{height:auto!important;min-height:100dvh!important;max-height:none!important;overflow:visible!important}
+#setup>.panel{margin-bottom:30px!important}
+#setup .btn.primary{margin-bottom:0!important}
+/* Não interferir nas rolagens próprias de tabelas, diálogos e modais. */
+.table-wrap{max-width:100%!important;overflow-x:auto!important;overflow-y:visible!important}
+.match-modal.open,.season-review-modal.open,.oi-dialog.open{overflow:auto!important}
+@media(max-width:900px){
+ #career>.layout{grid-template-columns:minmax(0,1fr)!important;grid-template-rows:auto auto!important}
+ #career>.layout>.side{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important}
+ #career>.layout>.side .side-label{grid-column:1/-1!important}
+ #home .stadium-cards{grid-template-columns:1fr!important}
+}
+
 </style>
 </head>
 <body><div class="wrap">
-<header class="top"><div class="logo">OI</div><div><div class="brand">ONZE IDEAL <span class="pill">PACOTE 2.54</span></div><div class="sub">Simulador de gestão de futebol • Elencos e Identidade dos Clubes</div></div></header>
+<header class="top"><div class="logo">OI</div><div><div class="brand">ONZE IDEAL <span class="pill">PACOTE 2.55</span></div><div class="sub">Simulador de gestão de futebol • Elencos e Identidade dos Clubes</div></div></header>
 
 <section id="home" class="screen active">
  <div class="stadium-home">
@@ -1014,7 +1091,7 @@ body:has(#home.active) .wrap{width:100%!important;max-width:none!important;min-h
    <div id="homeSaves"></div>
   </main>
   <footer class="stadium-footer">ONZE IDEAL 26/27 <span>•</span> CONSTRUA SEU LEGADO</footer>
-  <section class="home-release-notes" aria-label="Versão e notas da atualização"><div class="home-release-version"><span>VERSÃO ATUAL</span><strong>2.54</strong></div><div class="home-release-current"><h3>Notas da atualização 2.54</h3><ul><li>Menu principal redesenhado para 1366 × 768.</li><li>Cards Nova Carreira e Carregar Jogo com dimensões equilibradas.</li><li>Navegação superior e atalhos do editor alinhados e visíveis.</li><li>Painel de versão e novidades organizado no rodapé.</li></ul></div><div class="home-release-next"><span class="home-release-tag">ONZE IDEAL</span><h3>Seu clube, suas decisões</h3><p>Assuma o comando e construa sua história no futebol.</p></div></section>
+  <section class="home-release-notes" aria-label="Versão e notas da atualização"><div class="home-release-version"><span>VERSÃO ATUAL</span><strong>2.55</strong></div><div class="home-release-current"><h3>Notas da atualização 2.55</h3><ul><li>Correção global da rolagem em todas as telas.</li><li>Removidos bloqueios conflitantes de altura e overflow.</li><li>Área da carreira reorganizada para rolagem natural da página.</li><li>Menus e formulários podem crescer sem cortar conteúdo.</li></ul></div><div class="home-release-next"><span class="home-release-tag">ONZE IDEAL</span><h3>Seu clube, suas decisões</h3><p>Assuma o comando e construa sua história no futebol.</p></div></section>
  </div>
 </section>
 
