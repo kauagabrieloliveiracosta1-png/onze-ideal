@@ -656,7 +656,7 @@ html,body{width:100%;height:100%;margin:0;overflow:hidden!important}
 
 
 
-/* PACOTE 2.53 — correção do painel vazio e remapeamento responsivo real */
+/* PACOTE 2.54 — correção do painel vazio e remapeamento responsivo real */
 /* Neutraliza os limites rígidos introduzidos pelas regras antigas de rolagem. */
 @media (min-width:801px){
  html,body{height:auto!important;min-height:100%!important;overflow-x:hidden!important;overflow-y:auto!important}
@@ -697,7 +697,7 @@ html,body{width:100%;height:100%;margin:0;overflow:hidden!important}
 }
 
 
-/* PACOTE 2.53 — novo menu principal inspirado na referência enviada */
+/* PACOTE 2.54 — novo menu principal inspirado na referência enviada */
 body:has(#home.active){background:#041719!important;color:#f5f8f4!important}
 body:has(#home.active) .wrap{width:100%!important;max-width:none!important;min-height:100vh!important;padding:0!important;overflow:visible!important}
 #home.screen.active{display:block!important;width:100%!important;min-height:100vh!important;height:auto!important;overflow:visible!important;padding:0!important}
@@ -714,7 +714,7 @@ body:has(#home.active) .wrap{width:100%!important;max-width:none!important;min-h
 
 
 
-/* PACOTE 2.53 — reorganização definitiva do menu principal para PC */
+/* PACOTE 2.54 — reorganização definitiva do menu principal para PC */
 @media (min-width:701px){
  html:has(#home.active),body:has(#home.active){width:100%;height:100%;min-height:100%;margin:0;overflow:hidden!important}
  body:has(#home.active) .wrap{width:100%!important;height:100dvh!important;min-height:0!important;max-width:none!important;margin:0!important;padding:0!important;overflow:hidden!important}
@@ -758,7 +758,7 @@ body:has(#home.active) .wrap{width:100%!important;max-width:none!important;min-h
 }
 
 
-/* PACOTE 2.53 — centralização do menu principal e novo painel de criação de carreira (PC) */
+/* PACOTE 2.54 — centralização do menu principal e novo painel de criação de carreira (PC) */
 @media (min-width:701px){
  html:has(#home.active),body:has(#home.active){width:100%;height:100%;min-height:100%;overflow:hidden!important}
  body:has(#home.active) .wrap{width:100%!important;height:100dvh!important;min-height:0!important;max-width:none!important;margin:0!important;padding:0!important;overflow:hidden!important}
@@ -815,7 +815,7 @@ body:has(#home.active) .wrap{width:100%!important;max-width:none!important;min-h
 
 
 
-/* PACOTE 2.53 — adaptação consistente de TODAS as telas para navegador de PC */
+/* PACOTE 2.54 — adaptação consistente de TODAS as telas para navegador de PC */
 @media (min-width:701px){
  html,body{width:100%;min-width:0;min-height:100%;height:auto;overflow-x:hidden!important;overflow-y:auto!important}
  body{margin:0}
@@ -878,7 +878,7 @@ body:has(#home.active) .wrap{width:100%!important;max-width:none!important;min-h
 
 
 
-/* PACOTE 2.53 — novo menu principal: centralizado, claro e com todos os acessos visíveis (PC) */
+/* PACOTE 2.54 — novo menu principal: centralizado, claro e com todos os acessos visíveis (PC) */
 @media (min-width:701px){
  html:has(#home.active),body:has(#home.active){width:100%;height:100%;min-height:100%;margin:0;overflow:hidden!important;background:#03131b!important}
  body:has(#home.active) .wrap{width:100%!important;max-width:none!important;height:100dvh!important;min-height:0!important;margin:0!important;padding:0!important;overflow:hidden!important}
@@ -940,10 +940,60 @@ body:has(#home.active) .wrap{width:100%!important;max-width:none!important;min-h
  #home .editor-options button{font-size:9px;padding:7px 6px}
 }
 
+
+
+/* PACOTE 2.54 — composição definitiva do menu principal para 1366x768 */
+@media (min-width: 1100px){
+ html:has(#home.active),body:has(#home.active){width:100%;height:100%;min-height:100%;margin:0;overflow:hidden!important}
+ body:has(#home.active) .wrap{width:100%!important;height:100dvh!important;min-height:0!important;max-width:none!important;margin:0!important;padding:0!important;overflow:hidden!important}
+ body:has(#home.active) #home.screen.active{display:block!important;box-sizing:border-box;width:100%!important;height:100dvh!important;min-height:0!important;max-height:100dvh!important;margin:0!important;padding:0!important;overflow:hidden!important}
+ #home .stadium-home{box-sizing:border-box;display:grid!important;width:100%;height:100dvh;min-height:0;grid-template-rows:70px minmax(0,1fr) 88px;gap:0;padding:0 5.2vw 12px;overflow:hidden;background:radial-gradient(ellipse at 50% 100%,rgba(111,190,43,.48),transparent 43%),radial-gradient(ellipse at 50% 48%,rgba(15,91,110,.48),transparent 58%),linear-gradient(180deg,#03111d 0%,#061d2c 56%,#092b23 100%)}
+ #home .stadium-home:before{inset:40% -10% -38%;background:repeating-linear-gradient(165deg,transparent 0 74px,rgba(210,255,190,.11) 76px 78px,transparent 80px 150px),linear-gradient(90deg,transparent 49.75%,rgba(255,255,255,.48) 50%,transparent 50.25%);transform:perspective(600px) rotateX(23deg)}
+ #home .stadium-nav{height:70px;min-height:70px;box-sizing:border-box;display:grid;grid-template-columns:270px minmax(0,1fr) 210px;gap:22px;align-items:center;padding:0 20px;border-radius:0 0 18px 18px;background:rgba(1,12,22,.88);border:1px solid rgba(185,237,72,.28)}
+ #home .stadium-logo{font-size:27px;white-space:nowrap}#home .stadium-logo b{font-size:25px}#home .stadium-logo small{font-size:8px}
+ #home .stadium-links{display:flex!important;justify-content:center;align-items:center;gap:clamp(14px,2.2vw,34px);white-space:nowrap}
+ #home .stadium-links button{font-size:11px;letter-spacing:1.4px;padding:12px 10px;cursor:pointer;border-radius:9px;transition:background .15s,color .15s}
+ #home .stadium-links button:hover{background:rgba(185,237,72,.13);color:#c8f45b}
+ #home .stadium-menu-icon,#home .home-quick-links{display:none!important}
+ #home .stadium-main{box-sizing:border-box;display:grid!important;width:min(1120px,100%);height:100%;min-height:0;margin:0 auto;padding:12px 0 6px;grid-template-rows:66px minmax(245px,1fr) 66px 18px auto;gap:10px;align-content:stretch}
+ #home .stadium-heading{align-self:center;margin:0!important;text-align:center}
+ #home .stadium-heading>span{font-size:10px;letter-spacing:3.2px;color:#c3f34e}
+ #home .stadium-heading h1{font-size:clamp(30px,3vw,40px);line-height:1;margin:3px 0 4px}
+ #home .stadium-heading p{font-size:11px;margin:0}
+ #home .stadium-cards{display:grid!important;width:100%;height:100%;min-height:245px;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px}
+ #home .stadium-card{box-sizing:border-box;display:flex!important;width:100%;height:100%;min-width:0;min-height:245px;padding:28px 34px;border:2px solid #b9ed48;border-radius:25px;background:linear-gradient(115deg,rgba(3,18,30,.94),rgba(7,34,42,.82));box-shadow:0 0 22px rgba(173,239,47,.2);cursor:pointer}
+ #home .stadium-card strong{font-size:clamp(38px,3.7vw,54px);line-height:.98;letter-spacing:-1.8px;color:#c4f34e}
+ #home .card-kicker{font-size:9px;letter-spacing:2px}#home .card-symbol{font-size:30px;right:25px;top:18px}#home .card-bottom{font-size:10px;letter-spacing:1.5px}
+ #home .stadium-editor-wrap{display:grid!important;width:min(900px,100%);height:66px;grid-template-columns:210px minmax(0,1fr);align-items:center;gap:12px;margin:0 auto!important}
+ #home .stadium-editor{box-sizing:border-box;width:100%;min-width:0;height:52px;min-height:52px;padding:10px 14px;font-size:17px;white-space:nowrap;cursor:pointer}
+ #home .editor-options{display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr));gap:9px;margin:0;padding:0;background:transparent;border:0}
+ #home .editor-options button{box-sizing:border-box;width:100%;min-width:0;height:44px;padding:8px 9px;white-space:nowrap;font-size:11px;cursor:pointer}
+ #home .stadium-tools{display:flex!important;justify-content:center;align-items:center;gap:18px;min-height:18px;margin:0;font-size:11px}
+ #home .stadium-tools button{font-size:11px;cursor:pointer}
+ #home #homeSaves:empty{display:none!important}
+ #home .stadium-footer{display:none!important}
+ #home .home-release-notes{box-sizing:border-box;display:grid!important;width:min(1120px,100%);height:88px;min-height:88px;max-height:88px;margin:0 auto;padding:10px 14px;grid-template-columns:.65fr 1.7fr 1fr;gap:14px;overflow:hidden;border-color:rgba(190,230,180,.28);background:rgba(1,13,22,.88)}
+ #home .home-release-notes h3{font-size:11px;line-height:1.2;margin:0 0 4px}
+ #home .home-release-notes p,#home .home-release-notes li{font-size:9px;line-height:1.25;margin-top:2px}
+ #home .home-release-notes ul{margin:2px 0;padding-left:14px}
+ #home .home-release-version strong{font-size:22px;color:#c4f34e}
+}
+@media (min-width:1100px) and (max-height:700px){
+ #home .stadium-home{grid-template-rows:60px minmax(0,1fr) 76px;padding-bottom:8px}
+ #home .stadium-nav{height:60px;min-height:60px}
+ #home .stadium-main{grid-template-rows:52px minmax(190px,1fr) 54px 14px auto;gap:6px;padding-top:6px}
+ #home .stadium-cards,#home .stadium-card{min-height:190px}
+ #home .stadium-card{padding:20px 26px}
+ #home .stadium-editor-wrap{height:54px}
+ #home .stadium-editor{height:44px;min-height:44px;font-size:15px}
+ #home .editor-options button{height:38px;font-size:10px}
+ #home .home-release-notes{height:76px;min-height:76px;max-height:76px;padding:7px 10px}
+}
+
 </style>
 </head>
 <body><div class="wrap">
-<header class="top"><div class="logo">OI</div><div><div class="brand">ONZE IDEAL <span class="pill">PACOTE 2.53</span></div><div class="sub">Simulador de gestão de futebol • Elencos e Identidade dos Clubes</div></div></header>
+<header class="top"><div class="logo">OI</div><div><div class="brand">ONZE IDEAL <span class="pill">PACOTE 2.54</span></div><div class="sub">Simulador de gestão de futebol • Elencos e Identidade dos Clubes</div></div></header>
 
 <section id="home" class="screen active">
  <div class="stadium-home">
@@ -964,7 +1014,7 @@ body:has(#home.active) .wrap{width:100%!important;max-width:none!important;min-h
    <div id="homeSaves"></div>
   </main>
   <footer class="stadium-footer">ONZE IDEAL 26/27 <span>•</span> CONSTRUA SEU LEGADO</footer>
-  <section class="home-release-notes" aria-label="Versão e notas da atualização"><div class="home-release-version"><span>VERSÃO ATUAL</span><strong>2.53</strong></div><div class="home-release-current"><h3>Notas da atualização 2.53</h3><ul><li>Novo menu principal com composição centralizada para PC.</li><li>Acessos de placares, ajustes, backup e importação sempre visíveis.</li><li>Nova Carreira e Carregar Jogo em cards equilibrados.</li><li>Atalhos do Modo Editor exibidos sem menu suspenso.</li></ul></div><div class="home-release-next"><span class="home-release-tag">ONZE IDEAL</span><h3>Seu clube, suas decisões</h3><p>Assuma o comando e construa sua história no futebol.</p></div></section>
+  <section class="home-release-notes" aria-label="Versão e notas da atualização"><div class="home-release-version"><span>VERSÃO ATUAL</span><strong>2.54</strong></div><div class="home-release-current"><h3>Notas da atualização 2.54</h3><ul><li>Menu principal redesenhado para 1366 × 768.</li><li>Cards Nova Carreira e Carregar Jogo com dimensões equilibradas.</li><li>Navegação superior e atalhos do editor alinhados e visíveis.</li><li>Painel de versão e novidades organizado no rodapé.</li></ul></div><div class="home-release-next"><span class="home-release-tag">ONZE IDEAL</span><h3>Seu clube, suas decisões</h3><p>Assuma o comando e construa sua história no futebol.</p></div></section>
  </div>
 </section>
 
@@ -1591,7 +1641,7 @@ init();
 .score-preview-bold .score-clock{background:#17202b;color:#fff}
 .score-extra{display:flex;justify-content:center;gap:8px;flex-wrap:wrap;font-size:9px;font-weight:900;letter-spacing:1px}
 
-/* PACOTE 2.53 — centralização do menu principal e novo painel de criação de carreira (PC) */
+/* PACOTE 2.54 — centralização do menu principal e novo painel de criação de carreira (PC) */
 @media (min-width:701px){
  html:has(#home.active),body:has(#home.active){width:100%;height:100%;min-height:100%;overflow:hidden!important}
  body:has(#home.active) .wrap{width:100%!important;height:100dvh!important;min-height:0!important;max-width:none!important;margin:0!important;padding:0!important;overflow:hidden!important}
@@ -1648,7 +1698,7 @@ init();
 
 
 
-/* PACOTE 2.53 — novo menu principal: centralizado, claro e com todos os acessos visíveis (PC) */
+/* PACOTE 2.54 — novo menu principal: centralizado, claro e com todos os acessos visíveis (PC) */
 @media (min-width:701px){
  html:has(#home.active),body:has(#home.active){width:100%;height:100%;min-height:100%;margin:0;overflow:hidden!important;background:#03131b!important}
  body:has(#home.active) .wrap{width:100%!important;max-width:none!important;height:100dvh!important;min-height:0!important;margin:0!important;padding:0!important;overflow:hidden!important}
@@ -1730,7 +1780,7 @@ init();
 .live-table td:last-child{font-size:9px;font-weight:900;color:#c4a7ff;white-space:nowrap}
 @media(max-width:899px){#matchLive .live-score-visual .tv-reference-score .tv-team{font-size:18px;padding:8px 10px;min-width:55px}#matchLive .live-score-visual .tv-reference-score .tv-goals{font-size:29px;padding:6px 9px}}
 
-/* PACOTE 2.53 — centralização do menu principal e novo painel de criação de carreira (PC) */
+/* PACOTE 2.54 — centralização do menu principal e novo painel de criação de carreira (PC) */
 @media (min-width:701px){
  html:has(#home.active),body:has(#home.active){width:100%;height:100%;min-height:100%;overflow:hidden!important}
  body:has(#home.active) .wrap{width:100%!important;height:100dvh!important;min-height:0!important;max-width:none!important;margin:0!important;padding:0!important;overflow:hidden!important}
@@ -1787,7 +1837,7 @@ init();
 
 
 
-/* PACOTE 2.53 — novo menu principal: centralizado, claro e com todos os acessos visíveis (PC) */
+/* PACOTE 2.54 — novo menu principal: centralizado, claro e com todos os acessos visíveis (PC) */
 @media (min-width:701px){
  html:has(#home.active),body:has(#home.active){width:100%;height:100%;min-height:100%;margin:0;overflow:hidden!important;background:#03131b!important}
  body:has(#home.active) .wrap{width:100%!important;max-width:none!important;height:100dvh!important;min-height:0!important;margin:0!important;padding:0!important;overflow:hidden!important}
@@ -1884,7 +1934,7 @@ init();
 }
 @media (max-width:899px){#matchLive:not(.hidden){display:flex;flex-direction:column}.live-score-stage{min-height:100px}.live-score-visual .tv-team{font-size:16px}.live-score-visual .tv-goals{font-size:23px}}
 
-/* PACOTE 2.53 — centralização do menu principal e novo painel de criação de carreira (PC) */
+/* PACOTE 2.54 — centralização do menu principal e novo painel de criação de carreira (PC) */
 @media (min-width:701px){
  html:has(#home.active),body:has(#home.active){width:100%;height:100%;min-height:100%;overflow:hidden!important}
  body:has(#home.active) .wrap{width:100%!important;height:100dvh!important;min-height:0!important;max-width:none!important;margin:0!important;padding:0!important;overflow:hidden!important}
@@ -1941,7 +1991,7 @@ init();
 
 
 
-/* PACOTE 2.53 — novo menu principal: centralizado, claro e com todos os acessos visíveis (PC) */
+/* PACOTE 2.54 — novo menu principal: centralizado, claro e com todos os acessos visíveis (PC) */
 @media (min-width:701px){
  html:has(#home.active),body:has(#home.active){width:100%;height:100%;min-height:100%;margin:0;overflow:hidden!important;background:#03131b!important}
  body:has(#home.active) .wrap{width:100%!important;max-width:none!important;height:100dvh!important;min-height:0!important;margin:0!important;padding:0!important;overflow:hidden!important}
@@ -2056,7 +2106,7 @@ init();
  .season-review-grid{grid-template-columns:1fr}
 }
 
-/* PACOTE 2.53 — centralização do menu principal e novo painel de criação de carreira (PC) */
+/* PACOTE 2.54 — centralização do menu principal e novo painel de criação de carreira (PC) */
 @media (min-width:701px){
  html:has(#home.active),body:has(#home.active){width:100%;height:100%;min-height:100%;overflow:hidden!important}
  body:has(#home.active) .wrap{width:100%!important;height:100dvh!important;min-height:0!important;max-width:none!important;margin:0!important;padding:0!important;overflow:hidden!important}
@@ -2113,7 +2163,7 @@ init();
 
 
 
-/* PACOTE 2.53 — novo menu principal: centralizado, claro e com todos os acessos visíveis (PC) */
+/* PACOTE 2.54 — novo menu principal: centralizado, claro e com todos os acessos visíveis (PC) */
 @media (min-width:701px){
  html:has(#home.active),body:has(#home.active){width:100%;height:100%;min-height:100%;margin:0;overflow:hidden!important;background:#03131b!important}
  body:has(#home.active) .wrap{width:100%!important;max-width:none!important;height:100dvh!important;min-height:0!important;margin:0!important;padding:0!important;overflow:hidden!important}
@@ -2235,7 +2285,7 @@ html,body{overflow-x:hidden}
 #career .layout.wide-tab>.side::-webkit-scrollbar-thumb{background:#568b67;border-radius:8px}
 @media(max-width:899px){.screen.active:not(#career){max-height:100dvh}#career.screen.active{height:100dvh;max-height:100dvh}#career>.layout{flex:1 1 auto;min-height:0;height:auto;overflow:hidden}#career>.layout>.content{height:100%;max-height:100%;overflow-x:hidden;overflow-y:auto;padding-bottom:24px}#career .layout.wide-tab>.content{max-height:100%;overflow-y:auto}}
 
-/* PACOTE 2.53 — correção estrutural da rolagem: a tela ativa rola como um todo */
+/* PACOTE 2.54 — correção estrutural da rolagem: a tela ativa rola como um todo */
 html,body{min-height:100%;overflow-x:hidden}
 body{overflow-y:auto}
 .wrap{min-height:100dvh;height:auto;overflow:visible}
@@ -2265,7 +2315,7 @@ html::-webkit-scrollbar-thumb,body::-webkit-scrollbar-thumb,.wrap::-webkit-scrol
 }
 
 
-/* PACOTE 2.53 — remapeamento dos menus para widescreen (16:9) */
+/* PACOTE 2.54 — remapeamento dos menus para widescreen (16:9) */
 @media (min-width:1100px) and (min-aspect-ratio: 4/3){
  .wrap{max-width: min(98vw,1900px);padding:clamp(12px,1.2vw,22px)}
  .top{padding:5px 0 12px}
@@ -2311,7 +2361,7 @@ html::-webkit-scrollbar-thumb,body::-webkit-scrollbar-thumb,.wrap::-webkit-scrol
 }
 
 
-/* PACOTE 2.53 — centralização do menu principal e novo painel de criação de carreira (PC) */
+/* PACOTE 2.54 — centralização do menu principal e novo painel de criação de carreira (PC) */
 @media (min-width:701px){
  html:has(#home.active),body:has(#home.active){width:100%;height:100%;min-height:100%;overflow:hidden!important}
  body:has(#home.active) .wrap{width:100%!important;height:100dvh!important;min-height:0!important;max-width:none!important;margin:0!important;padding:0!important;overflow:hidden!important}
@@ -2368,7 +2418,7 @@ html::-webkit-scrollbar-thumb,body::-webkit-scrollbar-thumb,.wrap::-webkit-scrol
 
 
 
-/* PACOTE 2.53 — novo menu principal: centralizado, claro e com todos os acessos visíveis (PC) */
+/* PACOTE 2.54 — novo menu principal: centralizado, claro e com todos os acessos visíveis (PC) */
 @media (min-width:701px){
  html:has(#home.active),body:has(#home.active){width:100%;height:100%;min-height:100%;margin:0;overflow:hidden!important;background:#03131b!important}
  body:has(#home.active) .wrap{width:100%!important;max-width:none!important;height:100dvh!important;min-height:0!important;margin:0!important;padding:0!important;overflow:hidden!important}
